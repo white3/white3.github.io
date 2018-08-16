@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>超基础漏洞 | 麦芽屋</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="如有错误还请指出. 学习了MySQL查询语句,以及之前jdbc的使用,给朋友写了一个简易系统后,发现一些细节问题.">
+<meta name="keywords" content="JSP,基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="超基础漏洞">
+<meta property="og:url" content="white3.github.io/2018/02/27/JSP_note/index.html">
+<meta property="og:site_name" content="麦芽屋">
+<meta property="og:description" content="如有错误还请指出. 学习了MySQL查询语句,以及之前jdbc的使用,给朋友写了一个简易系统后,发现一些细节问题.">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-29T04:26:55.569Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="超基础漏洞">
+<meta name="twitter:description" content="如有错误还请指出. 学习了MySQL查询语句,以及之前jdbc的使用,给朋友写了一个简易系统后,发现一些细节问题.">
+  
+    <link rel="alternate" href="/atom.xml" title="麦芽屋" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">麦芽屋</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">有趣的恶魔,无趣的枷锁</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="white3.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-JSP_note" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/02/27/JSP_note/" class="article-date">
+  <time datetime="2018-02-27T00:00:00.000Z" itemprop="datePublished">2018-02-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      超基础漏洞
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>如有错误还请指出.</p>
+<p>学习了MySQL查询语句,以及之前jdbc的使用,给朋友写了一个简易系统后,发现一些细节问题.</p>
+<a id="more"></a>
+<h3 id="SQL注入天敌"><a href="#SQL注入天敌" class="headerlink" title="SQL注入天敌"></a>SQL注入天敌</h3><p>都说SQL注入只与数据库有关系，和编程语言关系不大，但是在Java中，注入问题却相对稀少。这是为什么呢，当然和数据库没关系，和java本身有关系，java的jdbc连接数据库机制十分安全，可以说的上相对的绝对安全。</p>
+<p>那就预编译机制</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">Connection conn = getConnection();</span><br><span class="line">String sql = <span class="string">"select * from users order by ?;"</span>;</span><br><span class="line">PreparedStatement psmt = conn.prepareStatement(sql); <span class="comment">// 执行预编译</span></span><br><span class="line">psmt.setString(<span class="number">1</span>, <span class="string">"123455678564"</span>); <span class="comment">// 向 sql 中 ? 注入值</span></span><br><span class="line">ResultSet rs = psmt.executeQuery(); <span class="comment">// 执行SQL语句</span></span><br><span class="line"><span class="keyword">while</span> (rs.next()) </span><br><span class="line">	System.out.println(rs.getString(<span class="string">"id"</span>) + rs.getString(<span class="string">"username"</span>) + rs.getString(<span class="string">"password"</span>)); <span class="comment">// 回显</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>究竟什么是预编译，不好意思，虽然java以开源为主，但是这部分代码偏偏闭源。我这里可以给出一些相关评价：</p>
+<p>首先向数据库发送<code>select * from users order by ?;</code>语句，数据库已经编译sql语句，然后等待 ? 中的值，然后当我们设置 ? 中的值，然后再<code>psmt.executeQuery();</code>的时候，就是将值发过去，数据库直接用变量获得该值，然后这个时候是字符串，传过去还是字符串，脱离了原本拼接时候的sql语句层面。</p>
+<p>总的来说就是，你先把sql语句编译完成，这个时候sql等待的是字符串，而你传的东西不管是什么，他就用字符串接收，然后运行sql语句。<strong>即你的poc被限制在字符串级别，而非sql语句中的一部分</strong></p>
+<h3 id="神化的预编译"><a href="#神化的预编译" class="headerlink" title="神化的预编译"></a>神化的预编译</h3><h4 id="1-问题的入口点"><a href="#1-问题的入口点" class="headerlink" title="1.问题的入口点"></a>1.问题的入口点</h4><p>说到注入就不得不说预编译这个东西,着实好用,而且几乎无敌,但稍微使用就会发现一件问题.<br><strong>预编译能否处理 order by 后面的参数?</strong>(都这么问了,必然是不能呗)<br>笔者用以下代码证明,</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">Connection conn = getConnection();</span><br><span class="line">String sql = <span class="string">"select id,username,password from users order by ?;"</span>;</span><br><span class="line">PreparedStatement psmt = <span class="keyword">null</span>;</span><br><span class="line">ResultSet rs = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	psmt = conn.prepareStatement(sql); <span class="comment">// 执行预编译</span></span><br><span class="line">	<span class="comment">// psmt.setString(1, "id"); -- 1</span></span><br><span class="line">	psmt.setString(<span class="number">1</span>, <span class="string">"123455678564"</span>); <span class="comment">// 向 sql 中 ? 注入值</span></span><br><span class="line">	rs = psmt.executeQuery(); <span class="comment">// 执行SQL语句</span></span><br><span class="line">	<span class="keyword">while</span> (rs.next()) </span><br><span class="line">		System.out.println(rs.getString(<span class="string">"id"</span>) + rs.getString(<span class="string">"username"</span>) + rs.getString(<span class="string">"password"</span>)); <span class="comment">// 回显</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (SQLException e) &#123;e.printStackTrace();&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>运行发现1,2结果相同,由于我这里是使用c3p0(巨好用的第三方库),如果是直接使用原生mysql jdbc的connection就会直接抛异常，你会发现参数没有注入进去。所以，order by失去了预编译的保护。相应的，我做了以下测试</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testHaving</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	Connection conn = getConnection();</span><br><span class="line">	PreparedStatement psmt = <span class="keyword">null</span>;</span><br><span class="line">	ResultSet rs = <span class="keyword">null</span>;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * select id,username,password </span></span><br><span class="line"><span class="comment">	 * from users u </span></span><br><span class="line"><span class="comment">	 * inner join results r </span></span><br><span class="line"><span class="comment">	 * on u.id = r.rid</span></span><br><span class="line"><span class="comment">	 * where u.id in (?,2,3,4,5) </span></span><br><span class="line"><span class="comment">	 * group by r.rid </span></span><br><span class="line"><span class="comment">	 * having u.id&gt;? </span></span><br><span class="line"><span class="comment">	 * order by u.id </span></span><br><span class="line"><span class="comment">	 * limit 0,10;</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="comment">// 使用字符串拼接</span></span><br><span class="line">	String sql = <span class="string">"select id,username,password "</span> + <span class="string">"from users u  "</span> + <span class="string">"inner join results r "</span> + <span class="string">"on u.id = r.rid "</span></span><br><span class="line">			+ <span class="string">"where u.id in (?,2,3,4,5)"</span> + <span class="string">"group by r.rid  "</span> + <span class="string">"having u.id&gt;? "</span> + <span class="string">"order by id "</span> + <span class="string">"limit 0,10 "</span>;</span><br><span class="line">	<span class="comment">// 使用预编译</span></span><br><span class="line">	<span class="keyword">try</span> &#123;</span><br><span class="line">		System.out.println(<span class="string">"------"</span> + sql + <span class="string">"------"</span>);</span><br><span class="line">		psmt = conn.prepareStatement(sql);<span class="comment">// 执行预编译</span></span><br><span class="line">		psmt.setString(<span class="number">1</span>, <span class="string">"1"</span>);<span class="comment">// 向 sql 中 ? 注入值</span></span><br><span class="line">		psmt.setString(<span class="number">2</span>, <span class="string">"1"</span>);</span><br><span class="line">		rs = psmt.executeQuery();<span class="comment">// 执行SQL语句</span></span><br><span class="line">		<span class="keyword">while</span> (rs.next())</span><br><span class="line">			System.out.println(rs.getInt(<span class="string">"id"</span>) + rs.getString(<span class="string">"username"</span>) + rs.getString(<span class="string">"password"</span>)); <span class="comment">// 回显</span></span><br><span class="line">	&#125; <span class="keyword">catch</span> (SQLException e) &#123;</span><br><span class="line">		e.printStackTrace();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由上述测试代码可以得出结论如下：</p>
+<ul>
+<li>having, in, where后的等值条件, 非等值条件不可使用预编译</li>
+<li>like ,order by不可使用预编译</li>
+</ul>
+<h4 id="2-order-by问题再探究"><a href="#2-order-by问题再探究" class="headerlink" title="2.order by问题再探究"></a>2.order by问题再探究</h4><p>既然order by和like不能用预编译，那么我们该如何防范呢，防范的方法有很多，我们先看看大佬是怎么处理的吧，首当其冲，我们看看最常用的数据库处理框架MyBastic。如何使用自行查看官方文档，我就列出我的测试代码：</p>
+<p>sqlmap下的xml映射文件配置如下，其中</p>
+<p>\$表示使用拼接，例如：<code>select * from users order by  $value</code>就和php中的$value直接插入其中一样</p>
+<p>#表示使用预编译，例如：<code>select * from users order by  #{value}</code>使用的预编译(MyBatis自己封装)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- like的SQL注入测试 --&gt;</span><br><span class="line">&lt;select id=<span class="string">"findUserByUsername"</span> parameterType=<span class="string">"java.lang.String"</span></span><br><span class="line">	resultType=<span class="string">"com.po.User"</span>&gt;</span><br><span class="line">	select username, password, birthday, email from users where username like <span class="string">'%$&#123;value&#125;%'</span></span><br><span class="line">&lt;/select&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- like的SQL注入修复 --&gt;</span><br><span class="line">&lt;select id=<span class="string">"findUserByUsername2"</span> parameterType=<span class="string">"java.lang.String"</span></span><br><span class="line">	resultType=<span class="string">"com.po.User"</span>&gt;</span><br><span class="line">	select username, password, birthday, <span class="function">email from users where username like <span class="title">concat</span><span class="params">(<span class="string">'%'</span>, #&#123;value&#125;, <span class="string">'%'</span>)</span></span></span><br><span class="line"><span class="function">&lt;/select&gt;</span></span><br></pre></td></tr></table></figure>
+<p>反正不用我说，也知道拼接必死，而MyBatis(只限高版本,据我所知低版本的MyBatis用的原生预编译，即order by和like存在注入)确实可以完全预防order by注入问题。</p>
+<p>再来看看SSH三大框架之一的Hibernate框架，因为都是以封装数据库行为的框架所以我都抓来测试了。</p>
+<p><strong>Hibernate注入探究</strong></p>
+<p>收集了不少资料，发现…这货好强，只要不傻乎乎的拼接，就完全OK。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>在代码审计的时候，首先拼接全死，所以在遇到使用MyBatis框架的项目中，直接搜索 \$ ，其他的用正则匹配搜索加号相关的。</li>
+<li>其次如果是原生jdbc书写，搜索关键词 order by 和 like，测试过滤代码是否可以绕过。</li>
+<li>框架就是好，下一遍我将带大家解析框架源码。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="white3.github.io/2018/02/27/JSP_note/" data-id="cjkwbsil40003f4jtbrynm09h" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JSP/">JSP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/基础/">基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/02/27/install_software/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          迷途中遇到的小知识集
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/01/27/curl-help/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Curl Help Doc</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF杂项/">CTF杂项</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CURL/">CURL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MIPS汇编/">MIPS汇编</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MYSQL/">MYSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PWN/">PWN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/">install</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/question/">question</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web安全/">web安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二进制/">二进制</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内网/">内网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/基础/">基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安装/">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小文/">小文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/扫描/">扫描</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板/">模板</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编码/">编码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/配置/">配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CTF杂项/" style="font-size: 10px;">CTF杂项</a> <a href="/tags/CURL/" style="font-size: 10px;">CURL</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/MIPS汇编/" style="font-size: 10px;">MIPS汇编</a> <a href="/tags/MYSQL/" style="font-size: 10px;">MYSQL</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/PWN/" style="font-size: 10px;">PWN</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/install/" style="font-size: 10px;">install</a> <a href="/tags/question/" style="font-size: 10px;">question</a> <a href="/tags/web安全/" style="font-size: 15px;">web安全</a> <a href="/tags/二进制/" style="font-size: 10px;">二进制</a> <a href="/tags/内网/" style="font-size: 10px;">内网</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/安装/" style="font-size: 10px;">安装</a> <a href="/tags/小文/" style="font-size: 10px;">小文</a> <a href="/tags/工具/" style="font-size: 15px;">工具</a> <a href="/tags/扫描/" style="font-size: 10px;">扫描</a> <a href="/tags/模板/" style="font-size: 20px;">模板</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/编码/" style="font-size: 15px;">编码</a> <a href="/tags/编程/" style="font-size: 10px;">编程</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/16/mysql/">MYSQL的学习</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/16/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/02/Linux的inode号/">Linux/unix上神奇的inode编号</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/29/PUNYCODE编码协议/">PUNYCODE</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/29/docker/">Docker基础学习</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Menzel3<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

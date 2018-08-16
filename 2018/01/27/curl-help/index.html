@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Curl Help Doc | 麦芽屋</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="CURL 全面帮助文档">
+<meta name="keywords" content="工具,CURL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Curl Help Doc">
+<meta property="og:url" content="white3.github.io/2018/01/27/curl-help/index.html">
+<meta property="og:site_name" content="麦芽屋">
+<meta property="og:description" content="CURL 全面帮助文档">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-29T04:26:31.927Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Curl Help Doc">
+<meta name="twitter:description" content="CURL 全面帮助文档">
+  
+    <link rel="alternate" href="/atom.xml" title="麦芽屋" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">麦芽屋</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">有趣的恶魔,无趣的枷锁</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="white3.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-curl-help" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/01/27/curl-help/" class="article-date">
+  <time datetime="2018-01-27T00:00:00.000Z" itemprop="datePublished">2018-01-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Curl Help Doc
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>CURL 全面帮助文档</p>
+<a id="more"></a>
+<h2 id="快速使用"><a href="#快速使用" class="headerlink" title="快速使用"></a>快速使用</h2><h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><ul>
+<li>指定本地端口号发送请求访问URL<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl --local-port &lt;端口号&gt; &lt;URL&gt;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>例如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl --local-port 51 127.0.0.1</span><br></pre></td></tr></table></figure></p>
+<hr>
+<ul>
+<li>可使用多个 -H “参数表:参数值” 构造数据头<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -v &lt;url&gt; -H &apos;参数表:参数值&apos;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>例如:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ curl -v 127.0.0.1 -H &apos;X-Forwarded-For:127.0.0.1&apos; -H &apos;cookies:233333333&apos;</span><br></pre></td></tr></table></figure></p>
+<h2 id="所有用法"><a href="#所有用法" class="headerlink" title="所有用法"></a>所有用法</h2><h3 id="所有的-curl-命令集合"><a href="#所有的-curl-命令集合" class="headerlink" title="所有的 curl 命令集合"></a>所有的 curl 命令集合</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">用法：curl [options ...] &lt;url&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br></pre></td><td class="code"><pre><span class="line">Options: (H) means HTTP/HTTPS only, (F) means FTP only</span><br><span class="line">     --anyauth       Pick &quot;any&quot; authentication method (H)</span><br><span class="line"> -a, --append        Append to target file when uploading (F/SFTP)</span><br><span class="line">     --basic         Use HTTP Basic Authentication (H)</span><br><span class="line">     --cacert FILE   CA certificate to verify peer against (SSL)</span><br><span class="line">     --capath DIR    CA directory to verify peer against (SSL)</span><br><span class="line"> -E, --cert CERT[:PASSWD]  Client certificate file and password (SSL)</span><br><span class="line">     --cert-status   Verify the status of the server certificate (SSL)</span><br><span class="line">     --cert-type TYPE  Certificate file type (DER/PEM/ENG) (SSL)</span><br><span class="line">     --ciphers LIST  SSL ciphers to use (SSL)</span><br><span class="line">     --compressed    Request compressed response (using deflate or gzip)</span><br><span class="line"> -K, --config FILE   Read config from FILE</span><br><span class="line">     --connect-timeout SECONDS  Maximum time allowed for connection</span><br><span class="line">     --connect-to HOST1:PORT1:HOST2:PORT2 Connect to host (network level)</span><br><span class="line"> -C, --continue-at OFFSET  Resumed transfer OFFSET</span><br><span class="line"> -b, --cookie STRING/FILE  Read cookies from STRING/FILE (H)</span><br><span class="line"> -c, --cookie-jar FILE  Write cookies to FILE after operation (H)</span><br><span class="line">     --create-dirs   Create necessary local directory hierarchy</span><br><span class="line">     --crlf          Convert LF to CRLF in upload</span><br><span class="line">     --crlfile FILE  Get a CRL list in PEM format from the given file</span><br><span class="line"> -d, --data DATA     HTTP POST data (H)</span><br><span class="line">     --data-raw DATA  HTTP POST data, &apos;@&apos; allowed (H)</span><br><span class="line">     --data-ascii DATA  HTTP POST ASCII data (H)</span><br><span class="line">     --data-binary DATA  HTTP POST binary data (H)</span><br><span class="line">     --data-urlencode DATA  HTTP POST data url encoded (H)</span><br><span class="line">     --delegation STRING  GSS-API delegation permission</span><br><span class="line">     --digest        Use HTTP Digest Authentication (H)</span><br><span class="line">     --disable-eprt  Inhibit using EPRT or LPRT (F)</span><br><span class="line">     --disable-epsv  Inhibit using EPSV (F)</span><br><span class="line">     --dns-servers   DNS server addrs to use: 1.1.1.1;2.2.2.2</span><br><span class="line">     --dns-interface  Interface to use for DNS requests</span><br><span class="line">     --dns-ipv4-addr  IPv4 address to use for DNS requests, dot notation</span><br><span class="line">     --dns-ipv6-addr  IPv6 address to use for DNS requests, dot notation</span><br><span class="line"> -D, --dump-header FILE  Write the received headers to FILE</span><br><span class="line">     --egd-file FILE  EGD socket path for random data (SSL)</span><br><span class="line">     --engine ENGINE  Crypto engine (use &quot;--engine list&quot; for list) (SSL)</span><br><span class="line">     --expect100-timeout SECONDS How long to wait for 100-continue (H)</span><br><span class="line"> -f, --fail          Fail silently (no output at all) on HTTP errors (H)</span><br><span class="line">     --fail-early    Fail on first transfer error, do not continue</span><br><span class="line">     --false-start   Enable TLS False Start.</span><br><span class="line"> -F, --form CONTENT  Specify HTTP multipart POST data (H)</span><br><span class="line">     --form-string STRING  Specify HTTP multipart POST data (H)</span><br><span class="line">     --ftp-account DATA  Account data string (F)</span><br><span class="line">     --ftp-alternative-to-user COMMAND  String to replace &quot;USER [name]&quot; (F)</span><br><span class="line">     --ftp-create-dirs  Create the remote dirs if not present (F)</span><br><span class="line">     --ftp-method [MULTICWD/NOCWD/SINGLECWD]  Control CWD usage (F)</span><br><span class="line">     --ftp-pasv      Use PASV/EPSV instead of PORT (F)</span><br><span class="line"> -P, --ftp-port ADR  Use PORT with given address instead of PASV (F)</span><br><span class="line">     --ftp-skip-pasv-ip  Skip the IP address for PASV (F)</span><br><span class="line">     --ftp-pret      Send PRET before PASV (for drftpd) (F)</span><br><span class="line">     --ftp-ssl-ccc   Send CCC after authenticating (F)</span><br><span class="line">     --ftp-ssl-ccc-mode ACTIVE/PASSIVE  Set CCC mode (F)</span><br><span class="line">     --ftp-ssl-control  Require SSL/TLS for FTP login, clear for transfer (F)</span><br><span class="line"> -G, --get           Send the -d data with a HTTP GET (H)</span><br><span class="line"> -g, --globoff       Disable URL sequences and ranges using &#123;&#125; and []</span><br><span class="line"> -H, --header LINE   Pass custom header LINE to server (H)</span><br><span class="line"> -I, --head          Show document info only</span><br><span class="line"> -h, --help          This help text</span><br><span class="line">     --hostpubmd5 MD5  Hex-encoded MD5 string of the host public key. (SSH)</span><br><span class="line"> -0, --http1.0       Use HTTP 1.0 (H)</span><br><span class="line">     --http1.1       Use HTTP 1.1 (H)</span><br><span class="line">     --http2         Use HTTP 2 (H)</span><br><span class="line">     --http2-prior-knowledge  Use HTTP 2 without HTTP/1.1 Upgrade (H)</span><br><span class="line">     --ignore-content-length  Ignore the HTTP Content-Length header</span><br><span class="line"> -i, --include       Include protocol headers in the output (H/F)</span><br><span class="line"> -k, --insecure      Allow connections to SSL sites without certs (H)</span><br><span class="line">     --interface INTERFACE  Use network INTERFACE (or address)</span><br><span class="line"> -4, --ipv4          Resolve name to IPv4 address</span><br><span class="line"> -6, --ipv6          Resolve name to IPv6 address</span><br><span class="line"> -j, --junk-session-cookies  Ignore session cookies read from file (H)</span><br><span class="line">     --keepalive-time SECONDS  Wait SECONDS between keepalive probes</span><br><span class="line">     --key KEY       Private key file name (SSL/SSH)</span><br><span class="line">     --key-type TYPE  Private key file type (DER/PEM/ENG) (SSL)</span><br><span class="line">     --krb LEVEL     Enable Kerberos with security LEVEL (F)</span><br><span class="line">     --libcurl FILE  Dump libcurl equivalent code of this command line</span><br><span class="line">     --limit-rate RATE  Limit transfer speed to RATE</span><br><span class="line"> -l, --list-only     List only mode (F/POP3)</span><br><span class="line">     --local-port RANGE  Force use of RANGE for local port numbers</span><br><span class="line"> -L, --location      Follow redirects (H)</span><br><span class="line">     --location-trusted  Like &apos;--location&apos;, and send auth to other hosts (H)</span><br><span class="line">     --login-options OPTIONS  Server login options (IMAP, POP3, SMTP)</span><br><span class="line"> -M, --manual        Display the full manual</span><br><span class="line">     --mail-from FROM  Mail from this address (SMTP)</span><br><span class="line">     --mail-rcpt TO  Mail to this/these addresses (SMTP)</span><br><span class="line">     --mail-auth AUTH  Originator address of the original email (SMTP)</span><br><span class="line">     --max-filesize BYTES  Maximum file size to download (H/F)</span><br><span class="line">     --max-redirs NUM  Maximum number of redirects allowed (H)</span><br><span class="line"> -m, --max-time SECONDS  Maximum time allowed for the transfer</span><br><span class="line">     --metalink      Process given URLs as metalink XML file</span><br><span class="line">     --negotiate     Use HTTP Negotiate (SPNEGO) authentication (H)</span><br><span class="line"> -n, --netrc         Must read .netrc for user name and password</span><br><span class="line">     --netrc-optional  Use either .netrc or URL; overrides -n</span><br><span class="line">     --netrc-file FILE  Specify FILE for netrc</span><br><span class="line"> -:, --next          Allows the following URL to use a separate set of options</span><br><span class="line">     --no-alpn       Disable the ALPN TLS extension (H)</span><br><span class="line"> -N, --no-buffer     Disable buffering of the output stream</span><br><span class="line">     --no-keepalive  Disable keepalive use on the connection</span><br><span class="line">     --no-npn        Disable the NPN TLS extension (H)</span><br><span class="line">     --no-sessionid  Disable SSL session-ID reusing (SSL)</span><br><span class="line">     --noproxy       List of hosts which do not use proxy</span><br><span class="line">     --ntlm          Use HTTP NTLM authentication (H)</span><br><span class="line">     --ntlm-wb       Use HTTP NTLM authentication with winbind (H)</span><br><span class="line">     --oauth2-bearer TOKEN  OAuth 2 Bearer Token (IMAP, POP3, SMTP)</span><br><span class="line"> -o, --output FILE   Write to FILE instead of stdout</span><br><span class="line">     --pass PASS     Pass phrase for the private key (SSL/SSH)</span><br><span class="line">     --path-as-is    Do not squash .. sequences in URL path</span><br><span class="line">     --pinnedpubkey FILE/HASHES Public key to verify peer against (SSL)</span><br><span class="line">     --post301       Do not switch to GET after following a 301 redirect (H)</span><br><span class="line">     --post302       Do not switch to GET after following a 302 redirect (H)</span><br><span class="line">     --post303       Do not switch to GET after following a 303 redirect (H)</span><br><span class="line">     --preproxy [PROTOCOL://]HOST[:PORT] Proxy before HTTP(S) proxy</span><br><span class="line"> -#, --progress-bar  Display transfer progress as a progress bar</span><br><span class="line">     --proto PROTOCOLS  Enable/disable PROTOCOLS</span><br><span class="line">     --proto-default PROTOCOL  Use PROTOCOL for any URL missing a scheme</span><br><span class="line">     --proto-redir PROTOCOLS   Enable/disable PROTOCOLS on redirect</span><br><span class="line"> -x, --proxy [PROTOCOL://]HOST[:PORT]  Use proxy on given port</span><br><span class="line">     --proxy-anyauth  Pick &quot;any&quot; proxy authentication method (H)</span><br><span class="line">     --proxy-basic   Use Basic authentication on the proxy (H)</span><br><span class="line">     --proxy-digest  Use Digest authentication on the proxy (H)</span><br><span class="line">     --proxy-cacert FILE CA certificate to verify peer against for proxy (SSL)</span><br><span class="line">     --proxy-capath DIR CA directory to verify peer against for proxy (SSL)</span><br><span class="line">     --proxy-cert CERT[:PASSWD] Client certificate file and password for proxy (SSL)</span><br><span class="line">     --proxy-cert-type TYPE Certificate file type (DER/PEM/ENG) for proxy (SSL)</span><br><span class="line">     --proxy-ciphers LIST SSL ciphers to use for proxy (SSL)</span><br><span class="line">     --proxy-crlfile FILE Get a CRL list in PEM format from the given file for proxy</span><br><span class="line">     --proxy-insecure Allow connections to SSL sites without certs for proxy (H)</span><br><span class="line">     --proxy-key KEY Private key file name for proxy (SSL)</span><br><span class="line">     --proxy-key-type TYPE Private key file type for proxy (DER/PEM/ENG) (SSL)</span><br><span class="line">     --proxy-negotiate  Use HTTP Negotiate (SPNEGO) authentication on the proxy (H)</span><br><span class="line">     --proxy-ntlm    Use NTLM authentication on the proxy (H)</span><br><span class="line">     --proxy-header LINE Pass custom header LINE to proxy (H)</span><br><span class="line">     --proxy-pass PASS Pass phrase for the private key for proxy (SSL)</span><br><span class="line">     --proxy-ssl-allow-beast Allow security flaw to improve interop for proxy (SSL)</span><br><span class="line">     --proxy-tlsv1   Use TLSv1 for proxy (SSL)</span><br><span class="line">     --proxy-tlsuser USER TLS username for proxy</span><br><span class="line">     --proxy-tlspassword STRING TLS password for proxy</span><br><span class="line">     --proxy-tlsauthtype STRING TLS authentication type for proxy (default SRP)</span><br><span class="line">     --proxy-service-name NAME  SPNEGO proxy service name</span><br><span class="line">     --service-name NAME  SPNEGO service name</span><br><span class="line"> -U, --proxy-user USER[:PASSWORD]  Proxy user and password</span><br><span class="line">     --proxy1.0 HOST[:PORT]  Use HTTP/1.0 proxy on given port</span><br><span class="line"> -p, --proxytunnel   Operate through a HTTP proxy tunnel (using CONNECT)</span><br><span class="line">     --pubkey KEY    Public key file name (SSH)</span><br><span class="line"> -Q, --quote CMD     Send command(s) to server before transfer (F/SFTP)</span><br><span class="line">     --random-file FILE  File for reading random data from (SSL)</span><br><span class="line"> -r, --range RANGE   Retrieve only the bytes within RANGE</span><br><span class="line">     --raw           Do HTTP &quot;raw&quot;; no transfer decoding (H)</span><br><span class="line"> -e, --referer       Referer URL (H)</span><br><span class="line"> -J, --remote-header-name  Use the header-provided filename (H)</span><br><span class="line"> -O, --remote-name   Write output to a file named as the remote file</span><br><span class="line">     --remote-name-all  Use the remote file name for all URLs</span><br><span class="line"> -R, --remote-time   Set the remote file&apos;s time on the local output</span><br><span class="line"> -X, --request COMMAND  Specify request command to use</span><br><span class="line">     --resolve HOST:PORT:ADDRESS  Force resolve of HOST:PORT to ADDRESS</span><br><span class="line">     --retry NUM   Retry request NUM times if transient problems occur</span><br><span class="line">     --retry-connrefused  Retry on connection refused (use with --retry)</span><br><span class="line">     --retry-delay SECONDS  Wait SECONDS between retries</span><br><span class="line">     --retry-max-time SECONDS  Retry only within this period</span><br><span class="line">     --sasl-ir       Enable initial response in SASL authentication</span><br><span class="line"> -S, --show-error    Show error. With -s, make curl show errors when they occur</span><br><span class="line"> -s, --silent        Silent mode (don&apos;t output anything)</span><br><span class="line">     --socks4 HOST[:PORT]  SOCKS4 proxy on given host + port</span><br><span class="line">     --socks4a HOST[:PORT]  SOCKS4a proxy on given host + port</span><br><span class="line">     --socks5 HOST[:PORT]  SOCKS5 proxy on given host + port</span><br><span class="line">     --socks5-hostname HOST[:PORT]  SOCKS5 proxy, pass host name to proxy</span><br><span class="line">     --socks5-gssapi-service NAME  SOCKS5 proxy service name for GSS-API</span><br><span class="line">     --socks5-gssapi-nec  Compatibility with NEC SOCKS5 server</span><br><span class="line"> -Y, --speed-limit RATE  Stop transfers below RATE for &apos;speed-time&apos; secs</span><br><span class="line"> -y, --speed-time SECONDS  Trigger &apos;speed-limit&apos; abort after SECONDS (default: 30)</span><br><span class="line">     --ssl           Try SSL/TLS (FTP, IMAP, POP3, SMTP)</span><br><span class="line">     --ssl-reqd      Require SSL/TLS (FTP, IMAP, POP3, SMTP)</span><br><span class="line"> -2, --sslv2         Use SSLv2 (SSL)</span><br><span class="line"> -3, --sslv3         Use SSLv3 (SSL)</span><br><span class="line">     --ssl-allow-beast  Allow security flaw to improve interop (SSL)</span><br><span class="line">     --ssl-no-revoke    Disable cert revocation checks (WinSSL)</span><br><span class="line">     --stderr FILE   Where to redirect stderr (use &quot;-&quot; for stdout)</span><br><span class="line">     --tcp-nodelay   Use the TCP_NODELAY option</span><br><span class="line">     --tcp-fastopen  Use TCP Fast Open</span><br><span class="line"> -t, --telnet-option OPT=VAL  Set telnet option</span><br><span class="line">     --tftp-blksize VALUE  Set TFTP BLKSIZE option (must be &gt;512)</span><br><span class="line">     --tftp-no-options  Do not send TFTP options requests</span><br><span class="line"> -z, --time-cond TIME   Transfer based on a time condition</span><br><span class="line"> -1, --tlsv1         Use &gt;= TLSv1 (SSL)</span><br><span class="line">     --tlsv1.0       Use TLSv1.0 (SSL)</span><br><span class="line">     --tlsv1.1       Use TLSv1.1 (SSL)</span><br><span class="line">     --tlsv1.2       Use TLSv1.2 (SSL)</span><br><span class="line">     --tlsv1.3       Use TLSv1.3 (SSL)</span><br><span class="line">     --trace FILE    Write a debug trace to FILE</span><br><span class="line">     --trace-ascii FILE  Like --trace, but without hex output</span><br><span class="line">     --trace-time    Add time stamps to trace/verbose output</span><br><span class="line">     --tr-encoding   Request compressed transfer encoding (H)</span><br><span class="line"> -T, --upload-file FILE  Transfer FILE to destination</span><br><span class="line">     --url URL       URL to work with</span><br><span class="line"> -B, --use-ascii     Use ASCII/text transfer</span><br><span class="line"> -u, --user USER[:PASSWORD]  Server user and password</span><br><span class="line">     --tlsuser USER  TLS username</span><br><span class="line">     --tlspassword STRING  TLS password</span><br><span class="line">     --tlsauthtype STRING  TLS authentication type (default: SRP)</span><br><span class="line">     --unix-socket PATH    Connect through this Unix domain socket</span><br><span class="line">     --abstract-unix-socket PATH Connect to an abstract Unix domain socket</span><br><span class="line"> -A, --user-agent STRING  Send User-Agent STRING to server (H)</span><br><span class="line"> -v, --verbose       Make the operation more talkative</span><br><span class="line"> -V, --version       Show version number and quit</span><br><span class="line"> -w, --write-out FORMAT  Use output FORMAT after completion</span><br><span class="line">     --xattr         Store metadata in extended file attributes</span><br><span class="line"> -q, --disable       Disable .curlrc (must be first parameter)</span><br></pre></td></tr></table></figure>
+<p>2018-01-27 13:14</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="white3.github.io/2018/01/27/curl-help/" data-id="cjkwbsim2000zf4jtx9tel1or" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CURL/">CURL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工具/">工具</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/02/27/JSP_note/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          超基础漏洞
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/08/13/Maven/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Maven使用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF杂项/">CTF杂项</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CURL/">CURL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MIPS汇编/">MIPS汇编</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MYSQL/">MYSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PWN/">PWN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/">install</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/question/">question</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web安全/">web安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二进制/">二进制</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内网/">内网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/基础/">基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安装/">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小文/">小文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/扫描/">扫描</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板/">模板</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编码/">编码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/配置/">配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CTF杂项/" style="font-size: 10px;">CTF杂项</a> <a href="/tags/CURL/" style="font-size: 10px;">CURL</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/MIPS汇编/" style="font-size: 10px;">MIPS汇编</a> <a href="/tags/MYSQL/" style="font-size: 10px;">MYSQL</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/PWN/" style="font-size: 10px;">PWN</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/install/" style="font-size: 10px;">install</a> <a href="/tags/question/" style="font-size: 10px;">question</a> <a href="/tags/web安全/" style="font-size: 15px;">web安全</a> <a href="/tags/二进制/" style="font-size: 10px;">二进制</a> <a href="/tags/内网/" style="font-size: 10px;">内网</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/安装/" style="font-size: 10px;">安装</a> <a href="/tags/小文/" style="font-size: 10px;">小文</a> <a href="/tags/工具/" style="font-size: 15px;">工具</a> <a href="/tags/扫描/" style="font-size: 10px;">扫描</a> <a href="/tags/模板/" style="font-size: 20px;">模板</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/编码/" style="font-size: 15px;">编码</a> <a href="/tags/编程/" style="font-size: 10px;">编程</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/16/mysql/">MYSQL的学习</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/16/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/02/Linux的inode号/">Linux/unix上神奇的inode编号</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/29/PUNYCODE编码协议/">PUNYCODE</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/29/docker/">Docker基础学习</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Menzel3<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

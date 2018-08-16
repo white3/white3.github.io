@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Maven使用 | 麦芽屋</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Maven介绍">
+<meta name="keywords" content="Maven">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Maven使用">
+<meta property="og:url" content="white3.github.io/2017/08/13/Maven/index.html">
+<meta property="og:site_name" content="麦芽屋">
+<meta property="og:description" content="Maven介绍">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-29T04:27:03.965Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Maven使用">
+<meta name="twitter:description" content="Maven介绍">
+  
+    <link rel="alternate" href="/atom.xml" title="麦芽屋" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">麦芽屋</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">有趣的恶魔,无趣的枷锁</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="white3.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Maven" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/08/13/Maven/" class="article-date">
+  <time datetime="2017-08-13T00:00:00.000Z" itemprop="datePublished">2017-08-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Maven使用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Maven介绍"><a href="#Maven介绍" class="headerlink" title="Maven介绍"></a>Maven介绍</h3><a id="more"></a>
+<p>Maven是一个项目管理和综合工具. 由于大部分项目的设置都很简单，并且可重复使用，Maven让开发人员的工作更轻松，同时创建报表，检查，构建和测试自动化设置. </p>
+<p>简言之就是, 好处就是可以快速准确地同步开发依赖包. 还有一点是我喜欢的, 所有的依赖都存储在仓库中, 以前每写一个项目, lib下都可能要导入重复依赖包, 而现在只需要写几行xml. 而且可以清晰的发现重复造轮子这个东西.</p>
+<h3 id="Maven配置"><a href="#Maven配置" class="headerlink" title="Maven配置"></a>Maven配置</h3><h4 id="setting-xml配置"><a href="#setting-xml配置" class="headerlink" title="setting.xml配置"></a>setting.xml配置</h4><p>1.首先去官网下载Maven<br>2.解压Maven至某个文件夹下,为了防止不必要地麻烦,路径中请勿存在中文.笔者直接放在jdk一起,找起来方便 - -<br>3.打开Maven/conf/settings.xml, 修改如下配置属性</p>
+<p>找到这一段注释</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- localRepository</span><br><span class="line">   | The path to the local repository maven will use to store artifacts.</span><br><span class="line">   |</span><br><span class="line">   | Default: $&#123;user.home&#125;/.m2/repository</span><br><span class="line">--&gt;</span><br></pre></td></tr></table></figure>
+<p>明显看出, 默认仓库位于当前用户家目录下的<code>.m2/repository.</code><br>windows用户不会希望庞大的仓库在C盘, 如果你也是这样可以像我一样在注释下方配置如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;localRepository&gt;E:\Library\RepMaven&lt;/localRepository&gt;</span><br></pre></td></tr></table></figure>
+<p>找到第二个位置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;profile&gt;</span><br><span class="line">  &lt;id&gt;jdk-1.4&lt;/id&gt;</span><br><span class="line"></span><br><span class="line">  &lt;activation&gt;</span><br><span class="line">    &lt;jdk&gt;1.4&lt;/jdk&gt;</span><br><span class="line">  &lt;/activation&gt;</span><br><span class="line"></span><br><span class="line">  &lt;repositories&gt;</span><br><span class="line">    &lt;repository&gt;</span><br><span class="line">      &lt;id&gt;jdk14&lt;/id&gt;</span><br><span class="line">      &lt;name&gt;Repository for JDK 1.4 builds&lt;/name&gt;</span><br><span class="line">      &lt;url&gt;http://www.myhost.com/maven/jdk14&lt;/url&gt;</span><br><span class="line">      &lt;layout&gt;default&lt;/layout&gt;</span><br><span class="line">      &lt;snapshotPolicy&gt;always&lt;/snapshotPolicy&gt;</span><br><span class="line">    &lt;/repository&gt;</span><br><span class="line">  &lt;/repositories&gt;</span><br><span class="line">&lt;/profile&gt;</span><br><span class="line">--&gt;</span><br></pre></td></tr></table></figure>
+<p>明显看出, Maven这里的参照运行环境为jdk-1.4, 照葫芦画瓢配置我的jdk1.8:</p>
+<pre><code>&lt;profile&gt;
+    &lt;id&gt;jdk-1.8&lt;/id&gt;
+    &lt;activation&gt;
+        &lt;activeByDefault&gt;true&lt;/activeByDefault&gt;
+        &lt;jdk&gt;1.8&lt;/jdk&gt;
+    &lt;/activation&gt;
+    &lt;properties&gt;
+        &lt;maven.compiler.source&gt;1.8&lt;/maven.compiler.source&gt;  
+        &lt;maven.compiler.target&gt;1.8&lt;/maven.compiler.target&gt;  
+        &lt;maven.compiler.compilerVersion&gt;1.8&lt;/maven.compiler.compilerVersion&gt;  
+    &lt;/properties&gt;
+&lt;/profile&gt;
+</code></pre><p>注意: 如果maven进行升级，那么所有的配置都会被清除，所以要提前复制和备份.</p>
+<p>Maven的简单配置到这就差不多了.但是有必要补充一下Maven的相关知识. </p>
+<h4 id="仓库姿势"><a href="#仓库姿势" class="headerlink" title="仓库姿势"></a>仓库姿势</h4><p>Maven仓库有两种, 远程仓库, 本地仓库.若本地没有依赖包, Maven将从远程仓库查找依赖包并同步到本地.</p>
+<p>远程仓库又包含中央仓库,私人仓库类比于游戏的官服和私服.</p>
+<p>官包含了绝大多数流行的开源Java构件，以及源码、作者信息、SCM、信息、许可证信息等。一般来说，简单的Java项目依赖的构件都可以在这里下载到</p>
+<p>私服是一种特殊的远程仓库，它是架设在局域网内的仓库服务，私服代理广域网上的远程仓库，供局域网内的Maven用户使用。当Maven需要下载构件的时候，它从私服请求，如果私服上不存在该构件，则从外部的远程仓库下载，缓存在私服上之后，再为Maven的下载请求提供服务。我们还可以把一些无法从外部仓库下载到的构件上传到私服上。而且鉴于长城防火墙, 有时候下载外网依赖包贼慢, 所以配置一个国内私服还是不错的.<br>如:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;mirrors&gt;</span><br><span class="line">    &lt;!-- 阿里云仓库 --&gt;</span><br><span class="line">    &lt;mirror&gt;</span><br><span class="line">        &lt;id&gt;alimaven&lt;/id&gt;</span><br><span class="line">        &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;</span><br><span class="line">        &lt;name&gt;aliyun maven&lt;/name&gt;</span><br><span class="line">        &lt;url&gt;http://maven.aliyun.com/nexus/content/repositories/central/&lt;/url&gt;</span><br><span class="line">    &lt;/mirror&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 中央仓库1 --&gt;</span><br><span class="line">    &lt;mirror&gt;</span><br><span class="line">        &lt;id&gt;repo1&lt;/id&gt;</span><br><span class="line">        &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;</span><br><span class="line">        &lt;name&gt;Human Readable Name for this Mirror.&lt;/name&gt;</span><br><span class="line">        &lt;url&gt;http://repo1.maven.org/maven2/&lt;/url&gt;</span><br><span class="line">    &lt;/mirror&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- 中央仓库2 --&gt;</span><br><span class="line">    &lt;mirror&gt;</span><br><span class="line">        &lt;id&gt;repo2&lt;/id&gt;</span><br><span class="line">        &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;</span><br><span class="line">        &lt;name&gt;Human Readable Name for this Mirror.&lt;/name&gt;</span><br><span class="line">        &lt;url&gt;http://repo2.maven.org/maven2/&lt;/url&gt;</span><br><span class="line">    &lt;/mirror&gt;</span><br><span class="line">&lt;/mirrors&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="eclipse部署"><a href="#eclipse部署" class="headerlink" title="eclipse部署"></a>eclipse部署</h3><p>其它地不多说,本人是eclipse爱好者,所以只说eclipse用法.</p>
+<h4 id="Maven插件"><a href="#Maven插件" class="headerlink" title="Maven插件"></a>Maven插件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">菜单栏 - Preferences - Maven - </span><br><span class="line">1.Installations - add - 选择Maven的位置 - 确定 (自带的Maven不好)</span><br><span class="line">2.User Settings - Browser (选择配置好的settings)</span><br><span class="line"></span><br><span class="line">现在的eclipse基本上都自带Maven插件,如果没有就</span><br><span class="line">菜单栏 - Help - Install New Software - 装 - 装完再修改上面的配置</span><br></pre></td></tr></table></figure>
+<h4 id="Maven使用"><a href="#Maven使用" class="headerlink" title="Maven使用"></a>Maven使用</h4><p>快速配置hibernate环境</p>
+<p>右键 - 新建Maven Project(勾选Create a simple project ), 打开项目中 pom.xml 如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot;</span><br><span class="line">	xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><br><span class="line">	xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;</span><br><span class="line">	&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;</span><br><span class="line">	&lt;groupId&gt;JdbcDebug&lt;/groupId&gt;</span><br><span class="line">	&lt;artifactId&gt;JdbcDebug&lt;/artifactId&gt;</span><br><span class="line">	&lt;version&gt;0.0.1-SNAPSHOT&lt;/version&gt;</span><br><span class="line">	&lt;!-- 属性配置 --&gt;</span><br><span class="line">	&lt;properties&gt;</span><br><span class="line">		&lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;</span><br><span class="line">	&lt;/properties&gt;</span><br><span class="line"></span><br><span class="line">	&lt;dependencies&gt;</span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;mysql&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;</span><br><span class="line">			&lt;version&gt;5.1.38&lt;/version&gt;</span><br><span class="line">			&lt;scope&gt;provided&lt;/scope&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line"></span><br><span class="line">		&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.hibernate&lt;/groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;hibernate-core&lt;/artifactId&gt;</span><br><span class="line">			&lt;version&gt;4.3.11.Final&lt;/version&gt;</span><br><span class="line">			&lt;scope&gt;provided&lt;/scope&gt;</span><br><span class="line">		&lt;/dependency&gt;</span><br><span class="line">	&lt;/dependencies&gt;</span><br><span class="line">&lt;/project&gt;</span><br></pre></td></tr></table></figure>
+<p>由于pom.xml继承setting.xml超类, 一些异于setting.xml的配置可以直接覆盖写入.</p>
+<p>配置完成以后, 运行 Maven Install. 然后你发现有好几个命令, 话说都是干啥的呢, 这就要追溯一下mvn命令的作用了.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mvn clean 清理</span><br><span class="line">mvn compile 编译主程序</span><br><span class="line">mvn test-compile 编译测试程序</span><br><span class="line">mvn test 执行测试</span><br><span class="line">mvn package 执行测试</span><br><span class="line">mvn install 安装依赖包</span><br><span class="line">mvn site 生成站点</span><br></pre></td></tr></table></figure>
+<p>可能大家觉得很麻烦, 并没有看到Maven的好处. 回想导包的时候:</p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.hibernate&lt;/groupId&gt;
+    &lt;artifactId&gt;hibernate-core&lt;/artifactId&gt;
+    &lt;version&gt;4.3.11.Final&lt;/version&gt;
+    &lt;scope&gt;provided&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre><p>Maven的坐标, 即结合每个参数的值确定一个依赖包以保证大家依赖包的环境相同.</p>
+<h4 id="xml标签含义"><a href="#xml标签含义" class="headerlink" title="xml标签含义"></a>xml标签含义</h4><p>额,哪里不明白直接<a href="www.baidu.com">百度</a></p>
+<p><strong>scope</strong></p>
+<p>1.compile：默认值 他表示被依赖项目需要参与当前项目的编译，还有后续的测试，运行周期也参与其中，是一个比较强的依赖。打包的时候通常需要包含进去</p>
+<p>2.test：依赖项目仅仅参与测试相关的工作，包括测试代码的编译和执行，不会被打包，例如：junit</p>
+<p>3.runtime：表示被依赖项目无需参与项目的编译，不过后期的测试和运行周期需要其参与。与compile相比，跳过了编译而已。例如JDBC驱动，适用运行和测试阶段</p>
+<p>4.provided：打包的时候可以不用包进去，别的设施会提供。事实上该依赖理论上可以参与编译，测试，运行等周期。相当于compile，但是打包阶段做了exclude操作</p>
+<p>5.system：从参与度来说，和provided相同，不过被依赖项不会从maven仓库下载，而是从本地文件系统拿。需要添加systemPath的属性来定义路径</p>
+<p><strong>…</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="white3.github.io/2017/08/13/Maven/" data-id="cjkwbsil80008f4jt6u1r5xu5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Maven/">Maven</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/01/27/curl-help/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Curl Help Doc
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/01/03/questions/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">迷途中遇到的小知识集</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF杂项/">CTF杂项</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CURL/">CURL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MIPS汇编/">MIPS汇编</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MYSQL/">MYSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PWN/">PWN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/">install</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/question/">question</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web安全/">web安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二进制/">二进制</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内网/">内网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/基础/">基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安装/">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小文/">小文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/扫描/">扫描</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板/">模板</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编码/">编码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/配置/">配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CTF杂项/" style="font-size: 10px;">CTF杂项</a> <a href="/tags/CURL/" style="font-size: 10px;">CURL</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/MIPS汇编/" style="font-size: 10px;">MIPS汇编</a> <a href="/tags/MYSQL/" style="font-size: 10px;">MYSQL</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/PWN/" style="font-size: 10px;">PWN</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/install/" style="font-size: 10px;">install</a> <a href="/tags/question/" style="font-size: 10px;">question</a> <a href="/tags/web安全/" style="font-size: 15px;">web安全</a> <a href="/tags/二进制/" style="font-size: 10px;">二进制</a> <a href="/tags/内网/" style="font-size: 10px;">内网</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/安装/" style="font-size: 10px;">安装</a> <a href="/tags/小文/" style="font-size: 10px;">小文</a> <a href="/tags/工具/" style="font-size: 15px;">工具</a> <a href="/tags/扫描/" style="font-size: 10px;">扫描</a> <a href="/tags/模板/" style="font-size: 20px;">模板</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/编码/" style="font-size: 15px;">编码</a> <a href="/tags/编程/" style="font-size: 10px;">编程</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/16/mysql/">MYSQL的学习</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/16/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/02/Linux的inode号/">Linux/unix上神奇的inode编号</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/29/PUNYCODE编码协议/">PUNYCODE</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/29/docker/">Docker基础学习</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Menzel3<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

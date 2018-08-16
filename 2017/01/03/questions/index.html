@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>迷途中遇到的小知识集 | 麦芽屋</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="如有错误还请指出. 此为笔者遇到的花式问题及处理措施，如有错误还请指出.">
+<meta name="keywords" content="question">
+<meta property="og:type" content="article">
+<meta property="og:title" content="迷途中遇到的小知识集">
+<meta property="og:url" content="white3.github.io/2017/01/03/questions/index.html">
+<meta property="og:site_name" content="麦芽屋">
+<meta property="og:description" content="如有错误还请指出. 此为笔者遇到的花式问题及处理措施，如有错误还请指出.">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-29T04:30:19.718Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="迷途中遇到的小知识集">
+<meta name="twitter:description" content="如有错误还请指出. 此为笔者遇到的花式问题及处理措施，如有错误还请指出.">
+  
+    <link rel="alternate" href="/atom.xml" title="麦芽屋" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">麦芽屋</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">有趣的恶魔,无趣的枷锁</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="white3.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-questions" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/03/questions/" class="article-date">
+  <time datetime="2017-01-03T00:00:00.000Z" itemprop="datePublished">2017-01-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      迷途中遇到的小知识集
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>如有错误还请指出.</p>
+<p>此为笔者遇到的花式问题及处理措施，如有错误还请指出.</p>
+<a id="more"></a>
+<h3 id="Linux强杀进程"><a href="#Linux强杀进程" class="headerlink" title="Linux强杀进程"></a>Linux强杀进程</h3><ul>
+<li>kill -9 来强制终止退出, 例如: kill -9 3781</li>
+<li>kill -STOP [pid] 发送SIGSTOP (17,19,23)停止一个进程，而并不消灭这个进程。</li>
+<li>kill -CONT [pid] 发送SIGCONT (19,18,25)重新开始一个停止的进程。</li>
+<li>kill -KILL [pid] 发送SIGKILL (9)强迫进程立即停止，并且不实施清理操作。</li>
+<li>kill -9 -1 终止你拥有的全部进程。</li>
+<li>killall 通过程序的名字,来杀死进程 例如: killall firefox</li>
+</ul>
+<p>注意: 该命令可以使用 -9 参数来强制杀死进程, killall -9 firefox</p>
+<ul>
+<li>pkill 通过程序的名字, 直接杀死所有进程 例如: pkill firefox</li>
+<li>xkill 可以杀死图形程序应用, 例如firefox崩溃无响应, 可以使用该命令. 例如: 用法xkill , 会出现一个白色的x, 然后用鼠标单击想要杀死的应用</li>
+</ul>
+<h3 id="双系统WIN10关闭快速启动选项"><a href="#双系统WIN10关闭快速启动选项" class="headerlink" title="双系统WIN10关闭快速启动选项"></a>双系统WIN10关闭快速启动选项</h3><p>win10的快速启动会使磁盘设置为只读模式，这样进入另一个系统，挂载的磁盘为只读就会出现问题。所以我们需要关闭win的快速启动</p>
+<p>管理员权限打开cmd命令行：<code>powercfg /h off</code></p>
+<h3 id="Kali-Nat模式共享主机所在局域网"><a href="#Kali-Nat模式共享主机所在局域网" class="headerlink" title="Kali Nat模式共享主机所在局域网"></a>Kali Nat模式共享主机所在局域网</h3><ol>
+<li>设置主机使用的网卡开启共享给vm8虚拟网卡</li>
+<li>vm -&gt; 虚拟网络编辑器设置vm8(net模式)子网地址为192.168.137.1，配置正确的dhcp</li>
+<li>确保虚拟机内部网络为dhcp模式</li>
+</ol>
+<h3 id="EmEditor"><a href="#EmEditor" class="headerlink" title="EmEditor"></a>EmEditor</h3><p>采集于<a href="https://www.52pojie.cn/thread-658917-1-1.html">52pojie</a>的一款文本编辑神器，废话不多说</p>
+<p>官网：<a href="https://www.emeditor.com/download/">https://www.emeditor.com/download/</a></p>
+<p>安装版 installer</p>
+<p>便携版 portable</p>
+<p>永久序列号：DMAZM-WHY52-AX222-ZQJXN-79JXH</p>
+<p>插件包：<a href="https://www.emeditor.com/library/">https://www.emeditor.com/library/</a></p>
+<h3 id="Wireshark-In-Kali"><a href="#Wireshark-In-Kali" class="headerlink" title="Wireshark In Kali"></a>Wireshark In Kali</h3><p>解决方案：修改init.lua</p>
+<p>直接运行wireshark的话会报错：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Lua: Error during loading:</span><br><span class="line">[string &quot;/usr/share/wireshark/init.lua&quot;]:44: dofile has been disabled due to running Wireshark as superuser. See https://wiki.wireshark.org/CaptureSetup/CapturePrivileges for help in running Wireshark as an unprivileged user().</span><br></pre></td></tr></table></figure>
+<p>十分尴尬，居然因root运行而被禁用</p>
+<p>要对其进行修改，终端运行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit /usr/share/wireshark/init.lua</span><br></pre></td></tr></table></figure>
+<p>倒数第二行原来为：dofile(DATA_DIR..”console.lua”)</p>
+<p>改为–dofile(DATA_DIR..”console.lua”)</p>
+<h3 id="操作系统的默认编码"><a href="#操作系统的默认编码" class="headerlink" title="操作系统的默认编码"></a>操作系统的默认编码</h3><p>之前写一个目录控制脚本，在使用Java的IO流时，遇到一个奇怪的问题，测试代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 我事先创建好一个目录s_test4</span><br><span class="line">File f = new File(&quot;E:\\code\\Java\\DirectoryControl\\s_test4&quot;);</span><br><span class="line">File f2 = new File(&quot;E:\\code\\Java\\DirectoryControl\\s_test5&quot;);</span><br><span class="line">f2.mkdir();</span><br><span class="line">// false | true</span><br><span class="line">System.out.println(f.isDirectory() + &quot; | &quot; + f2.isDirectory());</span><br></pre></td></tr></table></figure>
+<p>后查询资料得知：</p>
+<p>因为系统编码与Java IO编码不同导致文档管理器出现异常</p>
+<p>1.查询操作系统的默认编码</p>
+<p>windows下   /^-?[0-9]+$/m</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"> - C:\Users\****&gt;chcp</span><br><span class="line"> - 活动代码页: 936</span><br><span class="line">通过查询下表：</span><br><span class="line">代码页       国家(地区)或语言 </span><br><span class="line">437          美国 </span><br><span class="line">708          阿拉伯文(ASMO 708)</span><br><span class="line">720          阿拉伯文(DOS)</span><br><span class="line">850          多语言(拉丁文 I) </span><br><span class="line">852          中欧(DOS) - 斯拉夫语(拉丁文 II) </span><br><span class="line">855          西里尔文(俄语) </span><br><span class="line">857          土耳其语 </span><br><span class="line">860          葡萄牙语 </span><br><span class="line">861          冰岛语 </span><br><span class="line">862          希伯来文(DOS)</span><br><span class="line">863          加拿大 - 法语 </span><br><span class="line">865          日耳曼语 </span><br><span class="line">866          俄语 - 西里尔文(DOS) </span><br><span class="line">869          现代希腊语</span><br><span class="line">874          泰文(Windows)</span><br><span class="line">932          日文(Shift-JIS)</span><br><span class="line">936          中国 - 简体中文(GB2312)</span><br><span class="line">949          韩文</span><br><span class="line">950          繁体中文(Big5)</span><br><span class="line">1200         Unicode        </span><br><span class="line">1201         Unicode (Big-Endian)</span><br><span class="line">1250         中欧(Windows)</span><br><span class="line">1251         西里尔文(Windows)</span><br><span class="line">1252         西欧(Windows)</span><br><span class="line">1253         希腊文(Windows)</span><br><span class="line">1254         土耳其文(Windows)</span><br><span class="line">1255         希伯来文(Windows)</span><br><span class="line">1256         阿拉伯文(Windows)</span><br><span class="line">1257         波罗的海文(Windows)</span><br><span class="line">1258         越南文(Windows)</span><br><span class="line">20866        西里尔文(KOI8-R)</span><br><span class="line">21866        西里尔文(KOI8-U)</span><br><span class="line">28592        中欧(ISO)</span><br><span class="line">28593        拉丁文 3 (ISO)</span><br><span class="line">28594        波罗的海文(ISO)</span><br><span class="line">28595        西里尔文(ISO)</span><br><span class="line">28596        阿拉伯文(ISO)</span><br><span class="line">28597        希腊文(ISO)</span><br><span class="line">28598        希伯来文(ISO-Visual)</span><br><span class="line">38598        希伯来文(ISO-Logical)</span><br><span class="line">50000        用户定义的</span><br><span class="line">50001        自动选择</span><br><span class="line">50220        日文(JIS)</span><br><span class="line">50221        日文(JIS-允许一个字节的片假名)</span><br><span class="line">50222        日文(JIS-允许一个字节的片假名 - SO/SI)</span><br><span class="line">50225        韩文(ISO)</span><br><span class="line">50932        日文(自动选择)</span><br><span class="line">50949        韩文(自动选择)</span><br><span class="line">51932        日文(EUC)</span><br><span class="line">51949        韩文(EUC)</span><br><span class="line">52936        简体中文(HZ)</span><br><span class="line">65000        Unicode (UTF-7)</span><br><span class="line">65001        Unicode (UTF-8)</span><br></pre></td></tr></table></figure>
+<p>Linux下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">@ubuntu:~$ locale</span><br><span class="line">LANG=en_US.UTF-8</span><br><span class="line">LANGUAGE=en_US</span><br><span class="line">LC_CTYPE=&quot;en_US.UTF-8&quot;</span><br><span class="line">LC_NUMERIC=&quot;en_US.UTF-8&quot;</span><br><span class="line">LC_TIME=&quot;en_US.UTF-8&quot;</span><br><span class="line">LC_COLLATE=&quot;en_US.UTF-8&quot;</span><br><span class="line">LC_MONETARY=&quot;en_US.UTF-8&quot;</span><br><span class="line">LC_MESSAGES=&quot;en_US.UTF-8&quot;</span><br><span class="line">LC_PAPER=&quot;en_US.UTF-8&quot;</span><br><span class="line">LC_NAME=&quot;en_US.UTF-8&quot;</span><br><span class="line">LC_ADDRESS=&quot;en_US.UTF-8&quot;</span><br><span class="line">LC_TELEPHONE=&quot;en_US.UTF-8&quot;</span><br><span class="line">LC_MEASUREMENT=&quot;en_US.UTF-8&quot;</span><br><span class="line">LC_IDENTIFICATION=&quot;en_US.UTF-8&quot;</span><br><span class="line">LC_ALL=</span><br></pre></td></tr></table></figure>
+<p>2.修改系统编码</p>
+<p>网上只提到Linux下，Windows下没有。</p>
+<p>笔者没有测试，但是若又需要这儿有个<a href="https://www.cnblogs.com/R-zqiang/archive/2012/11/23/2785125.html">链接</a></p>
+<h3 id="关于Ubuntu中Could-not-get-lock-var-lib-dpkg-lock解决方案"><a href="#关于Ubuntu中Could-not-get-lock-var-lib-dpkg-lock解决方案" class="headerlink" title="关于Ubuntu中Could not get lock /var/lib/dpkg/lock解决方案"></a>关于Ubuntu中Could not get lock /var/lib/dpkg/lock解决方案</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- E: Could not get lock /var/lib/dpkg/lock - open (11: Resource temporarily unavailable)</span><br><span class="line">- E：无法获得锁/var/lib/dpkg/锁定开放（11：资源暂时不可用）</span><br><span class="line"></span><br><span class="line">- E: Unable to lock the administration directory (/var/lib/dpkg/), is another process using it?</span><br><span class="line">- E：无法锁定管理目录（/var/lib/dpkg/），另一种方法是使用它？</span><br></pre></td></tr></table></figure>
+<p>所以,只要我们把锁删掉,就能运行apt了.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm /var/lib/dpkg/lock</span><br></pre></td></tr></table></figure></p>
+<p>总结: 当我们遇到 apt 出这类问题的时候, 源于安装软件异常退出, 所以将lock删除, 即可继续使用.</p>
+<p>小脚本解决问题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mzl@ubuntu:~/shell$ cat clearAptLock.sh </span><br><span class="line">rm /var/lib/dpkg/lock</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="white3.github.io/2017/01/03/questions/" data-id="cjkwbsimn001yf4jt7433m3v3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/question/">question</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/08/13/Maven/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Maven使用
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/06/27/pwn_learn/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">小白的PWN学习之路</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF杂项/">CTF杂项</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CURL/">CURL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MIPS汇编/">MIPS汇编</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MYSQL/">MYSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PWN/">PWN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/">install</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/question/">question</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web安全/">web安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二进制/">二进制</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内网/">内网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/基础/">基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安装/">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小文/">小文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/扫描/">扫描</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板/">模板</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编码/">编码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/配置/">配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CTF杂项/" style="font-size: 10px;">CTF杂项</a> <a href="/tags/CURL/" style="font-size: 10px;">CURL</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/MIPS汇编/" style="font-size: 10px;">MIPS汇编</a> <a href="/tags/MYSQL/" style="font-size: 10px;">MYSQL</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/PWN/" style="font-size: 10px;">PWN</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/install/" style="font-size: 10px;">install</a> <a href="/tags/question/" style="font-size: 10px;">question</a> <a href="/tags/web安全/" style="font-size: 15px;">web安全</a> <a href="/tags/二进制/" style="font-size: 10px;">二进制</a> <a href="/tags/内网/" style="font-size: 10px;">内网</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/安装/" style="font-size: 10px;">安装</a> <a href="/tags/小文/" style="font-size: 10px;">小文</a> <a href="/tags/工具/" style="font-size: 15px;">工具</a> <a href="/tags/扫描/" style="font-size: 10px;">扫描</a> <a href="/tags/模板/" style="font-size: 20px;">模板</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/编码/" style="font-size: 15px;">编码</a> <a href="/tags/编程/" style="font-size: 10px;">编程</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/16/mysql/">MYSQL的学习</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/16/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/02/Linux的inode号/">Linux/unix上神奇的inode编号</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/29/PUNYCODE编码协议/">PUNYCODE</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/29/docker/">Docker基础学习</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Menzel3<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

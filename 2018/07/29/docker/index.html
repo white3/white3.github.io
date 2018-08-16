@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Docker基础学习 | 麦芽屋</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="docker安装Ubuntu16123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051# 检查系统内核是否满足需求uname -aLinux ubuntu 4.13.0-45-generic #50~16.04.1-Ubuntu SMP Wed May 30 11:">
+<meta name="keywords" content="编码,web安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker基础学习">
+<meta property="og:url" content="white3.github.io/2018/07/29/docker/index.html">
+<meta property="og:site_name" content="麦芽屋">
+<meta property="og:description" content="docker安装Ubuntu16123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051# 检查系统内核是否满足需求uname -aLinux ubuntu 4.13.0-45-generic #50~16.04.1-Ubuntu SMP Wed May 30 11:">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-08-16T08:32:51.552Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Docker基础学习">
+<meta name="twitter:description" content="docker安装Ubuntu16123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051# 检查系统内核是否满足需求uname -aLinux ubuntu 4.13.0-45-generic #50~16.04.1-Ubuntu SMP Wed May 30 11:">
+  
+    <link rel="alternate" href="/atom.xml" title="麦芽屋" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">麦芽屋</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">有趣的恶魔,无趣的枷锁</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="white3.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-docker" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/07/29/docker/" class="article-date">
+  <time datetime="2018-07-29T12:04:28.000Z" itemprop="datePublished">2018-07-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Docker基础学习
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <a id="more"></a>
+<h1 id="docker安装"><a href="#docker安装" class="headerlink" title="docker安装"></a>docker安装</h1><h3 id="Ubuntu16"><a href="#Ubuntu16" class="headerlink" title="Ubuntu16"></a>Ubuntu16</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 检查系统内核是否满足需求</span></span><br><span class="line">uname -a</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Linux ubuntu 4.13.0-45-generic #50~16.04.1-Ubuntu SMP Wed May 30 11:18:27 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 检查device-mapper文件</span></span><br><span class="line">ls -l /sys/class/misc/device-mapper</span><br><span class="line">lrwxrwxrwx 1 root root 0 Jul 25 15:31 /sys/class/misc/device-mapper -&gt; ../../devices/virtual/misc/device-mapper</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果出现 The repository <span class="string">'...'</span> does no longer have a Release file. 类似的信息，先清除apt缓存</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> ubuntu version&gt;16.10等可能出现、建议升级内核，.10系列系统官方只维护10个月</span></span><br><span class="line"></span><br><span class="line">sudo apt-get remove docker \</span><br><span class="line">               docker-engine \</span><br><span class="line">               docker.io</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#################### 自动安装 </span></span></span><br><span class="line"></span><br><span class="line">sudo apt-get update</span><br><span class="line">wget -qO- https://get.docker.com/ | sh</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#################### 手动安装 </span></span></span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install \</span><br><span class="line">    apt-transport-https \</span><br><span class="line">    ca-certificates \</span><br><span class="line">    curl \</span><br><span class="line">    software-properties-common</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 添加app国内源</span></span><br><span class="line">curl -fsSL https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu/gpg | sudo apt-key add -</span><br><span class="line"><span class="meta">#</span><span class="bash"> 官方源</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</span></span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install docker-ce</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#################### 相关配置 #####################</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 启动Docker CE</span></span><br><span class="line">sudo systemctl enable docker</span><br><span class="line">sudo systemctl start docker</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置docker组</span></span><br><span class="line">sudo gpasswd -a mzl docker</span><br><span class="line">sudo vim /etc/docker/daemon.json # 如果没有新建文件</span><br><span class="line">&#123;</span><br><span class="line">  "registry-mirrors": ["https://hj1kdhy0.mirror.aliyuncs.com"]</span><br><span class="line">&#125;</span><br><span class="line">sudo service docker restart</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#################### 注销用户重启进入 #####################</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="Centos"><a href="#Centos" class="headerlink" title="Centos"></a>Centos</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#################### 手动安装 </span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 卸载旧版本或系统自带</span></span><br><span class="line">sudo yum remove docker \</span><br><span class="line">                  docker-client \</span><br><span class="line">                  docker-client-latest \</span><br><span class="line">                  docker-common \</span><br><span class="line">                  docker-latest \</span><br><span class="line">                  docker-latest-logrotate \</span><br><span class="line">                  docker-logrotate \</span><br><span class="line">                  docker-selinux \</span><br><span class="line">                  docker-engine-selinux \</span><br><span class="line">                  docker-engine</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装新版本</span></span><br><span class="line">sudo yum install -y yum-utils \</span><br><span class="line">           device-mapper-persistent-data \</span><br><span class="line">           lvm2</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 中国源</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo yum-config-manager \</span></span><br><span class="line">    --add-repo \</span><br><span class="line">    https://mirrors.ustc.edu.cn/docker-ce/linux/centos/docker-ce.repo</span><br><span class="line"><span class="meta">#</span><span class="bash"> 官方源</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> $ sudo yum-config-manager \</span></span><br><span class="line"><span class="meta">#</span><span class="bash">     --add-repo \</span></span><br><span class="line"><span class="meta">#</span><span class="bash">     https://download.docker.com/linux/centos/docker-ce.repo</span></span><br><span class="line"></span><br><span class="line">sudo yum install docker-ce # sudo yum install docker-ce-&lt;VERSION STRING&gt; 指定版本安装</span><br><span class="line">sudo systemctl start docker</span><br><span class="line">sudo docker run hello-world</span><br><span class="line"></span><br><span class="line">yum list docker-ce --showduplicates | sort -r</span><br><span class="line"></span><br><span class="line">sudo yum makecache fast</span><br><span class="line">sudo yum install docker-ce --skip-broken</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#################### 自动安装 </span></span></span><br><span class="line">curl -fsSL get.docker.com -o get-docker.sh</span><br><span class="line">sudo sh get-docker.sh --mirror Aliyun</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#################### 启动服务 #####################</span></span></span><br><span class="line">sudo systemctl enable docker</span><br><span class="line">sudo systemctl start docker</span><br></pre></td></tr></table></figure>
+<h3 id="docker-compose"><a href="#docker-compose" class="headerlink" title="docker-compose"></a>docker-compose</h3><p>DOCKER三剑客之docker-compose</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 二进制安装</span></span><br><span class="line"></span><br><span class="line">curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose</span><br><span class="line">chmod +x /usr/local/bin/docker-compose</span><br><span class="line">sudo docker-compose --version</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> pip安装</span></span><br><span class="line">sudo pip install -U docker-compose</span><br></pre></td></tr></table></figure>
+<h1 id="docker使用"><a href="#docker使用" class="headerlink" title="docker使用"></a>docker使用</h1><h3 id="容器基本使用"><a href="#容器基本使用" class="headerlink" title="容器基本使用"></a>容器基本使用</h3><h4 id="容器的创建删除查看"><a href="#容器的创建删除查看" class="headerlink" title="容器的创建删除查看"></a>容器的创建删除查看</h4><p>创建容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">docker run IMAGE [COMMAND] [ARG] </span><br><span class="line">-i  --interactive=true 标准输入 默认为false</span><br><span class="line">-t  --tty=true TTY终端 默认为false</span><br><span class="line">-d  后台启动进程</span><br><span class="line"></span><br><span class="line">自定义名称创建容器</span><br><span class="line">docker run --name $name -i -t ubuntu /bin/bash</span><br></pre></td></tr></table></figure>
+<p>启动容器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker start -i [names|id] # 通过id或名称启动容器</span><br><span class="line">docker run --name mzl0 -d ubuntu /bin/sh -c "while:true; do echo lalalala; sleep 1; done"</span><br></pre></td></tr></table></figure>
+<p>删除容器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker rm [names|id] # 通过id或名称删除容器</span><br><span class="line"></span><br><span class="line">docker rmi [names|id]</span><br></pre></td></tr></table></figure>
+<p>查看容器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker ps -[a|l|]</span><br><span class="line">-a 所有容器</span><br><span class="line">-l 最新创建容器</span><br><span class="line"></span><br><span class="line">docker inspect [id|names] # 返回详细的容器配置信息</span><br></pre></td></tr></table></figure>
+<p>退出容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1.在shell中输入 exit 回车退出</span><br><span class="line">退出后容器关闭</span><br><span class="line"></span><br><span class="line">2.摁ctrl qp键退出</span><br><span class="line">退出后容器后台运行,此时容器为守护容器</span><br></pre></td></tr></table></figure>
+<h4 id="守护式容器-后台运行的容器"><a href="#守护式容器-后台运行的容器" class="headerlink" title="守护式容器|后台运行的容器"></a>守护式容器|后台运行的容器</h4><p>再次进入守护式容器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker attach [names|id]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker logs [-f] [-t] [--tail] 容器名</span><br><span class="line">-f  --follows=true|false  动态显示  默认为false</span><br><span class="line">-t  --timestamps=true|false  加上时间戳  默认为false</span><br><span class="line">--tail $n 指定显示最新的 n 条</span><br></pre></td></tr></table></figure>
+<p>查看容器内进程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker top [id|names] 查看容器内进程情况</span><br></pre></td></tr></table></figure>
+<p>设置容器端口映射</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-p</span><br></pre></td></tr></table></figure>
+<h1 id="奇怪指令"><a href="#奇怪指令" class="headerlink" title="奇怪指令"></a>奇怪指令</h1><h4 id="docker-run的–rm选项详解"><a href="#docker-run的–rm选项详解" class="headerlink" title="docker run的–rm选项详解"></a>docker run的–rm选项详解</h4><p>在Docker容器退出时，默认容器内部的文件系统仍然被保留，以方便调试并保留用户数据。</p>
+<p>但是，对于foreground容器，由于其只是在开发调试过程中短期运行，其用户数据并无保留的必要，因而可以在容器启动时设置–rm选项，这样在容器退出时就能够自动清理容器内部的文件系统。示例如下：</p>
+<p><code>docker run --rm bba-208</code></p>
+<p>等价于</p>
+<p><code>docker run --rm=true bba-208</code></p>
+<p>显然，–rm选项不能与-d同时使用，即只能自动清理foreground容器，不能自动清理detached容器</p>
+<p>注意，–rm选项也会清理容器的匿名data volumes。</p>
+<p>所以，执行docker run命令带–rm命令选项，等价于在容器退出后，执行docker rm -v。</p>
+<h1 id="PUSH与PULL"><a href="#PUSH与PULL" class="headerlink" title="PUSH与PULL"></a>PUSH与PULL</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker login</span><br><span class="line">docker push menzel3/fierce_phish:v0.1</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker tag 40f16ba66b80 registry.cn-hangzhou.aliyuncs.com/menzel3/fierce_phish</span><br><span class="line">docker login --username=menzel3 registry.cn-hangzhou.aliyuncs.com</span><br><span class="line">docker push registry.cn-hangzhou.aliyuncs.com/menzel3/fierce_phish:v0.1</span><br></pre></td></tr></table></figure>
+<p><a href="https://www.jianshu.com/p/5b46736a57e0">上传到阿里云Docker</a></p>
+<h1 id="Docker安装实例"><a href="#Docker安装实例" class="headerlink" title="Docker安装实例"></a>Docker安装实例</h1><h2 id="FiercePhish搭建"><a href="#FiercePhish搭建" class="headerlink" title="FiercePhish搭建"></a>FiercePhish搭建</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line">   aCONFIGURED=true</span><br><span class="line">   [~] Installing FiercePhish!</span><br><span class="line">   [~] Updating package repositories</span><br><span class="line">   [~] Installing the required packages (this may take a few minutes)</span><br><span class="line">   [~] Installing Composer</span><br><span class="line">curl: (23) Failed writing body (0 != 16133)</span><br><span class="line">   [~] Installing Bower</span><br><span class="line">   [~] Pulling the latest FiercePhish from GitHub to /var/www/fiercephish</span><br><span class="line">   [~] Installing FiercePhish into Apache (this can take a few minutes)</span><br><span class="line">bash: line 671: /etc/apache2/sites-available/fiercephish.conf: No such file or directory</span><br><span class="line">   [~] Configuring FiercePhish</span><br><span class="line">   [~] Generating database</span><br><span class="line">   [~] Creating User</span><br><span class="line">   [~] Installing cron job</span><br><span class="line">bash: line 750: crontab: command not found</span><br><span class="line">   [~] Configuring Supervisor to process jobs</span><br><span class="line">bash: line 756: /etc/supervisor/conf.d/fiercephish.conf: No such file or directory</span><br><span class="line">   [~] Done installing FiercePhish!</span><br><span class="line">   [~] Installing SMTP (Postfix) and IMAP (dovecot)</span><br><span class="line">   [~] Updating package repositories</span><br><span class="line">   [~] Installing the required packages (this may take a few minutes)</span><br><span class="line">   [~] Creating local user fiercephish for email retrieval</span><br><span class="line">   [~] Configuring Postfix</span><br><span class="line">   [~] Skipping OpenDKIM and Dovecot installs because you aren&apos;t sending email from your own domain</span><br><span class="line">   [~] Restarting mail services</span><br><span class="line">   [~] Updating FiercePhish configuration file</span><br><span class="line">   [!] Unable to find the .env file for FiercePhish.  You&apos;ll have to update it manually at the end</span><br><span class="line">   [~] Done installing SMTP and IMAP!</span><br><span class="line">   [~] Installation is complete</span><br><span class="line">   [~] Perform the following actions to finish up:</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">npm curl crontab</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">DOCKERFILE：</span><br><span class="line"></span><br><span class="line">FROM php:7.0-apache</span><br><span class="line">COPY . /var/www/html/</span><br><span class="line">EXPOSE 80</span><br><span class="line">CMD echo &quot;ServerName localhost&quot; &gt;&gt; /etc/apache2/apache2.conf</span><br><span class="line">CMD [&quot;/usr/sbin/apache2ctl&quot;, &quot;-D&quot;, &quot;FOREGROUND&quot;]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">mysql多实例：ERROR 2002 (HY000): Can&apos;t connect to local MySQL server through socket &apos;/tep/mysql.sock</span><br><span class="line">2018年01月28日 11:04:51</span><br><span class="line">阅读数：159</span><br><span class="line">仅针对mysql多实例，其他情况可能不是这个原因。</span><br><span class="line"></span><br><span class="line">一，问题描述 </span><br><span class="line">使用多个文件配置完多实例后我在/data/3306/文件夹下使用mysql start（mysql是启动服务的脚本，等同于/etc/init.d/mysqld） 出现error :Can’t connect to local MySQL server through socket ‘/application/mysql-5.5.32/tmp/mysql.sock’</span><br><span class="line"></span><br><span class="line">多实例结构 </span><br><span class="line">tree /data/ </span><br><span class="line">/data/ </span><br><span class="line">├── 3306 </span><br><span class="line">│ ├── data mysql数据文件目录 </span><br><span class="line">│ ├── my.cnf 配置文件 </span><br><span class="line">│ └── mysql 服务启动文件 </span><br><span class="line">└── 3307 </span><br><span class="line">├── data </span><br><span class="line">├── my.cnf </span><br><span class="line">└── mysql</span><br><span class="line"></span><br><span class="line">[root@www 3307]# pwd;mysql start</span><br><span class="line">/data/3307</span><br><span class="line">ERROR 2002 (HY000): Can&apos;t connect to local MySQL server through socket &apos;/application/mysql-5.5.32/tmp/mysql.sock&apos; (2)</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">二，问题分析 </span><br><span class="line">当我在命令行下输入mysql start时，并没有执行/data/3306/下的mysql脚本文件，虽然我已经进入了/data/3306/目录。原来shell命令行把这个mysql当成命令处理了（命令行把没有具体路径的字符串都当做命令处理），就如mysql -uroot -p 这个命令里的mysql一样。</span><br><span class="line"></span><br><span class="line">三解决问题 </span><br><span class="line">在文件前加上具体路径， </span><br><span class="line">/data/3306/mysql start </span><br><span class="line">或者 </span><br><span class="line">cd /data/3306 </span><br><span class="line">./mysql start (.是当前目录，就是3306）</span><br><span class="line"></span><br><span class="line">这个道理和在mysql/scripts/文件夹下初始化时 </span><br><span class="line">./mysqld_install_db是一样de</span><br></pre></td></tr></table></figure>
+<h2 id="goPhish搭建"><a href="#goPhish搭建" class="headerlink" title="goPhish搭建"></a>goPhish搭建</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/matteoggl/docker-gophish</span><br><span class="line">cd docker-gophish</span><br><span class="line">docker build -t &quot;yourname/gophish:yourtag&quot; .</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt-get install -y software-properties-common</span><br><span class="line">add-apt-repository ppa:jonathonf/python-3.6</span><br><span class="line">apt-get update</span><br><span class="line">apt-get install python3.6</span><br></pre></td></tr></table></figure>
+<p>…未完待续</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="white3.github.io/2018/07/29/docker/" data-id="cjkwbsils000rf4jtkria0m14" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web安全/">web安全</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编码/">编码</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/07/29/PUNYCODE编码协议/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          PUNYCODE
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/07/26/Python多线程/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Python3成长篇</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF杂项/">CTF杂项</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CURL/">CURL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MIPS汇编/">MIPS汇编</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MYSQL/">MYSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PWN/">PWN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/">install</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/question/">question</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web安全/">web安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二进制/">二进制</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内网/">内网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/基础/">基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安装/">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小文/">小文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/扫描/">扫描</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板/">模板</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编码/">编码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/配置/">配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CTF杂项/" style="font-size: 10px;">CTF杂项</a> <a href="/tags/CURL/" style="font-size: 10px;">CURL</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/MIPS汇编/" style="font-size: 10px;">MIPS汇编</a> <a href="/tags/MYSQL/" style="font-size: 10px;">MYSQL</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/PWN/" style="font-size: 10px;">PWN</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/install/" style="font-size: 10px;">install</a> <a href="/tags/question/" style="font-size: 10px;">question</a> <a href="/tags/web安全/" style="font-size: 15px;">web安全</a> <a href="/tags/二进制/" style="font-size: 10px;">二进制</a> <a href="/tags/内网/" style="font-size: 10px;">内网</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/安装/" style="font-size: 10px;">安装</a> <a href="/tags/小文/" style="font-size: 10px;">小文</a> <a href="/tags/工具/" style="font-size: 15px;">工具</a> <a href="/tags/扫描/" style="font-size: 10px;">扫描</a> <a href="/tags/模板/" style="font-size: 20px;">模板</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/编码/" style="font-size: 15px;">编码</a> <a href="/tags/编程/" style="font-size: 10px;">编程</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/16/mysql/">MYSQL的学习</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/16/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/02/Linux的inode号/">Linux/unix上神奇的inode编号</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/29/PUNYCODE编码协议/">PUNYCODE</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/29/docker/">Docker基础学习</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Menzel3<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>

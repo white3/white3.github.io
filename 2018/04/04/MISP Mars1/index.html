@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>MIPS 汇编简单学习 | 麦芽屋</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="What ‘s the MIPS?">
+<meta name="keywords" content="MIPS汇编">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MIPS 汇编简单学习">
+<meta property="og:url" content="white3.github.io/2018/04/04/MISP Mars1/index.html">
+<meta property="og:site_name" content="麦芽屋">
+<meta property="og:description" content="What ‘s the MIPS?">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="/images/MISP%20Mars1/SouthEast.jpg">
+<meta property="og:image" content="/images/MISP%20Mars1/SouthEast1.jpg">
+<meta property="og:updated_time" content="2018-07-29T04:27:11.765Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MIPS 汇编简单学习">
+<meta name="twitter:description" content="What ‘s the MIPS?">
+<meta name="twitter:image" content="/images/MISP%20Mars1/SouthEast.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="麦芽屋" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">麦芽屋</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">有趣的恶魔,无趣的枷锁</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="white3.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-MISP Mars1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/04/04/MISP Mars1/" class="article-date">
+  <time datetime="2018-04-04T00:00:00.000Z" itemprop="datePublished">2018-04-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MIPS 汇编简单学习
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="What-‘s-the-MIPS"><a href="#What-‘s-the-MIPS" class="headerlink" title="What ‘s the MIPS?"></a>What ‘s the MIPS?</h2><a id="more"></a>
+<h3 id="汇编语言"><a href="#汇编语言" class="headerlink" title="汇编语言"></a>汇编语言</h3><p>首先要普及一下汇编的相关知识，汇编语言是一类语言的总称，因处理器的不同，而对应着不同的机器语言指令集，产生了很多种汇编语言，如，基于INTEL 8086处理器的x8086汇编语言，还有接下来要说到的MIPS汇编语言。汇编语言不像高级语言Java，Python，Kotlin等，只要配置相关环境，同一段代码可以在不同操作系统上运行，而不同操作系统，不同的指令集，就要用不同的汇编语言。</p>
+<h3 id="MIPS"><a href="#MIPS" class="headerlink" title="MIPS"></a>MIPS</h3><p>为了选择一个大家能一起玩的，又要很方便的汇编语言，我选择了MIPS(Million Instructions Per Second)。至于具体原因，emmmm，，，，，再说再说。</p>
+<h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><p>俗话说，预先善其事必先利器其。MIPS有一个十分Perfect的工具<a href="https://courses.missouristate.edu/KenVollmar/mars/MARS_4_5_Aug2014/Mars4_5.jar">MIPS MARS</a>。提醒一下，因为工具是jar，所以请事先<a href="https://jingyan.baidu.com/article/a24b33cd59b58e19fe002bb9.html">配置Java环境</a>。</p>
+<!-- more -->
+<hr>
+<h2 id="Get-It"><a href="#Get-It" class="headerlink" title="Get It"></a>Get It</h2><h3 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">print</span> (<span class="string">"hello world"</span>)</span><br><span class="line">$ <span class="built_in">echo</span> hello world</span><br><span class="line">$ System.out.println(<span class="string">"hello world"</span>);</span><br><span class="line">$ cout &lt;&lt; <span class="string">"hello world"</span>;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>不知道有没有你熟悉的一套，想用MIPS写一个hello world可没那么简单。首先我们了解一下这个Mars的界面。</p>
+<p><img src="/images/MISP Mars1/SouthEast.jpg" alt="Mars"></p>
+<p>介绍本章的几个指令</p>
+<ul>
+<li>li        [地址值] , [参数值]</li>
+<li>add    [地址值] , [地址值] , [地址值 | 参数值]</li>
+<li>move [地址值1], [地址值2]</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">li   $t1, 1</span><br><span class="line">li   $t2, 2</span><br><span class="line"># $t1 = 1, $t2 = 2</span><br><span class="line"></span><br><span class="line">add  $t1, $t1, $t2</span><br><span class="line"># $t1 = $t1 + $t2</span><br><span class="line"></span><br><span class="line">move $t1, $t2</span><br><span class="line"># $t1 = $t2</span><br></pre></td></tr></table></figure>
+<p>把这个写完以后，点击菜单栏 File-save 或 Ctrl + S保存，再点击菜单栏 Run-Assemble 或 F3键。</p>
+<p>然后好戏开始了~~~~，我们可以点击哪两个大大的运行(单步和一步)，推荐单步调试，仔细关注一下右边CPU的情况，最后，当当当，存储在$t1中的值变成了 3 。</p>
+<p>我相信肯定很多人觉得不愿意，没有输出在界面下面，下面不舒服。</p>
+<blockquote>
+<p>syscall #打印 $a0 中的参数</p>
+</blockquote>
+<p>\$v0 的参数值决定 syscall 的输出类型，syscall 输出的值为 固定地址的值。你们要好好看帮助文档，如果我都写下来就是对你们的溺爱。<br>(一本正经胡说八道，原谅我懒得一个一个敲…orz)</p>
+<p><img src="/images/MISP Mars1/SouthEast1.jpg" alt="Mars"></p>
+<p>由帮助文档我们知道，当 \$v0 值为1时，syscall 会输出 interger类型的 \$a0 参数值。那么完整版 1 + 2 = 3来了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">li   $t1, 298</span><br><span class="line">li   $t2, 222</span><br><span class="line">add  $t2, $t1, $t2</span><br><span class="line">move $a0, $t2</span><br><span class="line">li   $v0, 1</span><br><span class="line">syscall</span><br></pre></td></tr></table></figure>
+<h4 id="编程格式"><a href="#编程格式" class="headerlink" title="编程格式"></a>编程格式</h4><p>在稍微大一点的代码，我们会将汇编代码的写为如下格式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.data</span><br><span class="line">    #数据段</span><br><span class="line">.text</span><br><span class="line">    #代码段</span><br></pre></td></tr></table></figure>
+<p>la 指令是使地址1指向地址2。</p>
+<blockquote>
+<p>la   [地址值1], [地址值2]</p>
+</blockquote>
+<p>数据的类似于设置全局变量，代码段类似于代码的主函数。<br>我们回到正题，是时候放出 Hello World 了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 论加\0的重要性</span><br><span class="line">.data</span><br><span class="line">msg0:    .ascii &quot;hello world&quot;</span><br><span class="line">msg1:    .ascii &quot;dont see me&quot;</span><br><span class="line">.text</span><br><span class="line">la   $a0, msg0</span><br><span class="line">li   $v0, 4</span><br><span class="line">syscall</span><br></pre></td></tr></table></figure>
+<p>注: 这就是为什么C字符串要以\0结尾了。2333333333333</p>
+<p>2018-03-04 13:14</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="white3.github.io/2018/04/04/MISP Mars1/" data-id="cjkwbsil60005f4jtnw4wdp0s" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MIPS汇编/">MIPS汇编</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/06/01/nmap基础学习/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          内网扫描工具
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/03/10/wrote0/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">井底之蛙</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CTF杂项/">CTF杂项</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CURL/">CURL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JSP/">JSP</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MIPS汇编/">MIPS汇编</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MYSQL/">MYSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Maven/">Maven</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PWN/">PWN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/docker/">docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/install/">install</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/question/">question</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web安全/">web安全</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/二进制/">二进制</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/内网/">内网</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/基础/">基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/安装/">安装</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小文/">小文</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/扫描/">扫描</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/模板/">模板</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记/">笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编码/">编码</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/编程/">编程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/配置/">配置</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CTF杂项/" style="font-size: 10px;">CTF杂项</a> <a href="/tags/CURL/" style="font-size: 10px;">CURL</a> <a href="/tags/JSP/" style="font-size: 10px;">JSP</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/MIPS汇编/" style="font-size: 10px;">MIPS汇编</a> <a href="/tags/MYSQL/" style="font-size: 10px;">MYSQL</a> <a href="/tags/Maven/" style="font-size: 10px;">Maven</a> <a href="/tags/PWN/" style="font-size: 10px;">PWN</a> <a href="/tags/Python/" style="font-size: 10px;">Python</a> <a href="/tags/docker/" style="font-size: 10px;">docker</a> <a href="/tags/install/" style="font-size: 10px;">install</a> <a href="/tags/question/" style="font-size: 10px;">question</a> <a href="/tags/web安全/" style="font-size: 15px;">web安全</a> <a href="/tags/二进制/" style="font-size: 10px;">二进制</a> <a href="/tags/内网/" style="font-size: 10px;">内网</a> <a href="/tags/基础/" style="font-size: 10px;">基础</a> <a href="/tags/安装/" style="font-size: 10px;">安装</a> <a href="/tags/小文/" style="font-size: 10px;">小文</a> <a href="/tags/工具/" style="font-size: 15px;">工具</a> <a href="/tags/扫描/" style="font-size: 10px;">扫描</a> <a href="/tags/模板/" style="font-size: 20px;">模板</a> <a href="/tags/笔记/" style="font-size: 10px;">笔记</a> <a href="/tags/编码/" style="font-size: 15px;">编码</a> <a href="/tags/编程/" style="font-size: 10px;">编程</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a> <a href="/tags/随笔/" style="font-size: 10px;">随笔</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">June 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">March 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/">February 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/">January 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">August 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">January 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">June 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/02/">February 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/08/16/mysql/">MYSQL的学习</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/16/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2018/08/02/Linux的inode号/">Linux/unix上神奇的inode编号</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/29/PUNYCODE编码协议/">PUNYCODE</a>
+          </li>
+        
+          <li>
+            <a href="/2018/07/29/docker/">Docker基础学习</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 Menzel3<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
