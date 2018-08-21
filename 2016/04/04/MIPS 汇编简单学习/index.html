@@ -211,7 +211,7 @@
 <li>add    [地址值] , [地址值] , [地址值 | 参数值]</li>
 <li>move [地址值1], [地址值2]</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">li   $t1, 1</span><br><span class="line">li   $t2, 2</span><br><span class="line"># $t1 = 1, $t2 = 2</span><br><span class="line"></span><br><span class="line">add  $t1, $t1, $t2</span><br><span class="line"># $t1 = $t1 + $t2</span><br><span class="line"></span><br><span class="line">move $t1, $t2</span><br><span class="line"># $t1 = $t2</span><br></pre></td></tr></table></figure>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">li</span>   <span class="variable">$t1</span>, 1</span><br><span class="line"><span class="keyword">li</span>   <span class="variable">$t2</span>, 2</span><br><span class="line"># <span class="variable">$t1</span> = 1, <span class="variable">$t2</span> = 2</span><br><span class="line"></span><br><span class="line">add  <span class="variable">$t1</span>, <span class="variable">$t1</span>, <span class="variable">$t2</span></span><br><span class="line"># <span class="variable">$t1</span> = <span class="variable">$t1</span> + <span class="variable">$t2</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">move</span> <span class="variable">$t1</span>, <span class="variable">$t2</span></span><br><span class="line"># <span class="variable">$t1</span> = <span class="variable">$t2</span></span><br></pre></td></tr></table></figure>
 <p>把这个写完以后，点击菜单栏 File-save 或 Ctrl + S保存，再点击菜单栏 Run-Assemble 或 F3键。</p>
 <p>然后好戏开始了~~~~，我们可以点击哪两个大大的运行(单步和一步)，推荐单步调试，仔细关注一下右边CPU的情况，最后，当当当，存储在$t1中的值变成了 3 。</p>
 <p>我相信肯定很多人觉得不愿意，没有输出在界面下面，下面不舒服。</p>
@@ -221,15 +221,15 @@
 <p>\$v0 的参数值决定 syscall 的输出类型，syscall 输出的值为 固定地址的值。你们要好好看帮助文档，如果我都写下来就是对你们的溺爱。<br>(一本正经胡说八道，原谅我懒得一个一个敲…orz)</p>
 <p><img src="/images/MISP Mars1/SouthEast1.jpg" alt="Mars"></p>
 <p>由帮助文档我们知道，当 \$v0 值为1时，syscall 会输出 interger类型的 \$a0 参数值。那么完整版 1 + 2 = 3来了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">li   $t1, 298</span><br><span class="line">li   $t2, 222</span><br><span class="line">add  $t2, $t1, $t2</span><br><span class="line">move $a0, $t2</span><br><span class="line">li   $v0, 1</span><br><span class="line">syscall</span><br></pre></td></tr></table></figure>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">li</span>   <span class="variable">$t1</span>, <span class="number">298</span></span><br><span class="line"><span class="selector-tag">li</span>   <span class="variable">$t2</span>, <span class="number">222</span></span><br><span class="line">add  <span class="variable">$t2</span>, <span class="variable">$t1</span>, <span class="variable">$t2</span></span><br><span class="line">move <span class="variable">$a0</span>, <span class="variable">$t2</span></span><br><span class="line"><span class="selector-tag">li</span>   <span class="variable">$v0</span>, <span class="number">1</span></span><br><span class="line">syscall</span><br></pre></td></tr></table></figure>
 <h4 id="编程格式"><a href="#编程格式" class="headerlink" title="编程格式"></a>编程格式</h4><p>在稍微大一点的代码，我们会将汇编代码的写为如下格式。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.data</span><br><span class="line">    #数据段</span><br><span class="line">.text</span><br><span class="line">    #代码段</span><br></pre></td></tr></table></figure>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">.data</span></span><br><span class="line">    <span class="comment">#数据段</span></span><br><span class="line"><span class="string">.text</span></span><br><span class="line">    <span class="comment">#代码段</span></span><br></pre></td></tr></table></figure>
 <p>la 指令是使地址1指向地址2。</p>
 <blockquote>
 <p>la   [地址值1], [地址值2]</p>
 </blockquote>
 <p>数据的类似于设置全局变量，代码段类似于代码的主函数。<br>我们回到正题，是时候放出 Hello World 了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 论加\0的重要性</span><br><span class="line">.data</span><br><span class="line">msg0:    .ascii &quot;hello world&quot;</span><br><span class="line">msg1:    .ascii &quot;dont see me&quot;</span><br><span class="line">.text</span><br><span class="line">la   $a0, msg0</span><br><span class="line">li   $v0, 4</span><br><span class="line">syscall</span><br></pre></td></tr></table></figure>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 论加\0的重要性</span></span><br><span class="line"><span class="meta">.data</span></span><br><span class="line"><span class="symbol">msg0:</span>    <span class="meta">.ascii</span> <span class="string">"hello world"</span></span><br><span class="line"><span class="symbol">msg1:</span>    <span class="meta">.ascii</span> <span class="string">"dont see me"</span></span><br><span class="line"><span class="meta">.text</span></span><br><span class="line">la   $<span class="built_in">a0</span>, msg0</span><br><span class="line">li   $<span class="built_in">v0</span>, <span class="number">4</span></span><br><span class="line"><span class="keyword">syscall</span></span><br></pre></td></tr></table></figure>
 <p>注: 这就是为什么C字符串要以\0结尾了。2333333333333</p>
 <p>2018-03-04 13:14</p>
 
@@ -356,8 +356,8 @@
     </a>
   
   
-    <a href="/2016/02/27/binwalk使用教程/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+    <a href="/2016/02/27/binwalk帮助文档/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">binwalk使用教程</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -499,107 +499,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模板</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CTF杂项</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JSP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">MIPS汇编</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CURL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">install</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">安装</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">配置</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">扫描</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">内网</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MYSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PWN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">question</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">小文</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -611,7 +511,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">渗透</a>
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CURL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -620,6 +524,78 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">漏洞复现</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">MIPS汇编</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MYSQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">模板</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">渗透</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">扫描</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">内网</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PWN</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">小文</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">question</a>
               </li>
             
             <div class="clearfix"></div>

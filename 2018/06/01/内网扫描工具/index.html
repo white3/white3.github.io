@@ -202,18 +202,18 @@
 </li>
 <li>缺点：会留下扫描痕迹，局限于内网扫描</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">arp-scan -interface=[网卡名称] --localnet</span><br><span class="line">arp-scan --interface=[网卡名称] 192.168.0/24</span><br><span class="line"></span><br><span class="line">例如:</span><br><span class="line">arp-scan -interface=eth0 --localnet</span><br><span class="line">arp-scan --interface=eth0 192.168.10.0/24</span><br></pre></td></tr></table></figure>
+<figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">arp-scan -<span class="keyword">interface</span>=[网卡名称] --localnet</span><br><span class="line">arp-scan --<span class="keyword">interface</span>=[网卡名称] <span class="number">192.168</span><span class="number">.0</span>/<span class="number">24</span></span><br><span class="line"></span><br><span class="line">例如:</span><br><span class="line">arp-scan -<span class="keyword">interface</span>=eth0 --localnet</span><br><span class="line">arp-scan --<span class="keyword">interface</span>=eth0 <span class="number">192.168</span><span class="number">.10</span><span class="number">.0</span>/<span class="number">24</span></span><br></pre></td></tr></table></figure>
 <h4 id="arping"><a href="#arping" class="headerlink" title="arping"></a>arping</h4><p>命令不好用，但是单撸还行</p>
 <ul>
 <li>优点：不好用</li>
 <li>缺点：不好用</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">arp [ip] -c n</span><br><span class="line">n为发包数量，ip为指定ip地址</span><br><span class="line"></span><br><span class="line">事例如下</span><br><span class="line">arping 192.168.10.140 -c 1</span><br><span class="line"></span><br><span class="line">不存在则返回：</span><br><span class="line">ARPING 192.168.10.140 from 192.168.10.104 eth0</span><br><span class="line">Sent 1 probes (1 broadcast(s))</span><br><span class="line">Received 0 response(s)</span><br></pre></td></tr></table></figure>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">arp [ip] -c n</span><br><span class="line">n为发包数量，ip为指定ip地址</span><br><span class="line"></span><br><span class="line">事例如下</span><br><span class="line">arping <span class="number">192.168</span><span class="number">.10</span><span class="number">.140</span> -c <span class="number">1</span></span><br><span class="line"></span><br><span class="line">不存在则返回：</span><br><span class="line">ARPING <span class="number">192.168</span><span class="number">.10</span><span class="number">.140</span> from <span class="number">192.168</span><span class="number">.10</span><span class="number">.104</span> eth0</span><br><span class="line">Sent <span class="number">1</span> probes (<span class="number">1</span> broadcast(s))</span><br><span class="line">Received <span class="number">0</span> response(s)</span><br></pre></td></tr></table></figure>
 <h4 id="fping"><a href="#fping" class="headerlink" title="fping"></a>fping</h4><p>fping的主要参数有以下两个：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-a：只显示存活主机</span><br><span class="line"></span><br><span class="line">-u：只显示不存活主机</span><br><span class="line"></span><br><span class="line">-l：循环ping</span><br></pre></td></tr></table></figure>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby">a：只显示存活主机</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">-u：只显示不存活主机</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">-l：循环ping</span></span><br></pre></td></tr></table></figure>
 <p>目标IP地址的输入方式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fping IP1 IP2 IP3 ...</span><br><span class="line"></span><br><span class="line">fping -f filename</span><br><span class="line"></span><br><span class="line">fping -g IP1 IP2 (IP1地址开始范围，IP2地址结束范围)</span><br></pre></td></tr></table></figure>
-<h4 id="nmap选项"><a href="#nmap选项" class="headerlink" title="nmap选项"></a>nmap选项</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-A 全面进攻性扫描</span><br><span class="line">-v 显示扫描过程</span><br><span class="line">-p [left, right] 扫描端口范围为[left, right]，例如 -p 20-80 指定扫描端口范围为 [20,80]</span><br><span class="line">-T[n] n表示扫描等级，简单来说n越大，延迟越短</span><br></pre></td></tr></table></figure>
+<figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="title">fping</span></span> IP1 IP2 IP3 ...</span><br><span class="line"></span><br><span class="line">fping -f filename</span><br><span class="line"></span><br><span class="line">fping -g IP1 IP2 (IP1地址开始范围，IP2地址结束范围)</span><br></pre></td></tr></table></figure>
+<h4 id="nmap选项"><a href="#nmap选项" class="headerlink" title="nmap选项"></a>nmap选项</h4><figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-A 全面进攻性扫描</span><br><span class="line">-v 显示扫描过程</span><br><span class="line">-p [<span class="built_in">left</span>, <span class="built_in">right</span>] 扫描端口范围为[<span class="built_in">left</span>, <span class="built_in">right</span>]，例如 -p <span class="number">20</span>-<span class="number">80</span> 指定扫描端口范围为 [<span class="number">20</span>,<span class="number">80</span>]</span><br><span class="line">-<span class="built_in">T</span>[<span class="built_in">n</span>] <span class="built_in">n</span>表示扫描等级，简单来说<span class="built_in">n</span>越大，延迟越短</span><br></pre></td></tr></table></figure>
 <h1 id="命令解释"><a href="#命令解释" class="headerlink" title="命令解释"></a>命令解释</h1><h4 id="T选项解释"><a href="#T选项解释" class="headerlink" title="T选项解释"></a>T选项解释</h4><p>Nmap提供了一些简单的 方法，使用6个时间模板，使用时采用<code>-T</code>选项及数字(0 - 5) 或名称。模板名称有paranoid (0)、sneaky (1)、polite (2)、normal(3)、 aggressive (4)和insane (5)。前两种模式用于IDS躲避，Polite模式降低了扫描 速度以使用更少的带宽和目标主机资源。默认模式为Normal，因此<code>-T3</code> 实际上是未做任何优化。Aggressive模式假设用户具有合适及可靠的网络从而加速 扫描。Insane模式假设用户具有特别快的网络或者愿意为获得速度而牺牲准确性。</p>
 <p>用户可以根据自己的需要选择不同的模板，由Nmap负责选择实际的时间值。 模板也会针对其它的优化控制选项进行速度微调。例如，<code>-T4</code> 针对TCP端口禁止动态扫描延迟超过10ms，<code>-T5</code>对应的值为5ms。 模板可以和优化调整控制选项组合使用，但模板必须首先指定，否则模板的标准值 会覆盖用户指定的值。建议在扫描可靠的网络时使用 <code>-T4</code>，即使 在自己要增加优化控制选项时也使用(在命令行的开始)，从而从这些额外的较小的优化 中获益。</p>
 <p>如果用于有足够的带宽或以太网连接，仍然建议使用<code>-T4</code>选项。 有些用户喜欢<code>-T5</code>选项，但这个过于强烈。有时用户考虑到避免使主机 崩溃或者希望更礼貌一些会采用<code>-T2</code>选项。他们并没意识到<code>-T Polite</code>选项是如何的慢，这种模式的扫描比默认方式实际上要多花10倍的时间。默认时间 选项(<code>-T3</code>)很少有主机崩溃和带宽问题，比较适合于谨慎的用户。不进行 版本检测比进行时间调整能更有效地解决这些问题。</p>
@@ -494,107 +494,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模板</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CTF杂项</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JSP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">MIPS汇编</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CURL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">install</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">安装</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">配置</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">扫描</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">内网</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MYSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PWN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">question</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">小文</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -606,7 +506,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">渗透</a>
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CURL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -615,6 +519,78 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">漏洞复现</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">MIPS汇编</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MYSQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">模板</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">渗透</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">扫描</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">内网</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PWN</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">小文</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">question</a>
               </li>
             
             <div class="clearfix"></div>
