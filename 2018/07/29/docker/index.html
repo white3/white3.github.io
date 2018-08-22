@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="麦芽屋">
 <meta property="og:description" content="docker的基本使用及命令解释">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-21T04:10:17.772Z">
+<meta property="og:updated_time" content="2018-08-22T02:38:13.810Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker基础学习">
 <meta name="twitter:description" content="docker的基本使用及命令解释">
@@ -195,7 +195,7 @@
         <p>docker的基本使用及命令解释</p>
 <a id="more"></a>
 <h1 id="docker及组件安装"><a href="#docker及组件安装" class="headerlink" title="docker及组件安装"></a>docker及组件安装</h1><h3 id="Ubuntu16"><a href="#Ubuntu16" class="headerlink" title="Ubuntu16"></a>Ubuntu16</h3><p>手动及自动安装过程</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 检查系统内核是否满足需求</span></span><br><span class="line">uname -a</span><br><span class="line"></span><br><span class="line">Linux ubuntu 4.13.0-45-generic #50~16.04.1-Ubuntu SMP Wed May 30 11:18:27 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 检查device-mapper文件</span></span><br><span class="line">ls -l /sys/class/misc/device-mapper</span><br><span class="line">lrwxrwxrwx 1 root root 0 Jul 25 15:31 /sys/class/misc/device-mapper -&gt; ../../devices/virtual/misc/device-mapper</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果出现 The repository <span class="string">'...'</span> does no longer have a Release file. 类似的信息，先清除apt缓存</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> ubuntu version&gt;16.10等可能出现、建议升级内核，.10系列系统官方只维护10个月</span></span><br><span class="line"></span><br><span class="line">sudo apt-get remove docker \</span><br><span class="line">               docker-engine \</span><br><span class="line">               docker.io</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#################### 自动安装 </span></span></span><br><span class="line"></span><br><span class="line">sudo apt-get update</span><br><span class="line">wget -qO- https://get.docker.com/ | sh</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#################### 手动安装 </span></span></span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install \</span><br><span class="line">    apt-transport-https \</span><br><span class="line">    ca-certificates \</span><br><span class="line">    curl \</span><br><span class="line">    software-properties-common</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 添加app国内源</span></span><br><span class="line">curl -fsSL https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu/gpg | sudo apt-key add -</span><br><span class="line"><span class="meta">#</span><span class="bash"> 官方源</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</span></span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install docker-ce</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#################### 相关配置 #####################</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 启动Docker CE</span></span><br><span class="line">sudo systemctl enable docker</span><br><span class="line">sudo systemctl start docker</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置docker组</span></span><br><span class="line">sudo gpasswd -a mzl docker</span><br><span class="line">sudo vim /etc/docker/daemon.json # 如果没有新建文件</span><br><span class="line">&#123;</span><br><span class="line">  "registry-mirrors": ["https://hj1kdhy0.mirror.aliyuncs.com"]</span><br><span class="line">&#125;</span><br><span class="line">sudo service docker restart</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#################### 注销用户重启进入 #####################</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 检查系统内核是否满足需求</span></span><br><span class="line">uname -a</span><br><span class="line"></span><br><span class="line">Linux ubuntu 4.13.0-45-generic #50~16.04.1-Ubuntu SMP Wed May 30 11:18:27 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 检查device-mapper文件</span></span><br><span class="line">ls -l /sys/class/misc/device-mapper</span><br><span class="line">lrwxrwxrwx 1 root root 0 Jul 25 15:31 /sys/class/misc/device-mapper -&gt; ../../devices/virtual/misc/device-mapper</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果出现 The repository <span class="string">'...'</span> does no longer have a Release file. 类似的信息，先清除apt缓存</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> ubuntu version&gt;16.10等可能出现、建议升级内核，.10系列系统官方只维护10个月</span></span><br><span class="line"></span><br><span class="line">sudo apt-get remove docker \</span><br><span class="line">               docker-engine \</span><br><span class="line">               docker.io</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#################### 自动安装 </span></span></span><br><span class="line"></span><br><span class="line">sudo apt-get update</span><br><span class="line">wget -qO- https://get.docker.com/ | sh</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#################### 手动安装 </span></span></span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install \</span><br><span class="line">    apt-transport-https \</span><br><span class="line">    ca-certificates \</span><br><span class="line">    curl \</span><br><span class="line">    software-properties-common</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 添加app国内源</span></span><br><span class="line">curl -fsSL https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu/gpg | sudo apt-key add -</span><br><span class="line"><span class="meta">#</span><span class="bash"> 官方源</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -</span></span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install docker-ce</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#################### 相关配置 #####################</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 启动Docker CE</span></span><br><span class="line">sudo systemctl enable docker</span><br><span class="line">sudo systemctl start docker</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置docker组、这里的mzl是我的用户名</span></span><br><span class="line">sudo gpasswd -a mzl docker</span><br><span class="line"><span class="meta">#</span><span class="bash"> 添加国内加速</span></span><br><span class="line">sudo vim /etc/docker/daemon.json # 如果没有新建文件(默认没有)</span><br><span class="line">&#123;</span><br><span class="line">  "registry-mirrors": ["https://hj1kdhy0.mirror.aliyuncs.com"]</span><br><span class="line">&#125;</span><br><span class="line">sudo service docker restart</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#################### 注销用户重启进入 #####################</span></span></span><br></pre></td></tr></table></figure>
 <h3 id="Centos"><a href="#Centos" class="headerlink" title="Centos"></a>Centos</h3><p>手动及自动安装过程</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#################### 手动安装 </span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 卸载旧版本或系统自带</span></span><br><span class="line">sudo yum remove docker \</span><br><span class="line">                  docker-client \</span><br><span class="line">                  docker-client-latest \</span><br><span class="line">                  docker-common \</span><br><span class="line">                  docker-latest \</span><br><span class="line">                  docker-latest-logrotate \</span><br><span class="line">                  docker-logrotate \</span><br><span class="line">                  docker-selinux \</span><br><span class="line">                  docker-engine-selinux \</span><br><span class="line">                  docker-engine</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装新版本</span></span><br><span class="line">sudo yum install -y yum-utils \</span><br><span class="line">           device-mapper-persistent-data \</span><br><span class="line">           lvm2</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 中国源</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo yum-config-manager \</span></span><br><span class="line">    --add-repo \</span><br><span class="line">    https://mirrors.ustc.edu.cn/docker-ce/linux/centos/docker-ce.repo</span><br><span class="line"><span class="meta">#</span><span class="bash"> 官方源</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> $ sudo yum-config-manager \</span></span><br><span class="line"><span class="meta">#</span><span class="bash">     --add-repo \</span></span><br><span class="line"><span class="meta">#</span><span class="bash">     https://download.docker.com/linux/centos/docker-ce.repo</span></span><br><span class="line"></span><br><span class="line">sudo yum install docker-ce # sudo yum install docker-ce-&lt;VERSION STRING&gt; 指定版本安装</span><br><span class="line">sudo systemctl start docker</span><br><span class="line">sudo docker run hello-world</span><br><span class="line"></span><br><span class="line">yum list docker-ce --showduplicates | sort -r</span><br><span class="line"></span><br><span class="line">sudo yum makecache fast</span><br><span class="line">sudo yum install docker-ce --skip-broken</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#################### 自动安装 </span></span></span><br><span class="line">curl -fsSL get.docker.com -o get-docker.sh</span><br><span class="line">sudo sh get-docker.sh --mirror Aliyun</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#################### 启动服务 #####################</span></span></span><br><span class="line">sudo systemctl enable docker</span><br><span class="line">sudo systemctl start docker</span><br></pre></td></tr></table></figure>
 <h3 id="docker-compose"><a href="#docker-compose" class="headerlink" title="docker-compose"></a>docker-compose</h3><p>DOCKER三剑客之docker-compose</p>
@@ -488,14 +488,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Java Web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL注入</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
@@ -504,7 +496,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">CVE系列</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">漏洞复现</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">MIPS汇编</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Java Web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL注入</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -520,6 +532,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">模板</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
@@ -529,22 +545,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模板</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">CVE系列</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">漏洞复现</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -560,14 +560,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">扫描</a>
               </li>
              
@@ -576,15 +568,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">question</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PWN</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">二进制</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">question</a>
               </li>
             
             <div class="clearfix"></div>
