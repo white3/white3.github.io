@@ -19,7 +19,7 @@
 <meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201112/bg2011120408.png">
 <meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201112/bg2011120409.png">
 <meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/201112/bg2011120410.png">
-<meta property="og:updated_time" content="2018-08-21T01:59:02.035Z">
+<meta property="og:updated_time" content="2018-08-22T15:42:28.050Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux&#x2F;unix上神奇的inode编号">
 <meta name="twitter:description" content="Linux/unix上神奇的inode编号">
@@ -192,6 +192,30 @@
       </header>
     
     <!-- 目录内容 -->
+    
+      <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+        <span class="btn-bg"></span>
+        <span class="btn-text">文章导航</span>
+      </p>
+      <div id="toc-article" class="toc-article">
+        <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+        <strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#inode使用"><span class="toc-number">1.</span> <span class="toc-text">inode使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#通过inode删除文件"><span class="toc-number">1.1.</span> <span class="toc-text">通过inode删除文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通过inode查找文件"><span class="toc-number">1.2.</span> <span class="toc-text">通过inode查找文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#取证查询"><span class="toc-number">1.3.</span> <span class="toc-text">取证查询</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#inode深度理解"><span class="toc-number">2.</span> <span class="toc-text">inode深度理解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是inode"><span class="toc-number">2.1.</span> <span class="toc-text">什么是inode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#inode的内容"><span class="toc-number">2.2.</span> <span class="toc-text">inode的内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#inode的大小"><span class="toc-number">2.3.</span> <span class="toc-text">inode的大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#inode号码"><span class="toc-number">2.4.</span> <span class="toc-text">inode号码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#目录文件"><span class="toc-number">2.5.</span> <span class="toc-text">目录文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#硬链接"><span class="toc-number">2.6.</span> <span class="toc-text">硬链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#软链接"><span class="toc-number">2.7.</span> <span class="toc-text">软链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#inode的特殊作用"><span class="toc-number">2.8.</span> <span class="toc-text">inode的特殊作用</span></a></li></ol></li></ol>
+      </div>
+      <script type="text/javascript">
+        function showToc(){
+          var toc_article = document.getElementById("toc-article");
+          var show_toc_btn = document.getElementById("show-toc-btn");
+          toc_article.setAttribute("style","display:block");
+          show_toc_btn.setAttribute("style","display:none");
+          };
+        function showBtn(){
+          var toc_article = document.getElementById("toc-article");
+          var show_toc_btn = document.getElementById("show-toc-btn");
+          toc_article.setAttribute("style","display:none");
+          show_toc_btn.setAttribute("style","display:block");
+          };
+      </script>
       
     <!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
@@ -403,18 +427,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/08/16/docker/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/08/02/Drupal CVE2018-7600/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          (no title)
+          CVE-2018-7600 Drupal 代码执行漏洞分析
         
       </div>
     </a>
   
   
-    <a href="/2018/08/02/Drupal CVE2018-7600/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">CVE-2018-7600 Drupal 代码执行漏洞分析</div>
+    <a href="/2018/07/31/dockerfile使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">DockerFile使用</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -433,6 +457,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#inode使用"><span class="toc-number">1.</span> <span class="toc-text">inode使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#通过inode删除文件"><span class="toc-number">1.1.</span> <span class="toc-text">通过inode删除文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#通过inode查找文件"><span class="toc-number">1.2.</span> <span class="toc-text">通过inode查找文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#取证查询"><span class="toc-number">1.3.</span> <span class="toc-text">取证查询</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#inode深度理解"><span class="toc-number">2.</span> <span class="toc-text">inode深度理解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是inode"><span class="toc-number">2.1.</span> <span class="toc-text">什么是inode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#inode的内容"><span class="toc-number">2.2.</span> <span class="toc-text">inode的内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#inode的大小"><span class="toc-number">2.3.</span> <span class="toc-text">inode的大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#inode号码"><span class="toc-number">2.4.</span> <span class="toc-text">inode号码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#目录文件"><span class="toc-number">2.5.</span> <span class="toc-text">目录文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#硬链接"><span class="toc-number">2.6.</span> <span class="toc-text">硬链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#软链接"><span class="toc-number">2.7.</span> <span class="toc-text">软链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#inode的特殊作用"><span class="toc-number">2.8.</span> <span class="toc-text">inode的特殊作用</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -556,6 +593,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CURL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">CVE系列</a>
               </li>
              
@@ -572,19 +617,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CURL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+                <a href="javascript:void(0)" class="js-tag color3">模板</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -600,7 +641,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模板</a>
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -612,19 +653,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PWN</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">渗透</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">小文</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">渗透</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -636,23 +681,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">question</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">扫描</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">内网</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">question</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PWN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
               </li>
             
             <div class="clearfix"></div>
