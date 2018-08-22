@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="white3.github.io">
-  <title>信息收集 | 麦芽屋</title>
+  <title>Docker镜像复用 | 麦芽屋</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="信息收集渗透之信息收集快速查询文档">
-<meta name="keywords" content="渗透">
+  <meta name="description" content="如何从官方源、阿里源来使用、打包、上传、下载容器与镜像">
+<meta name="keywords" content="docker">
 <meta property="og:type" content="article">
-<meta property="og:title" content="信息收集">
-<meta property="og:url" content="white3.github.io/2017/02/27/信息收集/index.html">
+<meta property="og:title" content="Docker镜像复用">
+<meta property="og:url" content="white3.github.io/2018/08/21/Docker镜像复用/index.html">
 <meta property="og:site_name" content="麦芽屋">
-<meta property="og:description" content="信息收集渗透之信息收集快速查询文档">
+<meta property="og:description" content="如何从官方源、阿里源来使用、打包、上传、下载容器与镜像">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-21T01:52:09.670Z">
+<meta property="og:updated_time" content="2018-08-22T15:29:09.020Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="信息收集">
-<meta name="twitter:description" content="信息收集渗透之信息收集快速查询文档">
+<meta name="twitter:title" content="Docker镜像复用">
+<meta name="twitter:description" content="如何从官方源、阿里源来使用、打包、上传、下载容器与镜像">
   
     <link rel="alternative" href="/atom.xml" title="麦芽屋" type="application/atom+xml">
   
@@ -169,20 +169,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-信息收集" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Docker镜像复用" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      信息收集
+      Docker镜像复用
     </h1>
   
 
         
-        <a href="/2017/02/27/信息收集/" class="archive-article-date">
-  	<time datetime="2017-02-27T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-27</time>
+        <a href="/2018/08/21/Docker镜像复用/" class="archive-article-date">
+  	<time datetime="2018-08-21T12:04:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-21</time>
 </a>
         
       </header>
@@ -192,112 +192,34 @@
     <!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h1><p>渗透之信息收集快速查询文档</p>
+        <p>如何从官方源、阿里源来使用、打包、上传、下载容器与镜像</p>
 <a id="more"></a>
-<h2 id="站点资产所有域"><a href="#站点资产所有域" class="headerlink" title="站点资产所有域"></a>站点资产所有域</h2><h4 id="收集域名信息"><a href="#收集域名信息" class="headerlink" title="收集域名信息"></a>收集域名信息</h4><p>在线Whois</p>
+<h2 id="镜像复用"><a href="#镜像复用" class="headerlink" title="镜像复用"></a>镜像复用</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><p>就一句话，如果不知道有哪些版本号，可以使用我上一片博客的脚本查询</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker pull [镜像名称]:版本号</span></span><br></pre></td></tr></table></figure>
+<h3 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h3><ul>
+<li>将容器直接打包为镜像</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 将容器 menzel3_sql_labs 打包为镜像名为menzel3/sql_labs版本号为1的镜像</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker commit menzel3_sql_labs menzel3/sql_labs:1</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li><a href="http://whois.chinaz.com/">站长之家</a></li>
-<li><a href="https://whois.aizhan.com">爱站工具网</a></li>
-<li><a href="https://www.virustotal.com">VirusTotal</a></li>
+<li>使用Dockerfile构建</li>
 </ul>
-<h4 id="备案信息查询"><a href="#备案信息查询" class="headerlink" title="备案信息查询"></a>备案信息查询</h4><ul>
-<li><a href="http://www.beianbeian.com/">ICP备案查询网</a></li>
-<li><a href="http://www.tianyancha.com/">天眼查</a></li>
-</ul>
-<h4 id="收集敏感信息"><a href="#收集敏感信息" class="headerlink" title="收集敏感信息"></a>收集敏感信息</h4><ul>
-<li>使用谷歌SEO</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>关键词</th>
-<th>说  明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>site</td>
-<td>指定域名</td>
-</tr>
-<tr>
-<td>inurl</td>
-<td>URL中存在的关键词</td>
-</tr>
-<tr>
-<td>intext</td>
-<td>网页正文中的关键词</td>
-</tr>
-<tr>
-<td>filetype</td>
-<td>指定文件类型</td>
-</tr>
-<tr>
-<td>intitle</td>
-<td>网页标题中的关键词</td>
-</tr>
-<tr>
-<td>link</td>
-<td>link:baidu.com表示返回所有和baidu.com做了链接的URL</td>
-</tr>
-<tr>
-<td>info</td>
-<td>查找指定站点的一些基本信息</td>
-</tr>
-<tr>
-<td>cache</td>
-<td>搜索谷歌里关于某些内容的缓存</td>
-</tr>
-</tbody>
-</table>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ls</span></span><br><span class="line">Dockerfile</span><br><span class="line"><span class="meta">#</span><span class="bash"> 将当前路径下的Dockerfile构建为镜像名为menzel3/sql_labs版本号为1的镜像</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker build -t menzel3/sql_labs:1 .</span></span><br></pre></td></tr></table></figure>
+<h3 id="上传"><a href="#上传" class="headerlink" title="上传"></a>上传</h3><p>先登陆、再上传</p>
 <ul>
-<li>通过返回数据包中包含的响应头、404页面等信息分析服务器、服务器脚本语言、使用的CMS等</li>
-<li>通过<a href="http://www.github.com/">Github</a>查找相关敏感信息，如数据库连接信息、邮箱密码、uc-key、阿里osskey甚至源代码</li>
-<li><a href="http://wooyun.shuimugan.com">乌云漏洞表</a>查询历史漏洞，万一未完全修复呢</li>
+<li>官方源上传</li>
 </ul>
-<p>### </p>
-<h4 id="子域挖掘"><a href="#子域挖掘" class="headerlink" title="子域挖掘"></a>子域挖掘</h4><p>查询工具：Layer子域名挖掘机、Sublist3r、subDomainBrute</p>
-<p>SEO枚举：利用<code>site</code>使用<a href="http://www.google.cn/">谷歌</a>、<a href="https://www.baidu.com/">百度</a>枚举</p>
-<p><a href="https://dnsdumpster.com/">DNSdumpster</a>进行DNS侦察、在线DNS侦察搜索工具</p>
-<p>CA枚举：利用SSL/TLS透明度进行枚举，<a href="https://crt.sh/">crt.sh</a>与<a href="https://censys.io/">censys</a></p>
-<p><strong>在线子域名爆破</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker login</span></span><br><span class="line">Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.</span><br><span class="line">Username: menzel3 # docker hub的用户名</span><br><span class="line">Password: # </span><br><span class="line">WARNING! Your password will be stored unencrypted in /home/mzl/.docker/config.json.</span><br><span class="line">Configure a credential helper to remove this warning. See</span><br><span class="line">https://docs.docker.com/engine/reference/commandline/login/#credentials-store</span><br><span class="line"></span><br><span class="line">Login Succeeded</span><br><span class="line"><span class="meta">#</span><span class="bash"> 这里我们登陆成功，开始上传</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 这里就要说一下为什么容器名称要以用户名加斜杠加容器名称了</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> docker上传的时候，通过面的用户名上传到指定用户的hub上的sql_labs中</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果没有sql_labs，则会自动创建一个，且添加一个版本号为1的镜像</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 如果有，就直接添加一个版本号为1的镜像，或者覆盖镜像</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker push menzel3/sql_labs:1</span></span><br></pre></td></tr></table></figure>
+<p>顺便一提，退出用户是<code>docker logout</code>，再重新登陆就可以切换账号了</p>
 <ul>
-<li><p><a href="https://www.phpinfo.me/">子域名爆破网站</a></p>
-</li>
-<li><p><a href="https://dns.aizhan.com/">IP反查绑定域名网站</a></p>
-</li>
+<li>阿里源上传</li>
 </ul>
-<p><a href="http://tool.chinaz.com/subdomain/">http://tool.chinaz.com/subdomain/</a></p>
-<p><a href="http://subdomain.chaxun.la">http://subdomain.chaxun.la</a></p>
-<h2 id="C端查询、端口扫描"><a href="#C端查询、端口扫描" class="headerlink" title="C端查询、端口扫描"></a>C端查询、端口扫描</h2><h4 id="查找真实IP"><a href="#查找真实IP" class="headerlink" title="查找真实IP"></a>查找真实IP</h4><p><strong>判断</strong></p>
+<p>首先到<a href="https://cr.console.aliyun.com/cn-hangzhou/repositories">阿里云的镜像库</a>注册一个账号(可以直接用淘宝号登陆)，然后开通服务后进入<a href="https://cr.console.aliyun.com/cn-hangzhou/repositories">镜像仓库</a>创建一个名叫sql_labs的仓库</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 这里我们将之前的镜像添加一个标签，这个标签的规则必须是</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> registry.cn-hangzhou.aliyuncs.com/[用户名]/[仓库名称]:[版本号]</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker tag 40f16ba66b80 registry.cn-hangzhou.aliyuncs.com/menzel3/sql_labs:v1</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 这里是登陆阿里镜像仓库</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker login --username=menzel3 registry.cn-hangzhou.aliyuncs.com</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 上传到阿里</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker push registry.cn-hangzhou.aliyuncs.com/menzel3/sql_labs:v1</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>通过<code>PING</code>命令判断</li>
-<li>通过在线<a href="http://www.17ce.com">网站17CE</a>或<a href="http://ping.chinaz.com/">站长工具</a>进行全国多区域<code>PING</code>服务</li>
+<li>私有仓库</li>
 </ul>
-<p><strong>识别</strong></p>
-<ul>
-<li>内部邮箱源，如果存在自己的邮箱系统</li>
-<li>扫描测试文件，如<code>phpinfo</code>、<code>test</code>找寻<code>IP</code></li>
-<li>查找分站域名，主站由于访问量较大挂载<code>CDN</code>，但是分站应该没有，可以通过<code>ping</code>二级域名获取分站<code>IP</code>，很可能分站与主站不是一个<code>IP</code>但是在一个C段，缩小到了C段就好找了。</li>
-<li>国外访问，通过<a href="http://asm.ca.com/en/ping.php">国外在线代理网站</a></li>
-<li>查询域名解析记录，通过网站<a href="http://www.netcraft.com/">NETCRAFT</a>查询历史域名<code>IP</code>访问记录</li>
-<li>网站的<code>APP</code>，可以利用<code>Fiddler</code>或<code>Burp Suite</code>抓取<code>App</code>请求查询<code>IP</code></li>
-<li>绕过<code>CloudFlare</code>查询IP，<a href="http://www.crimeflare.us/cfs.html#box">在线网站CloudFlareWatch</a>对<code>CloudFlare</code>客户网站进行真实IP查询</li>
-</ul>
-<p><strong>验证</strong></p>
-<p>直接通过IP访问，使用工具进行IP端80、443、8080端口扫描，然后脚本逐一访问找到正确IP</p>
-<h4 id="收集端口信息"><a href="#收集端口信息" class="headerlink" title="收集端口信息"></a>收集端口信息</h4><p>Nmap、</p>
-<p>IIS PUT Scaner、</p>
-<p>无状态端口扫描Masscan、</p>
-<p>ZMAP、</p>
-<p>御剑高速TCP端口扫描工具</p>
-<h2 id="信息泄露整理"><a href="#信息泄露整理" class="headerlink" title="信息泄露整理"></a>信息泄露整理</h2><h4 id="指纹识别"><a href="#指纹识别" class="headerlink" title="指纹识别"></a>指纹识别</h4><ul>
-<li><a href="https://whatweb.bugscaner.com/look/">BugScaner</a></li>
-<li><a href="https://www.yunsee.cn/finger.html">云悉指纹</a></li>
-<li><a href="https://whatweb.net/">WhatWeb</a></li>
-</ul>
-<h4 id="敏感目录文件"><a href="#敏感目录文件" class="headerlink" title="敏感目录文件"></a>敏感目录文件</h4><p>工具：DirBuster、御剑后台扫描珍藏版、wwwscan、Spinder.py、Sensitivefilescan、Weakfilescan</p>
-<p>在线：<a href="http://webscan.cc/">WebScan</a></p>
-<h4 id="社会工程学"><a href="#社会工程学" class="headerlink" title="社会工程学"></a>社会工程学</h4><p>社工库、欺骗技术、心里学、人性的弱点、、、</p>
+<h2 id="私有仓库"><a href="#私有仓库" class="headerlink" title="私有仓库"></a>私有仓库</h2><p>搭建私有仓库</p>
+<p>未完待续..</p>
 
       
 
@@ -342,7 +264,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">渗透</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
         		</li>
       		
 		</ul>
@@ -398,7 +320,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http:white3.github.io/2017/02/27/信息收集/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http:white3.github.io/2018/08/21/Docker镜像复用/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -412,18 +334,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/03/27/JavaWeb中的SQL注入/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          JavaWeb中的SQL注入
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/01/03/迷途中遇到的小知识集/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">迷途中遇到的小知识集</div>
+    <a href="/2018/08/20/docker易用工具/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">docker易用工具</div>
       <i class="icon-circle-right"></i>
     </a>
   

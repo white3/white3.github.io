@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="麦芽屋">
 <meta property="og:description" content="收录一些易用的Docker工具">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-22T02:27:12.440Z">
+<meta property="og:updated_time" content="2018-08-22T15:35:42.502Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker易用工具">
 <meta name="twitter:description" content="收录一些易用的Docker工具">
@@ -194,9 +194,13 @@
       
         <p>收录一些易用的Docker工具</p>
 <a id="more"></a>
-<h3 id="Docker镜像版本遍历脚本"><a href="#Docker镜像版本遍历脚本" class="headerlink" title="Docker镜像版本遍历脚本"></a>Docker镜像版本遍历脚本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$#</span> -lt 1 ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">cat &lt;&lt; HELP</span><br><span class="line"></span><br><span class="line">dockertags  --  list all tags <span class="keyword">for</span> a Docker image on a remote registry.</span><br><span class="line"></span><br><span class="line">EXAMPLE:</span><br><span class="line">    - list all tags <span class="keyword">for</span> ubuntu:</span><br><span class="line">       dockertags ubuntu</span><br><span class="line"></span><br><span class="line">    - list all php tags containing apache:</span><br><span class="line">       dockertags php apache</span><br><span class="line"></span><br><span class="line">HELP</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">image=<span class="string">"<span class="variable">$1</span>"</span></span><br><span class="line">tags=`wget -q https://registry.hub.docker.com/v1/repositories/<span class="variable">$&#123;image&#125;</span>/tags -O -  | sed -e <span class="string">'s/[][]//g'</span> -e <span class="string">'s/"//g'</span> -e <span class="string">'s/ //g'</span> | tr <span class="string">'&#125;'</span> <span class="string">'\n'</span>  | awk -F: <span class="string">'&#123;print $3&#125;'</span>`</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -n <span class="string">"<span class="variable">$2</span>"</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    tags=` <span class="built_in">echo</span> <span class="string">"<span class="variable">$&#123;tags&#125;</span>"</span> | grep <span class="string">"<span class="variable">$2</span>"</span> `</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"<span class="variable">$&#123;tags&#125;</span>"</span></span><br></pre></td></tr></table></figure>
+<h3 id="Docker镜像版本枚举"><a href="#Docker镜像版本枚举" class="headerlink" title="Docker镜像版本枚举"></a>Docker镜像版本枚举</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$#</span> -lt 1 ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">cat &lt;&lt; HELP</span><br><span class="line"></span><br><span class="line">dockertags  --  list all tags <span class="keyword">for</span> a Docker image on a remote registry.</span><br><span class="line"></span><br><span class="line">EXAMPLE:</span><br><span class="line">    - list all tags <span class="keyword">for</span> ubuntu:</span><br><span class="line">       dockertags ubuntu</span><br><span class="line"></span><br><span class="line">    - list all php tags containing apache:</span><br><span class="line">       dockertags php apache</span><br><span class="line"></span><br><span class="line">HELP</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">image=<span class="string">"<span class="variable">$1</span>"</span></span><br><span class="line">tags=`wget -q https://registry.hub.docker.com/v1/repositories/<span class="variable">$&#123;image&#125;</span>/tags -O -  | sed -e <span class="string">'s/[][]//g'</span> -e <span class="string">'s/"//g'</span> -e <span class="string">'s/ //g'</span> | tr <span class="string">'&#125;'</span> <span class="string">'\n'</span>  | awk -F: <span class="string">'&#123;print $3&#125;'</span>`</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ -n <span class="string">"<span class="variable">$2</span>"</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    tags=` <span class="built_in">echo</span> <span class="string">"<span class="variable">$&#123;tags&#125;</span>"</span> | grep <span class="string">"<span class="variable">$2</span>"</span> `</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"<span class="variable">$&#123;tags&#125;</span>"</span></span><br></pre></td></tr></table></figure>
 <h5 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h5><p>保存为 <code>search.sh</code>，然后给予相应的权限：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod 711 search.sh</span><br><span class="line">./search.sh [关键词]</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> chmod 711 search.sh</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> ./search.sh [关键词]</span></span><br></pre></td></tr></table></figure>
+<h5 id="查询案例"><a href="#查询案例" class="headerlink" title="查询案例"></a>查询案例</h5><p>查询P神vulhub所有的php镜像版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ./search.sh vulhub/php</span></span><br><span class="line">5-fpm</span><br><span class="line">5.3-apache</span><br><span class="line">5.3-fpm</span><br><span class="line">5.4-apache</span><br><span class="line">5.5-apache</span><br><span class="line">5.6-apache</span><br><span class="line">5.6.12-apache</span><br><span class="line">5.6.23-fpm</span><br><span class="line">7-fpm</span><br><span class="line">7.0-apache</span><br><span class="line">7.1-apache</span><br><span class="line">7.1.12-apache</span><br><span class="line">7.1.4-apache</span><br><span class="line">xxe</span><br></pre></td></tr></table></figure>
+<p>查询所有php5.6版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ./search.sh php | grep 5.6</span></span><br><span class="line">mzl@ubuntu:~/shell$ ./getDockerByTag.sh php | grep 5.6</span><br><span class="line">5.6</span><br><span class="line">5.6-alpine</span><br><span class="line">5.6-alpine3.4</span><br><span class="line">... 此处省略一千行</span><br></pre></td></tr></table></figure>
 
       
 
@@ -311,9 +315,18 @@
   
 <nav id="article-nav">
   
+    <a href="/2018/08/21/Docker镜像复用/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Docker镜像复用
+        
+      </div>
+    </a>
   
-    <a href="/2018/08/02/Drupal CVE2018-7600/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">CVE-2018-7600 Drupal 代码执行漏洞分析</div>
+  
+    <a href="/2018/08/16/docker/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title"></div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -455,23 +468,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CURL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">CVE系列</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">漏洞复现</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">MIPS汇编</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -487,7 +488,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CURL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">MIPS汇编</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -511,10 +524,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
@@ -523,23 +532,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">渗透</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">扫描</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">内网</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PWN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -551,7 +548,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">扫描</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">内网</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">question</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PWN</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
               </li>
             
             <div class="clearfix"></div>

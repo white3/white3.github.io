@@ -6,20 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="white3.github.io">
-  <title>信息收集 | 麦芽屋</title>
+  <title>麦芽屋</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="信息收集渗透之信息收集快速查询文档">
-<meta name="keywords" content="渗透">
-<meta property="og:type" content="article">
-<meta property="og:title" content="信息收集">
-<meta property="og:url" content="white3.github.io/2017/02/27/信息收集/index.html">
+  <meta name="description" content="记录点滴生活">
+<meta property="og:type" content="website">
+<meta property="og:title" content="麦芽屋">
+<meta property="og:url" content="white3.github.io/page/3/index.html">
 <meta property="og:site_name" content="麦芽屋">
-<meta property="og:description" content="信息收集渗透之信息收集快速查询文档">
+<meta property="og:description" content="记录点滴生活">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-21T01:52:09.670Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="信息收集">
-<meta name="twitter:description" content="信息收集渗透之信息收集快速查询文档">
+<meta name="twitter:title" content="麦芽屋">
+<meta name="twitter:description" content="记录点滴生活">
   
     <link rel="alternative" href="/atom.xml" title="麦芽屋" type="application/atom+xml">
   
@@ -169,20 +167,22 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-信息收集" class="article article-type-post " itemscope itemprop="blogPost">
+            
+  
+    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 class="article-title" itemprop="name">
-      信息收集
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/03/15/hello-world/">Hello World</a>
     </h1>
   
 
         
-        <a href="/2017/02/27/信息收集/" class="archive-article-date">
-  	<time datetime="2017-02-27T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-27</time>
+        <a href="/2014/03/15/hello-world/" class="archive-article-date">
+  	<time datetime="2014-03-15T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-03-15</time>
 </a>
         
       </header>
@@ -192,243 +192,30 @@
     <!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h1><p>渗透之信息收集快速查询文档</p>
-<a id="more"></a>
-<h2 id="站点资产所有域"><a href="#站点资产所有域" class="headerlink" title="站点资产所有域"></a>站点资产所有域</h2><h4 id="收集域名信息"><a href="#收集域名信息" class="headerlink" title="收集域名信息"></a>收集域名信息</h4><p>在线Whois</p>
-<ul>
-<li><a href="http://whois.chinaz.com/">站长之家</a></li>
-<li><a href="https://whois.aizhan.com">爱站工具网</a></li>
-<li><a href="https://www.virustotal.com">VirusTotal</a></li>
-</ul>
-<h4 id="备案信息查询"><a href="#备案信息查询" class="headerlink" title="备案信息查询"></a>备案信息查询</h4><ul>
-<li><a href="http://www.beianbeian.com/">ICP备案查询网</a></li>
-<li><a href="http://www.tianyancha.com/">天眼查</a></li>
-</ul>
-<h4 id="收集敏感信息"><a href="#收集敏感信息" class="headerlink" title="收集敏感信息"></a>收集敏感信息</h4><ul>
-<li>使用谷歌SEO</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>关键词</th>
-<th>说  明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>site</td>
-<td>指定域名</td>
-</tr>
-<tr>
-<td>inurl</td>
-<td>URL中存在的关键词</td>
-</tr>
-<tr>
-<td>intext</td>
-<td>网页正文中的关键词</td>
-</tr>
-<tr>
-<td>filetype</td>
-<td>指定文件类型</td>
-</tr>
-<tr>
-<td>intitle</td>
-<td>网页标题中的关键词</td>
-</tr>
-<tr>
-<td>link</td>
-<td>link:baidu.com表示返回所有和baidu.com做了链接的URL</td>
-</tr>
-<tr>
-<td>info</td>
-<td>查找指定站点的一些基本信息</td>
-</tr>
-<tr>
-<td>cache</td>
-<td>搜索谷歌里关于某些内容的缓存</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>通过返回数据包中包含的响应头、404页面等信息分析服务器、服务器脚本语言、使用的CMS等</li>
-<li>通过<a href="http://www.github.com/">Github</a>查找相关敏感信息，如数据库连接信息、邮箱密码、uc-key、阿里osskey甚至源代码</li>
-<li><a href="http://wooyun.shuimugan.com">乌云漏洞表</a>查询历史漏洞，万一未完全修复呢</li>
-</ul>
-<p>### </p>
-<h4 id="子域挖掘"><a href="#子域挖掘" class="headerlink" title="子域挖掘"></a>子域挖掘</h4><p>查询工具：Layer子域名挖掘机、Sublist3r、subDomainBrute</p>
-<p>SEO枚举：利用<code>site</code>使用<a href="http://www.google.cn/">谷歌</a>、<a href="https://www.baidu.com/">百度</a>枚举</p>
-<p><a href="https://dnsdumpster.com/">DNSdumpster</a>进行DNS侦察、在线DNS侦察搜索工具</p>
-<p>CA枚举：利用SSL/TLS透明度进行枚举，<a href="https://crt.sh/">crt.sh</a>与<a href="https://censys.io/">censys</a></p>
-<p><strong>在线子域名爆破</strong></p>
-<ul>
-<li><p><a href="https://www.phpinfo.me/">子域名爆破网站</a></p>
-</li>
-<li><p><a href="https://dns.aizhan.com/">IP反查绑定域名网站</a></p>
-</li>
-</ul>
-<p><a href="http://tool.chinaz.com/subdomain/">http://tool.chinaz.com/subdomain/</a></p>
-<p><a href="http://subdomain.chaxun.la">http://subdomain.chaxun.la</a></p>
-<h2 id="C端查询、端口扫描"><a href="#C端查询、端口扫描" class="headerlink" title="C端查询、端口扫描"></a>C端查询、端口扫描</h2><h4 id="查找真实IP"><a href="#查找真实IP" class="headerlink" title="查找真实IP"></a>查找真实IP</h4><p><strong>判断</strong></p>
-<ul>
-<li>通过<code>PING</code>命令判断</li>
-<li>通过在线<a href="http://www.17ce.com">网站17CE</a>或<a href="http://ping.chinaz.com/">站长工具</a>进行全国多区域<code>PING</code>服务</li>
-</ul>
-<p><strong>识别</strong></p>
-<ul>
-<li>内部邮箱源，如果存在自己的邮箱系统</li>
-<li>扫描测试文件，如<code>phpinfo</code>、<code>test</code>找寻<code>IP</code></li>
-<li>查找分站域名，主站由于访问量较大挂载<code>CDN</code>，但是分站应该没有，可以通过<code>ping</code>二级域名获取分站<code>IP</code>，很可能分站与主站不是一个<code>IP</code>但是在一个C段，缩小到了C段就好找了。</li>
-<li>国外访问，通过<a href="http://asm.ca.com/en/ping.php">国外在线代理网站</a></li>
-<li>查询域名解析记录，通过网站<a href="http://www.netcraft.com/">NETCRAFT</a>查询历史域名<code>IP</code>访问记录</li>
-<li>网站的<code>APP</code>，可以利用<code>Fiddler</code>或<code>Burp Suite</code>抓取<code>App</code>请求查询<code>IP</code></li>
-<li>绕过<code>CloudFlare</code>查询IP，<a href="http://www.crimeflare.us/cfs.html#box">在线网站CloudFlareWatch</a>对<code>CloudFlare</code>客户网站进行真实IP查询</li>
-</ul>
-<p><strong>验证</strong></p>
-<p>直接通过IP访问，使用工具进行IP端80、443、8080端口扫描，然后脚本逐一访问找到正确IP</p>
-<h4 id="收集端口信息"><a href="#收集端口信息" class="headerlink" title="收集端口信息"></a>收集端口信息</h4><p>Nmap、</p>
-<p>IIS PUT Scaner、</p>
-<p>无状态端口扫描Masscan、</p>
-<p>ZMAP、</p>
-<p>御剑高速TCP端口扫描工具</p>
-<h2 id="信息泄露整理"><a href="#信息泄露整理" class="headerlink" title="信息泄露整理"></a>信息泄露整理</h2><h4 id="指纹识别"><a href="#指纹识别" class="headerlink" title="指纹识别"></a>指纹识别</h4><ul>
-<li><a href="https://whatweb.bugscaner.com/look/">BugScaner</a></li>
-<li><a href="https://www.yunsee.cn/finger.html">云悉指纹</a></li>
-<li><a href="https://whatweb.net/">WhatWeb</a></li>
-</ul>
-<h4 id="敏感目录文件"><a href="#敏感目录文件" class="headerlink" title="敏感目录文件"></a>敏感目录文件</h4><p>工具：DirBuster、御剑后台扫描珍藏版、wwwscan、Spinder.py、Sensitivefilescan、Weakfilescan</p>
-<p>在线：<a href="http://webscan.cc/">WebScan</a></p>
-<h4 id="社会工程学"><a href="#社会工程学" class="headerlink" title="社会工程学"></a>社会工程学</h4><p>社工库、欺骗技术、心里学、人性的弱点、、、</p>
-
+        <p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+        
+          <a class="article-more-a" href="/2014/03/15/hello-world/#more">more >></a>
+        
       
 
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/Alipay.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/Wechatpay.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
       
     </div>
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">渗透</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
-
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2014/03/15/hello-world/">展开全文 >></a>
+        </p>
       
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
 
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http:white3.github.io/2017/02/27/信息收集/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/03/27/JavaWeb中的SQL注入/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          JavaWeb中的SQL注入
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2017/01/03/迷途中遇到的小知识集/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">迷途中遇到的小知识集</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -448,30 +235,12 @@
 
 
 
-  
-  
-  
 
   
-
   
-    <section id="comments">
-      <div id="disqus_thread"></div>
-        <script type="text/javascript">
-        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-        var disqus_shortname = 'true'; // required: replace example with your forum shortname
-
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function() {
-          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-      </script>
-      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </section>
-  
-
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    </nav>
   
 
 
@@ -494,8 +263,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: false,
-		isPost: true,
+		isHome: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
