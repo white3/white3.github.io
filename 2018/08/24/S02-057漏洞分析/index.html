@@ -33,7 +33,7 @@
 <meta property="og:image" content="/images/S02-057/3.png">
 <meta property="og:image" content="/images/S02-057/3_1.png">
 <meta property="og:image" content="/images/S02-057/3_2.png">
-<meta property="og:updated_time" content="2018-08-24T08:44:23.603Z">
+<meta property="og:updated_time" content="2018-08-24T08:56:20.374Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="S02-057漏洞分析">
 <meta name="twitter:description" content="2018年8月23日清晨，收到上司发来的一个微信，迅速起身倒腾这个新鲜出炉的CVE-2018-11776。">
@@ -264,13 +264,13 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// com.opensymphony.xwork2.DefaultActionInvocation 368行</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Uses getResult to get the final Result and executes it</span></span><br><span class="line"><span class="comment"> * 使用 getResult 获取最终结果并执行</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@throws</span> ConfigurationException If not result can be found with the returned code</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">executeResult</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    result = createResult();</span><br><span class="line"></span><br><span class="line">    String timerKey = <span class="string">"executeResult: "</span> + getResultCode();</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        UtilTimerStack.push(timerKey);</span><br><span class="line">        <span class="keyword">if</span> (result != <span class="keyword">null</span>) &#123;</span><br><span class="line">            result.execute(<span class="keyword">this</span>); <span class="comment">// &lt;---------------------------------- 这里</span></span><br><span class="line">        ...</span><br></pre></td></tr></table></figure>
 <p>而在这个执行点中：</p>
 <p><img src="/images/S02-057/executeResult.png" alt="executeResult"></p>
-<p>有一些具体的result对象比如上图中StrutsResultSupport子类ServletActionRedirectResult和PostbackResult(后文会说，与父类无异)，其他的会产生一个跳转地址location，并传入StrutsResultSupport中:</p>
+<p>有一些具体的<code>result</code>对象比如上图中<code>StrutsResultSupport</code>子类<code>ServletActionRedirectResult</code>和<code>PostbackResult</code>(后文会说，与父类无异)，其他的会产生一个跳转地址<code>location</code>，并传入<code>StrutsResultSupport</code>中:</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * org.apache.struts2.result.StrutsResultSupport 194</span></span><br><span class="line"><span class="comment">    * </span></span><br><span class="line"><span class="comment">    * 从结果接口实现执行方法。在可选地将位置评估为OGNL评估之后，这将调用抽象方法&#123;<span class="doctag">@link</span>#doExecute(String，ActionInvocation)&#125;。</span></span><br><span class="line"><span class="comment">    * </span></span><br><span class="line"><span class="comment">    * Implementation of the &lt;tt&gt;execute&lt;/tt&gt; method from the &lt;tt&gt;Result&lt;/tt&gt; interface. This will call</span></span><br><span class="line"><span class="comment">    * the abstract method &#123;<span class="doctag">@link</span> #doExecute(String, ActionInvocation)&#125; after optionally evaluating the</span></span><br><span class="line"><span class="comment">    * location as an OGNL evaluation.</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> invocation the execution state of the action.</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@throws</span> Exception if an error occurs while executing the result.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">(ActionInvocation invocation)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    lastFinalLocation = conditionalParse(location, invocation);</span><br><span class="line">    doExecute(lastFinalLocation, invocation);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>而<code>conditionalParse</code>定义如下，将会执行OGNL表达式。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">    * Parses the parameter for OGNL expressions against the valuestack</span></span><br><span class="line"><span class="comment">    * 解析OGNL表达式与ValueStACK的参数</span></span><br><span class="line"><span class="comment">    *</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> param The parameter value</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> invocation The action invocation instance</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@return</span> the resulting string</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> String <span class="title">conditionalParse</span><span class="params">(String param, ActionInvocation invocation)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (parse &amp;&amp; param != <span class="keyword">null</span> &amp;&amp; invocation != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> TextParseUtil.translateVariables(</span><br><span class="line">            param, </span><br><span class="line">            invocation.getStack(),</span><br><span class="line">            <span class="keyword">new</span> EncodingParsedValueEvaluator());</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> param;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>所以可以看到重点是StrutsResultSupport中<code>conditionalParse(location, invocation)</code>的location变量。而这个<code>TextParseUtil</code>是不是很像前文提及的OGNL入口点之一。</p>
-<p>我们来分析漏洞发现者测试的三种result-type的具体实现和具体攻击点。</p>
-<h3 id="XML配置"><a href="#XML配置" class="headerlink" title="XML配置"></a>XML配置</h3><p>先看看我们的配置文件<code>/src/struts-actionchaining.xml</code> ：</p>
+<p>我们来分析漏洞发现者测试的三种<code>result-type</code>的具体实现和具体攻击点。</p>
+<h3 id="XML配置"><a href="#XML配置" class="headerlink" title="XML配置"></a>XML配置</h3><p>先看看我们的配置文件<code>/WEB-INF/src/java/struts-actionchaining.xml</code> ：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="php"><span class="meta">&lt;?</span>xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span> <span class="meta">?&gt;</span></span></span><br><span class="line"><span class="meta">&lt;!DOCTYPE struts PUBLIC</span></span><br><span class="line"><span class="meta">	"-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"</span></span><br><span class="line"><span class="meta">	"http://struts.apache.org/dtds/struts-2.5.dtd"&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">struts</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">"actionchaining"</span> <span class="attr">extends</span>=<span class="string">"struts-default"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">name</span>=<span class="string">"actionChain1"</span> <span class="attr">class</span>=<span class="string">"org.apache.struts2.showcase.actionchaining.ActionChain1"</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">result</span> <span class="attr">type</span>=<span class="string">"redirectAction"</span>&gt;</span></span><br><span class="line">             <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span> = <span class="string">"actionName"</span>&gt;</span>redirectAction_test<span class="tag">&lt;/<span class="name">param</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">action</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">name</span>=<span class="string">"actionChain2"</span> <span class="attr">class</span>=<span class="string">"org.apache.struts2.showcase.actionchaining.ActionChain1"</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">result</span> <span class="attr">type</span>=<span class="string">"chain"</span>&gt;</span>chain_test<span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">action</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">action</span> <span class="attr">name</span>=<span class="string">"actionChain3"</span> <span class="attr">class</span>=<span class="string">"org.apache.struts2.showcase.actionchaining.ActionChain1"</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">result</span> <span class="attr">type</span>=<span class="string">"postback"</span>&gt;</span></span><br><span class="line">               <span class="tag">&lt;<span class="name">param</span> <span class="attr">name</span>=<span class="string">"actionName"</span>&gt;</span>menzel3<span class="tag">&lt;/<span class="name">param</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;/<span class="name">result</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">action</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">package</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">struts</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>我们分别用<code>actionChain1</code>、<code>actionChain2</code>、<code>actionChain3</code>来测试，其中每个<code>type</code>的类型分别是三个攻击向量。</p>
 <h2 id="向量一：Redirect-action"><a href="#向量一：Redirect-action" class="headerlink" title="向量一：Redirect action"></a>向量一：<a href="https://struts.apache.org/core-developers/redirect-action-result.html">Redirect action</a></h2><p>和之前说的一样，发送请求<code>http://127.0.0.1:8080/struts2-showcase/${(1-111)}/actionChain1.action</code>后，在类<code>com.opensymphony.xwork2.DefaultActionInvocation</code>处的断点停在下面：</p>
@@ -624,14 +624,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">MIPS汇编</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">CVE</a>
               </li>
              
@@ -640,11 +632,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编程</a>
+                <a href="javascript:void(0)" class="js-tag color2">MIPS汇编</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -660,7 +652,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">模板</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">渗透</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -669,18 +673,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">小文</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">渗透</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PWN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -697,6 +689,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">web安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PWN</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
               </li>
              
               <li class="article-tag-list-item">
