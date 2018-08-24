@@ -33,7 +33,7 @@
 <meta property="og:image" content="/images/S02-057/3.png">
 <meta property="og:image" content="/images/S02-057/3_1.png">
 <meta property="og:image" content="/images/S02-057/3_2.png">
-<meta property="og:updated_time" content="2018-08-24T08:29:51.218Z">
+<meta property="og:updated_time" content="2018-08-24T08:44:23.603Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="S02-057漏洞分析">
 <meta name="twitter:description" content="2018年8月23日清晨，收到上司发来的一个微信，迅速起身倒腾这个新鲜出炉的CVE-2018-11776。">
@@ -275,8 +275,8 @@
 <p>我们分别用<code>actionChain1</code>、<code>actionChain2</code>、<code>actionChain3</code>来测试，其中每个<code>type</code>的类型分别是三个攻击向量。</p>
 <h2 id="向量一：Redirect-action"><a href="#向量一：Redirect-action" class="headerlink" title="向量一：Redirect action"></a>向量一：<a href="https://struts.apache.org/core-developers/redirect-action-result.html">Redirect action</a></h2><p>和之前说的一样，发送请求<code>http://127.0.0.1:8080/struts2-showcase/${(1-111)}/actionChain1.action</code>后，在类<code>com.opensymphony.xwork2.DefaultActionInvocation</code>处的断点停在下面：</p>
 <p><img src="/images/S02-057/01.png" alt="01"></p>
-<p>跟入<code>redirectAction</code>的<code>execute</code>方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> com.opensymphony.xwork2.Result#execute(com.opensymphony.xwork2.ActionInvocation)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">(ActionInvocation invocation)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    actionName = conditionalParse(actionName, invocation);</span><br><span class="line">    <span class="keyword">if</span> (namespace == <span class="keyword">null</span>) &#123;</span><br><span class="line">        namespace = invocation.getProxy().getNamespace();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        namespace = conditionalParse(namespace, invocation);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (method == <span class="keyword">null</span>) &#123;</span><br><span class="line">        method = <span class="string">""</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        method = conditionalParse(method, invocation);</span><br><span class="line">    &#125;</span><br><span class="line">    String tmpLocation = actionMapper.getUriFromActionMapping(<span class="keyword">new</span> ActionMapping(actionName, namespace, method, <span class="keyword">null</span>));</span><br><span class="line">    setLocation(tmpLocation);</span><br><span class="line">    <span class="keyword">super</span>.execute(invocation);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>跟入<code>org.apache.struts2.result.ServletActionRedirectResult</code>的<code>execute</code>方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">... <span class="number">160</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> com.opensymphony.xwork2.Result#execute(com.opensymphony.xwork2.ActionInvocation)</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">(ActionInvocation invocation)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">    actionName = conditionalParse(actionName, invocation);</span><br><span class="line">    <span class="keyword">if</span> (namespace == <span class="keyword">null</span>) &#123;</span><br><span class="line">        namespace = invocation.getProxy().getNamespace(); <span class="comment">// &lt;----------关键1</span></span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        namespace = conditionalParse(namespace, invocation);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (method == <span class="keyword">null</span>) &#123;</span><br><span class="line">        method = <span class="string">""</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        method = conditionalParse(method, invocation);</span><br><span class="line">    &#125;</span><br><span class="line">    String tmpLocation = actionMapper.getUriFromActionMapping(<span class="keyword">new</span> ActionMapping(actionName, namespace, method, <span class="keyword">null</span>)); <span class="comment">// &lt;----------关键2</span></span><br><span class="line">    setLocation(tmpLocation);</span><br><span class="line">    <span class="keyword">super</span>.execute(invocation);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="/images/S02-057/01_1.png" alt="01_1"></p>
 <p>xml文档中没有设置<code>namespace</code>，它为null，然后执行<code>invocation.getProxy().getNamespace();</code>从URL获取<code>namespace</code>，也就是页面路由</p>
 <p><img src="/images/S02-057/01_2.png" alt="01_2"></p>
@@ -288,8 +288,10 @@
 <p><img src="/images/S02-057/01_6.png" alt="01_6"></p>
 <p>然后继续往后走，</p>
 <p><img src="/images/S02-057/01_3.png" alt="01_3"></p>
-<p>然后进入父类<code>org.apache.struts2.result.StrutsResultSupportexcute</code>的方法<code>execute</code>执行：</p>
+<p>然后执行父类<code>org.apache.struts2.result.StrutsResultSupportexcute</code>的方法<code>execute</code>，我们跟进：</p>
 <p><img src="/images/S02-057/01_4.png" alt="01_4"></p>
+<p>这里显示执行代码<code>conditionalParse(location, invocation);</code>，通过审计我们可以发现这是上午ognl入口点之一。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">...<span class="number">214</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> String <span class="title">conditionalParse</span><span class="params">(String param, ActionInvocation invocation)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (parse &amp;&amp; param != <span class="keyword">null</span> &amp;&amp; invocation != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> TextParseUtil.translateVariables(</span><br><span class="line">            param, </span><br><span class="line">            invocation.getStack(),</span><br><span class="line">            <span class="keyword">new</span> EncodingParsedValueEvaluator());</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> param;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>执行完<code>conditionalParse(location, invocation);</code>后</p>
 <p><img src="/images/S02-057/01_5.png" alt="01_5"></p>
 <h2 id="向量二：-Action-chaining"><a href="#向量二：-Action-chaining" class="headerlink" title="向量二： Action chaining"></a>向量二： <a href="https://struts.apache.org/core-developers/action-chaining.html">Action chaining</a></h2><p>我们来试试<code>actionChain2</code>，请求URL<code>http://127.0.0.1:8080/struts2-showcase/${(1-111)}/actionChain2.action</code></p>
@@ -602,15 +604,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">工具</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">CURL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CVE</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">漏洞复现</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -626,15 +628,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CURL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CVE</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">漏洞复现</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -654,19 +656,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模板</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">扫描</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">内网</a>
+                <a href="javascript:void(0)" class="js-tag color3">模板</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -678,6 +672,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">渗透</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">PWN</a>
               </li>
              
@@ -686,7 +684,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">渗透</a>
+                <a href="javascript:void(0)" class="js-tag color3">扫描</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">内网</a>
               </li>
              
               <li class="article-tag-list-item">
