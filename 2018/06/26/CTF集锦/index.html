@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="麦芽屋">
 <meta property="og:description" content="小生初来乍到,请多指教姿势~">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-22T15:39:52.056Z">
+<meta property="og:updated_time" content="2018-09-01T03:13:40.205Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CTF集锦">
 <meta name="twitter:description" content="小生初来乍到,请多指教姿势~">
@@ -247,7 +247,7 @@
 <p>这个库就一个方法，调用方式如下</p>
 <figure class="highlight autohotkey"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hashpumpy.hashpump(hexdigest, original_data, dat<span class="built_in">a_to</span>_add, key_length)</span><br><span class="line">hexdigest       散列密文的长度</span><br><span class="line">original_data   部分已知的数据</span><br><span class="line">dat<span class="built_in">a_to</span>_add     想要追加的数据</span><br><span class="line">key_length      未知数据的长度</span><br></pre></td></tr></table></figure>
 <p><strong>漂亮的绝杀</strong></p>
-<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashpumpy,requests,sys,urllib</span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">'Content-Type'</span>:<span class="string">'application/x-www-form-urlencoded'</span></span><br><span class="line">&#125;</span><br><span class="line">strs = (<span class="string">'role='</span>,<span class="string">'; hsh='</span>, <span class="string">';UM_distinctid=1643fc9a6c4ea-0c9dba36d1de31-4c332173-1fa400-1643fc9a6c53d9'</span>) </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    s = requests.Session()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">56</span>):</span><br><span class="line">        temp = hashpumpy.hashpump(<span class="string">'3a4727d57463f122833d9e732f94e4e0'</span>,<span class="string">';"tseug":5:s'</span>,<span class="string">';"nimda":5:s'</span>,i)</span><br><span class="line">        headers[<span class="string">'Cookie'</span>] = str(strs[<span class="number">0</span>]+urllib.quote(temp[<span class="number">1</span>][::<span class="number">-1</span>])+strs[<span class="number">1</span>]+temp[<span class="number">0</span>]+strs[<span class="number">2</span>])</span><br><span class="line">        req = s.<span class="keyword">get</span>(url=<span class="string">'http://web.jarvisoj.com:32778/'</span>, headers=headers)</span><br><span class="line">        <span class="keyword">if</span> len(req.content)!=<span class="number">210</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">'[+]result'</span>, req.content)</span><br><span class="line">            <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> hashpumpy,requests,sys,urllib</span><br><span class="line">headers = &#123;</span><br><span class="line">    <span class="string">'Content-Type'</span>:<span class="string">'application/x-www-form-urlencoded'</span></span><br><span class="line">&#125;</span><br><span class="line">strs = (<span class="string">'role='</span>,<span class="string">'; hsh='</span>, <span class="string">';UM_distinctid=1643fc9a6c4ea-0c9dba36d1de31-4c332173-1fa400-1643fc9a6c53d9'</span>) </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    s = requests.Session()</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, <span class="number">56</span>):</span><br><span class="line">        temp = hashpumpy.hashpump(<span class="string">'3a4727d57463f122833d9e732f94e4e0'</span>,<span class="string">';"tseug":5:s'</span>,<span class="string">';"nimda":5:s'</span>,i)</span><br><span class="line">        headers[<span class="string">'Cookie'</span>] = str(strs[<span class="number">0</span>]+urllib.quote(temp[<span class="number">1</span>][::<span class="number">-1</span>])+strs[<span class="number">1</span>]+temp[<span class="number">0</span>]+strs[<span class="number">2</span>])</span><br><span class="line">        req = s.get(url=<span class="string">'http://web.jarvisoj.com:32778/'</span>, headers=headers)</span><br><span class="line">        <span class="keyword">if</span> len(req.content)!=<span class="number">210</span>:</span><br><span class="line">            print(<span class="string">'[+]result'</span>, req.content)</span><br><span class="line">            <span class="keyword">break</span></span><br></pre></td></tr></table></figure>
 <h4 id="完美收尾"><a href="#完美收尾" class="headerlink" title="完美收尾"></a>完美收尾</h4><p>升级版工具，不需要已知数据即可直接追加数据进入散列密文中，工具叫<a href="https://github.com/amlweems/hexpand/blob/master/README.md">hexpand</a>，除了少要一个参数其他没有什么变化。</p>
 
       
@@ -518,23 +518,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">CURL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Java Web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL注入</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -546,27 +538,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">MIPS汇编</a>
+                <a href="javascript:void(0)" class="js-tag color4">Java Web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL注入</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模板</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -575,6 +559,34 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">MIPS汇编</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">模板</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">struts2</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -590,23 +602,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">扫描</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">内网</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">内存条</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -618,11 +614,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">扫描</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">内网</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">question</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color4">strusts2</a>
               </li>
             
             <div class="clearfix"></div>
@@ -674,11 +686,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="http://www.wtnpmt.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>未知的PMT</a>
+              <a href="http://www.wtnpmt.space/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>未知的PMT</a>
             </li>
           
             <li class="search-li">
-              <a href="https://gfalisa.github.io/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>牛逼的GFAlisa</a>
+              <a href="https://etenal.me/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>二进制大佬ETenal</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://gfalisa.github.io/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>GFAlisa</a>
             </li>
           
             <li class="search-li">
@@ -687,14 +703,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           
             <li class="search-li">
               <a href="http://pwntools-docs-zh.readthedocs.io/zh_CN/latest/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>PwnTools API</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://wangxios.club/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>望曦OpenSource Team</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="https://etenal.me/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>二进制ETenal</a>
             </li>
           
         </ul>

@@ -6,24 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="white3.github.io">
-  <title>sturts2回顾 | 麦芽屋</title>
+  <title>Archives: 2018/9 | 麦芽屋</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="审计S2系列CVE的时候发现很多struts都忘了，所以回顾一下struts2数据校验与架构等，也就是struts2的核心，拦截链。">
-<meta name="keywords" content="模板">
-<meta property="og:type" content="article">
-<meta property="og:title" content="sturts2回顾">
-<meta property="og:url" content="white3.github.io/2018/08/28/sturts2回顾/index.html">
+  <meta name="description" content="记录点滴生活">
+<meta property="og:type" content="website">
+<meta property="og:title" content="麦芽屋">
+<meta property="og:url" content="white3.github.io/archives/2018/09/index.html">
 <meta property="og:site_name" content="麦芽屋">
-<meta property="og:description" content="审计S2系列CVE的时候发现很多struts都忘了，所以回顾一下struts2数据校验与架构等，也就是struts2的核心，拦截链。">
+<meta property="og:description" content="记录点滴生活">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="/images/struts2/struts.png">
-<meta property="og:image" content="/images/struts2/validateable.png">
-<meta property="og:image" content="/images/struts2/ognl.png">
-<meta property="og:updated_time" content="2018-08-29T08:53:22.846Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sturts2回顾">
-<meta name="twitter:description" content="审计S2系列CVE的时候发现很多struts都忘了，所以回顾一下struts2数据校验与架构等，也就是struts2的核心，拦截链。">
-<meta name="twitter:image" content="/images/struts2/struts.png">
+<meta name="twitter:title" content="麦芽屋">
+<meta name="twitter:description" content="记录点滴生活">
   
     <link rel="alternative" href="/atom.xml" title="麦芽屋" type="application/atom+xml">
   
@@ -173,328 +167,64 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-sturts2回顾" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      sturts2回顾
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2018" class="archive-year">2018</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2018/09/10/Python3私有化/" class="archive-article-date">
+  	<time datetime="2018-09-10T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-10</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2018/09/10/Python3私有化/">Python私有化</a>
     </h1>
   
 
-        
-        <a href="/2018/08/28/sturts2回顾/" class="archive-article-date">
-  	<time datetime="2018-08-28T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-28</time>
-</a>
-        
-      </header>
-    
-    <!-- 目录内容 -->
-    
-      <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
-        <span class="btn-bg"></span>
-        <span class="btn-text">文章导航</span>
-      </p>
-      <div id="toc-article" class="toc-article">
-        <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
-        <strong class="toc-title">文章目录</strong>
-           <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#设计模式"><span class="toc-number">1.</span> <span class="toc-text">设计模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#拦截器"><span class="toc-number">1.1.</span> <span class="toc-text">拦截器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据校验"><span class="toc-number">2.</span> <span class="toc-text">数据校验</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#编程式校验"><span class="toc-number">2.1.</span> <span class="toc-text">编程式校验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#方式一"><span class="toc-number">2.1.1.</span> <span class="toc-text">方式一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方式二"><span class="toc-number">2.1.2.</span> <span class="toc-text">方式二</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#校验进阶"><span class="toc-number">2.1.3.</span> <span class="toc-text">校验进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#所有方法校验"><span class="toc-number">2.1.3.1.</span> <span class="toc-text">所有方法校验</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#跳过指定校验"><span class="toc-number">2.1.3.2.</span> <span class="toc-text">跳过指定校验</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#指定校验方法"><span class="toc-number">2.1.3.3.</span> <span class="toc-text">指定校验方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OGNL表达式"><span class="toc-number">2.1.4.</span> <span class="toc-text">OGNL表达式</span></a></li></ol></li></ol></li></ol>
-      </div>
-      <script type="text/javascript">
-        function showToc(){
-          var toc_article = document.getElementById("toc-article");
-          var show_toc_btn = document.getElementById("show-toc-btn");
-          toc_article.setAttribute("style","display:block");
-          show_toc_btn.setAttribute("style","display:none");
-          };
-        function showBtn(){
-          var toc_article = document.getElementById("toc-article");
-          var show_toc_btn = document.getElementById("show-toc-btn");
-          toc_article.setAttribute("style","display:none");
-          show_toc_btn.setAttribute("style","display:block");
-          };
-      </script>
-      
-    <!-- 目录内容结束 -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>审计S2系列CVE的时候发现很多struts都忘了，所以回顾一下struts2数据校验与架构等，也就是struts2的核心，拦截链。</p>
-<a id="more"></a>
-<h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><p>struts2的流程图如下：</p>
-<p><img src="/images/struts2/struts.png" alt="struts"></p>
-<p>整个流程官方语言描述如下(以下Action指代Web服务器某个接口，如注册接口，代码体现为POJO、Bean，配置于struts2.xml中)</p>
-<ol>
-<li>初始的请求通过一条标准的过滤器链，到达 servlet 容器 ( 比如 <code>tomcat</code> 容器，<code>WebSphere</code> 容器 )。</li>
-<li>过滤器链包括可选的 <code>ActionContextCleanUp</code> 过滤器，用于系统整合技术，如 SiteMesh 插件。</li>
-<li>接着调用 <code>FilterDispatcher</code>，<code>FilterDispatcher</code> 查找 <code>ActionMapper</code>，以确定这个请求是否需要调用某个 <code>Action</code>。</li>
-<li>如果 <code>ActionMapper</code> 确定需要调用某个 <code>Action</code>，<code>FilterDispatcher</code>将控制权交给 <code>ActionProxy</code>。</li>
-<li><code>ActionProxy</code> 依照框架的配置文件(<code>struts.xml</code>)，找到需要调用的 <code>Action</code> 类。</li>
-<li><code>ActionProxy</code> 创建一个 <code>ActionInvocation</code> 的实例。<code>ActionInvocation</code> 先调用相关的拦截器 （Action 调用之前的部分），最后调用 Action。</li>
-<li>一旦 Action 调用返回结果，ActionInvocation 根据 struts.xml 配置文件，查找对应的转发路径。返回结果通常是（但不总是，也可能是另外的一个 Action 链）JSP 技术或者 FreeMarker 的模版技术的网页呈现。Struts2 的标签和其他视图层组件，帮助呈现我们所需要的显示结果。在此，我想说清楚一些，最终的显示结果一定是 HTML 标签。标签库技术和其他视图层技术只是为了动态生成 HTML 标签。</li>
-<li>接着按照相反次序执行拦截器链 ( 执行 Action 调用之后的部分 )。最后，响应通过滤器链返回（过滤器技术执行流程与拦截器一样，都是先执行前面部分，后执行后面部）。如果过滤器链中存在<code>ActionContextCleanUp</code>，<code>FilterDispatcher</code>不会清理线程局部的 <code>ActionContext</code>。如果不存在 <code>ActionContextCleanUp</code> 过滤器，<code>FilterDispatcher</code> 会清除所有线程局部变量。</li>
-</ol>
-<h2 id="拦截器"><a href="#拦截器" class="headerlink" title="拦截器"></a>拦截器</h2><p>可以说，拦截器是struts2的亮眼设计，采用切面编程的思路实现。</p>
-<p>有兴趣的可以去网上看，很多很多</p>
-<h1 id="数据校验"><a href="#数据校验" class="headerlink" title="数据校验"></a>数据校验</h1><p>在sturts2中，数据校验的方式有很多种，我们这里看看服务端校验：</p>
-<ul>
-<li><p><code>validation</code>拦截器负责判断<code>Action</code>是否实现<code>validation</code>接口，如果实现就调用<code>validate</code>方法</p>
-</li>
-<li><p><code>workflow</code>拦截器判断<code>Action</code>是否实现<code>validationAware</code>接口，如果实现就会判断<code>Action</code>中是否包含错误信息。如果包含错误信息，停止拦截器递归调用，返回结果到名为<code>input</code>的结果页面中。</p>
-</li>
-</ul>
-<p>整个<strong>数据校验流程</strong>如下：</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>类型转换器对请求参数执行类型转换，并把转换后的值赋给action中的属性</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span>如果在执行类型转换的过程中出现异常，系统会将异常信息保存到ActionContext，conversionError拦截器将异常信息封装到fieldErrors里，然后执行第<span class="number">3</span>步。如果类型转换没有出现异常，则直接进入第<span class="number">3</span>步。</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span>系统通过反射技术调用action中的validateXxx()方法，Xxx为方法名</span><br><span class="line"></span><br><span class="line"><span class="number">4.</span>调用action中的validate()方法</span><br><span class="line"></span><br><span class="line"><span class="number">5.</span>经过上面<span class="number">4</span>步，如果系统中的fieldErrors存在错误信息（即存放错误信息的集合的size大于<span class="number">0</span>)，系统自动将请求转发至名称为input的视图。如果系统中的fieldErrors没有任何错误信息，系统将执行action中的处理方法。</span><br></pre></td></tr></table></figure>
-<p>而校验方式实现又分为两种：</p>
-<ul>
-<li>编程式校验</li>
-<li>xml配置方式校验</li>
-</ul>
-<h2 id="编程式校验"><a href="#编程式校验" class="headerlink" title="编程式校验"></a>编程式校验</h2><h3 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h3><p>实现接口：<code>Validateable</code>，提供一个方法 <code>validate()</code>，调用<code>addFieldError</code>，添加错误信息</p>
-<p>的方式</p>
-<table>
-<thead>
-<tr>
-<th>加入错误信息</th>
-<th>取出错误信息</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>addActionError(anErrorMessage)方法存入action的错误信息</td>
-<td>\&lt;s:actionerror/>取出action的错误信息</td>
-</tr>
-<tr>
-<td>addFieldError(fieldName, errorMessage)方法存入字段的错误信息.</td>
-<td>\&lt;s:fielderror fieldName=”xxx”/>取出字段的错误信息</td>
-</tr>
-<tr>
-<td>addActionMessage(aMessage)方法存入action提示信息在页面</td>
-<td>\&lt;s:actionmessage/>取出action提示信息</td>
-</tr>
-</tbody>
-</table>
-<p>注意：当然如果你的页面使用了<code>struts2</code>提供的表单标签.表单标签会自动显示字段的错误信息</p>
-<h3 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h3><p>覆盖<code>ActionSupport</code>类的<code>validate()</code>方法，在这个方法中完成对参数的校验。<code>validate()</code>方法会在参数封装之后，在<code>execute()</code>方法之前执行。如果<code>validate()</code>方法中向<code>fieldError</code>中添加了错误信息，那么就不会再执行<code>execute()</code>方法，而是跳转到<code>input</code>结果码对应的页面。</p>
-<p><img src="/images/struts2/validateable.png" alt="validateable"></p>
-<h3 id="校验进阶"><a href="#校验进阶" class="headerlink" title="校验进阶"></a>校验进阶</h3><h4 id="所有方法校验"><a href="#所有方法校验" class="headerlink" title="所有方法校验"></a>所有方法校验</h4><p>提供一个方法<code>validate()</code>，<code>validate()</code>方法是所有请求处理方法公共的校验方法。</p>
-<h4 id="跳过指定校验"><a href="#跳过指定校验" class="headerlink" title="跳过指定校验"></a>跳过指定校验</h4><p>如果想跳过某个<code>Action</code>方法的校验，在不需要校验的<code>Action</code>方法上加入<code>@SkipValidation</code></p>
-<h4 id="指定校验方法"><a href="#指定校验方法" class="headerlink" title="指定校验方法"></a>指定校验方法</h4><p><code>public</code>的，没有返回值，没有参数（<code>public void xxx()</code>）</p>
-<p>方法名称前缀为<code>validate（例public void validateXxx()）</code>或<code>validateDo（例public void validateDoXxx()）</code></p>
-<p>方法名后缀必须与请求处理方法名相同，例如请求处理方法为<code>login()</code>，则<code>public validateLogin()</code></p>
-<p>注意，私有校验方法会在公共校验方法（<code>validate()</code>）之前被调用。如果你要为<code>execute()</code>提供私有校验方法，那么这个方法名为<code>validateExecute()</code></p>
-<p><strong>校验顺序</strong>：先执行<code>单个方法</code>校验，再执行<code>所有方法</code>校验</p>
-<h3 id="OGNL表达式"><a href="#OGNL表达式" class="headerlink" title="OGNL表达式"></a>OGNL表达式</h3><p>OGNL的全称为<code>Object Graphic Navigation Language</code>（对象图导航语言），它是<code>Struts2</code>的默认表达式语言，因为十分好用，甚至滥用到出各种S2系列的RCE漏洞。</p>
-<p><strong>ValueStack值栈</strong></p>
-<ul>
-<li><p>作为<code>ognl</code>表达式的<code>root</code>根</p>
-</li>
-<li><p>生命周期和<code>request</code>请求生命周期一样</p>
-</li>
-</ul>
-<p><strong>ActionContext数据中心</strong></p>
-<ul>
-<li>作为<code>ongl</code>表达式的<code>context</code></li>
-<li>都是在<code>strutsprepareAndExcuteFilter</code>拦截器中准备好</li>
-<li>六大作用域<code>request session application</code></li>
-</ul>
-<p>注意：以上两对象皆在<code>strutsPrepareAndExecuteFilter</code>准备</p>
-<p><strong>OGNL在struts2执行图</strong></p>
-<p><img src="/images/struts2/ognl.png" alt="ognl"></p>
-<p>使用上的结合：</p>
-<p>表单提交，其中提交的键可以看作<code>ognl</code>表达式</p>
-<p>将表单的参数赋值到对象</p>
-<p>提交参数的键为<code>user.name</code> ，然后将在值栈中查找名为user的对象，并赋值到该对象的<code>name</code>属性</p>
-<p><code>ModelDriver</code>方式，<code>Action</code>在<code>getModel</code>方法中将<code>User</code>对象返回。<code>ModelDriven</code>拦截器会将我们返回的<code>User</code>对象放入值栈中(栈顶)，那么在表单中直接提交<code>name</code>，将会把<code>name</code>值装入栈顶的<code>user</code>对象的<code>name</code>属性。</p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/Alipay.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/Wechatpay.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">模板</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">编程</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http:white3.github.io/2018/08/28/sturts2回顾/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/08/31/Java字符比对/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Java字符串对比
-        
-      </div>
-    </a>
   
   
-    <a href="/2018/08/24/S2-057漏洞分析/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">S2-057漏洞分析</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#设计模式"><span class="toc-number">1.</span> <span class="toc-text">设计模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#拦截器"><span class="toc-number">1.1.</span> <span class="toc-text">拦截器</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#数据校验"><span class="toc-number">2.</span> <span class="toc-text">数据校验</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#编程式校验"><span class="toc-number">2.1.</span> <span class="toc-text">编程式校验</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#方式一"><span class="toc-number">2.1.1.</span> <span class="toc-text">方式一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方式二"><span class="toc-number">2.1.2.</span> <span class="toc-text">方式二</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#校验进阶"><span class="toc-number">2.1.3.</span> <span class="toc-text">校验进阶</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#所有方法校验"><span class="toc-number">2.1.3.1.</span> <span class="toc-text">所有方法校验</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#跳过指定校验"><span class="toc-number">2.1.3.2.</span> <span class="toc-text">跳过指定校验</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#指定校验方法"><span class="toc-number">2.1.3.3.</span> <span class="toc-text">指定校验方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OGNL表达式"><span class="toc-number">2.1.4.</span> <span class="toc-text">OGNL表达式</span></a></li></ol></li></ol></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-    <section id="comments">
-      <div id="disqus_thread"></div>
-        <script type="text/javascript">
-        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-        var disqus_shortname = 'true'; // required: replace example with your forum shortname
-
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function() {
-          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-      </script>
-      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </section>
-  
-
-  
+    
 
 
           </div>
@@ -517,8 +247,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
@@ -587,23 +317,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">CURL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Java Web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL注入</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -615,27 +337,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">MIPS汇编</a>
+                <a href="javascript:void(0)" class="js-tag color4">Java Web</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">SQL注入</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模板</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -644,6 +358,34 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">MIPS汇编</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">模板</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">struts2</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -659,23 +401,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">扫描</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">内网</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">内存条</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -687,11 +413,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">扫描</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">内网</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">question</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color4">strusts2</a>
               </li>
             
             <div class="clearfix"></div>
@@ -743,11 +485,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="http://www.wtnpmt.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>未知的PMT</a>
+              <a href="http://www.wtnpmt.space/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>未知的PMT</a>
             </li>
           
             <li class="search-li">
-              <a href="https://gfalisa.github.io/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>牛逼的GFAlisa</a>
+              <a href="https://etenal.me/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>二进制大佬ETenal</a>
+            </li>
+          
+            <li class="search-li">
+              <a href="https://gfalisa.github.io/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>GFAlisa</a>
             </li>
           
             <li class="search-li">
@@ -756,14 +502,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           
             <li class="search-li">
               <a href="http://pwntools-docs-zh.readthedocs.io/zh_CN/latest/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>PwnTools API</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://wangxios.club/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>望曦OpenSource Team</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="https://etenal.me/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>二进制ETenal</a>
             </li>
           
         </ul>
