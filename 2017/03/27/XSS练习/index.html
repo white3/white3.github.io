@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="麦芽屋">
 <meta property="og:description" content="速刷了一个XSS挑战练习 WriteupLevel1  关键代码  123456789&amp;lt;?php ini_set(&quot;display_errors&quot;, 0);$str = $_GET[&quot;name&quot;];echo &quot;&amp;lt;h2 align=center&amp;gt;欢迎用户&quot;.$str.&quot;&amp;lt;/h2&amp;gt;&quot;;?&amp;gt;&amp;lt;center&amp;gt;&amp;lt;img src=level1.png&amp;gt">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-12T04:52:38.754Z">
+<meta property="og:updated_time" content="2018-09-20T12:14:09.538Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XSS小练习">
 <meta name="twitter:description" content="速刷了一个XSS挑战练习 WriteupLevel1  关键代码  123456789&amp;lt;?php ini_set(&quot;display_errors&quot;, 0);$str = $_GET[&quot;name&quot;];echo &quot;&amp;lt;h2 align=center&amp;gt;欢迎用户&quot;.$str.&quot;&amp;lt;/h2&amp;gt;&quot;;?&amp;gt;&amp;lt;center&amp;gt;&amp;lt;img src=level1.png&amp;gt">
@@ -296,7 +296,7 @@
 <ul>
 <li>payload</li>
 </ul>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:<span class="regexp">//</span>localhost<span class="regexp">/xsschallenge/</span>level8.php?keyword=javascr&amp;<span class="comment">#x69p&amp;#x74;:alert(1)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">javascr</span>&amp;<span class="selector-id">#x69p</span>&amp;<span class="selector-id">#x74</span>;<span class="selector-pseudo">:alert(1)</span></span><br></pre></td></tr></table></figure>
 <p>Level9</p>
 <ul>
 <li>关键代码</li>
@@ -735,6 +735,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CVE</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">漏洞复现</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
@@ -743,11 +751,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CVE</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">漏洞复现</a>
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -759,19 +767,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">MIPS汇编</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">模板</a>
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -787,15 +783,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">MIPS汇编</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">编程</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -807,23 +807,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">web安全</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">小文</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">渗透</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -832,10 +816,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">内网</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">内存条</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -851,7 +831,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">小文</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">渗透</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">question</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">内存条</a>
               </li>
             
             <div class="clearfix"></div>
