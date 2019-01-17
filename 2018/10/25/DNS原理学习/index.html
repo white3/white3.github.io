@@ -6,20 +6,35 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="white3.github.io">
-  <title>迷途中遇到的小知识集 | 麦芽屋</title>
+  <title>麦芽屋</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="如有错误还请指出. 此为笔者遇到的花式问题及处理措施，如有错误还请指出.">
-<meta name="keywords" content="question">
+  <meta name="description" content="DNS 是互联网核心协议之一。不管是上网浏览，还是编程开发，都需要了解一点它的知识。 本文详细介绍DNS的原理，以及如何运用工具软件观察它的运作。我的目标是，读完此文后，你就能完全理解DNS。  一、DNS 是什么？DNS （Domain Name System 的缩写）的作用非常简单，就是根据域名查出IP地址。你可以把它想象成一本巨大的电话本。 举例来说，如果你要访问域名math.stackex">
 <meta property="og:type" content="article">
-<meta property="og:title" content="迷途中遇到的小知识集">
-<meta property="og:url" content="white3.github.io/2017/01/03/迷途中遇到的小知识集/index.html">
+<meta property="og:title" content="麦芽屋">
+<meta property="og:url" content="white3.github.io/2018/10/25/DNS原理学习/index.html">
 <meta property="og:site_name" content="麦芽屋">
-<meta property="og:description" content="如有错误还请指出. 此为笔者遇到的花式问题及处理措施，如有错误还请指出.">
+<meta property="og:description" content="DNS 是互联网核心协议之一。不管是上网浏览，还是编程开发，都需要了解一点它的知识。 本文详细介绍DNS的原理，以及如何运用工具软件观察它的运作。我的目标是，读完此文后，你就能完全理解DNS。  一、DNS 是什么？DNS （Domain Name System 的缩写）的作用非常简单，就是根据域名查出IP地址。你可以把它想象成一本巨大的电话本。 举例来说，如果你要访问域名math.stackex">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-08-22T15:42:06.874Z">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061513.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061501.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061502.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061503.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061504.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061505.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061506.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061514.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061507.jpg">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061503.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061508.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061509.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061510.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061511.png">
+<meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061512.png">
+<meta property="og:updated_time" content="2018-10-25T03:32:28.906Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="迷途中遇到的小知识集">
-<meta name="twitter:description" content="如有错误还请指出. 此为笔者遇到的花式问题及处理措施，如有错误还请指出.">
+<meta name="twitter:title" content="麦芽屋">
+<meta name="twitter:description" content="DNS 是互联网核心协议之一。不管是上网浏览，还是编程开发，都需要了解一点它的知识。 本文详细介绍DNS的原理，以及如何运用工具软件观察它的运作。我的目标是，读完此文后，你就能完全理解DNS。  一、DNS 是什么？DNS （Domain Name System 的缩写）的作用非常简单，就是根据域名查出IP地址。你可以把它想象成一本巨大的电话本。 举例来说，如果你要访问域名math.stackex">
+<meta name="twitter:image" content="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061513.png">
   
     <link rel="alternative" href="/atom.xml" title="麦芽屋" type="application/atom+xml">
   
@@ -169,107 +184,159 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-迷途中遇到的小知识集" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-DNS原理学习" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      迷途中遇到的小知识集
-    </h1>
-  
-
-        
-        <a href="/2017/01/03/迷途中遇到的小知识集/" class="archive-article-date">
-  	<time datetime="2017-01-03T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-03</time>
-</a>
-        
-      </header>
-    
     <!-- 目录内容 -->
-    
-      <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
-        <span class="btn-bg"></span>
-        <span class="btn-text">文章导航</span>
-      </p>
-      <div id="toc-article" class="toc-article">
-        <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
-        <strong class="toc-title">文章目录</strong>
-           <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux强杀进程"><span class="toc-number">1.</span> <span class="toc-text">Linux强杀进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#双系统WIN10关闭快速启动选项"><span class="toc-number">2.</span> <span class="toc-text">双系统WIN10关闭快速启动选项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kali-Nat模式共享主机所在局域网"><span class="toc-number">3.</span> <span class="toc-text">Kali Nat模式共享主机所在局域网</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EmEditor"><span class="toc-number">4.</span> <span class="toc-text">EmEditor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Wireshark-In-Kali"><span class="toc-number">5.</span> <span class="toc-text">Wireshark In Kali</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#操作系统的默认编码"><span class="toc-number">6.</span> <span class="toc-text">操作系统的默认编码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#apt之Could-not-get-lock-var-lib-dpkg-lock解决方案"><span class="toc-number">7.</span> <span class="toc-text">apt之Could not get lock /var/lib/dpkg/lock解决方案</span></a></li></ol>
-      </div>
-      <script type="text/javascript">
-        function showToc(){
-          var toc_article = document.getElementById("toc-article");
-          var show_toc_btn = document.getElementById("show-toc-btn");
-          toc_article.setAttribute("style","display:block");
-          show_toc_btn.setAttribute("style","display:none");
-          };
-        function showBtn(){
-          var toc_article = document.getElementById("toc-article");
-          var show_toc_btn = document.getElementById("show-toc-btn");
-          toc_article.setAttribute("style","display:none");
-          show_toc_btn.setAttribute("style","display:block");
-          };
-      </script>
       
     <!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
-        <p>如有错误还请指出.</p>
-<p>此为笔者遇到的花式问题及处理措施，如有错误还请指出.</p>
-<a id="more"></a>
-<h3 id="Linux强杀进程"><a href="#Linux强杀进程" class="headerlink" title="Linux强杀进程"></a>Linux强杀进程</h3><ul>
-<li>kill -9 来强制终止退出, 例如: kill -9 3781</li>
-<li>kill -STOP [pid] 发送SIGSTOP (17,19,23)停止一个进程，而并不消灭这个进程。</li>
-<li>kill -CONT [pid] 发送SIGCONT (19,18,25)重新开始一个停止的进程。</li>
-<li>kill -KILL [pid] 发送SIGKILL (9)强迫进程立即停止，并且不实施清理操作。</li>
-<li>kill -9 -1 终止你拥有的全部进程。</li>
-<li>killall 通过程序的名字,来杀死进程 例如: killall firefox</li>
-</ul>
-<p>注意: 该命令可以使用 -9 参数来强制杀死进程, killall -9 firefox</p>
-<ul>
-<li>pkill 通过程序的名字, 直接杀死所有进程 例如: pkill firefox</li>
-<li>xkill 可以杀死图形程序应用, 例如firefox崩溃无响应, 可以使用该命令. 例如: 用法xkill , 会出现一个白色的x, 然后用鼠标单击想要杀死的应用</li>
-</ul>
-<h3 id="双系统WIN10关闭快速启动选项"><a href="#双系统WIN10关闭快速启动选项" class="headerlink" title="双系统WIN10关闭快速启动选项"></a>双系统WIN10关闭快速启动选项</h3><p>win10的快速启动会使磁盘设置为只读模式，这样进入另一个系统，挂载的磁盘为只读就会出现问题。所以我们需要关闭win的快速启动</p>
-<p>管理员权限打开cmd命令行：<code>powercfg /h off</code></p>
-<h3 id="Kali-Nat模式共享主机所在局域网"><a href="#Kali-Nat模式共享主机所在局域网" class="headerlink" title="Kali Nat模式共享主机所在局域网"></a>Kali Nat模式共享主机所在局域网</h3><ol>
-<li>设置主机使用的网卡开启共享给vm8虚拟网卡</li>
-<li>vm -&gt; 虚拟网络编辑器设置vm8(net模式)子网地址为192.168.137.1，配置正确的dhcp</li>
-<li>确保虚拟机内部网络为dhcp模式</li>
+        <p>DNS 是互联网核心协议之一。不管是上网浏览，还是编程开发，都需要了解一点它的知识。</p>
+<p>本文详细介绍DNS的原理，以及如何运用工具软件观察它的运作。我的目标是，读完此文后，你就能完全理解DNS。</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061513.png" alt="img"></p>
+<h2 id="一、DNS-是什么？"><a href="#一、DNS-是什么？" class="headerlink" title="一、DNS 是什么？"></a>一、DNS 是什么？</h2><p>DNS （Domain Name System 的缩写）的作用非常简单，就是根据域名查出IP地址。你可以把它想象成一本巨大的电话本。</p>
+<p>举例来说，如果你要访问域名<code>math.stackexchange.com</code>，首先要通过DNS查出它的IP地址是<code>151.101.129.69</code>。</p>
+<p>如果你不清楚为什么一定要查出IP地址，才能进行网络通信，建议先阅读我写的<a href="http://www.ruanyifeng.com/blog/2012/05/internet_protocol_suite_part_i.html">《互联网协议入门》</a>。</p>
+<h2 id="二、查询过程"><a href="#二、查询过程" class="headerlink" title="二、查询过程"></a>二、查询过程</h2><p>虽然只需要返回一个IP地址，但是DNS的查询过程非常复杂，分成多个步骤。</p>
+<p>工具软件<code>dig</code>可以显示整个查询过程。</p>
+<blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; $ dig math.stackexchange.com</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>上面的命令会输出六段信息。</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061501.png" alt="img"></p>
+<p>第一段是查询参数和统计。</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061502.png" alt="img"></p>
+<p>第二段是查询内容。</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061503.png" alt="img"></p>
+<p>上面结果表示，查询域名<code>math.stackexchange.com</code>的<code>A</code>记录，<code>A</code>是address的缩写。</p>
+<p>第三段是DNS服务器的答复。</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061504.png" alt="img"></p>
+<p>上面结果显示，<code>math.stackexchange.com</code>有四个<code>A</code>记录，即四个IP地址。<code>600</code>是TTL值（Time to live 的缩写），表示缓存时间，即600秒之内不用重新查询。</p>
+<p>第四段显示<code>stackexchange.com</code>的NS记录（Name Server的缩写），即哪些服务器负责管理<code>stackexchange.com</code>的DNS记录。</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061505.png" alt="img"></p>
+<p>上面结果显示<code>stackexchange.com</code>共有四条NS记录，即四个域名服务器，向其中任一台查询就能知道<code>math.stackexchange.com</code>的IP地址是什么。</p>
+<p>第五段是上面四个域名服务器的IP地址，这是随着前一段一起返回的。</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061506.png" alt="img"></p>
+<p>第六段是DNS服务器的一些传输信息。</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061514.png" alt="img"></p>
+<p>上面结果显示，本机的DNS服务器是<code>192.168.1.253</code>，查询端口是53（DNS服务器的默认端口），以及回应长度是305字节。</p>
+<p>如果不想看到这么多内容，可以使用<code>+short</code>参数。</p>
+<blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; $ dig +short math.stackexchange.com</span><br><span class="line">&gt; </span><br><span class="line">&gt; 151.101.129.69</span><br><span class="line">&gt; 151.101.65.69</span><br><span class="line">&gt; 151.101.193.69</span><br><span class="line">&gt; 151.101.1.69</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>上面命令只返回<code>math.stackexchange.com</code>对应的4个IP地址（即<code>A</code>记录）。</p>
+<h2 id="三、DNS服务器"><a href="#三、DNS服务器" class="headerlink" title="三、DNS服务器"></a>三、DNS服务器</h2><p>下面我们根据前面这个例子，一步步还原，本机到底怎么得到域名<code>math.stackexchange.com</code>的IP地址。</p>
+<p>首先，本机一定要知道DNS服务器的IP地址，否则上不了网。通过DNS服务器，才能知道某个域名的IP地址到底是什么。</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061507.jpg" alt="img"></p>
+<p>DNS服务器的IP地址，有可能是动态的，每次上网时由网关分配，这叫做DHCP机制；也有可能是事先指定的固定地址。Linux系统里面，DNS服务器的IP地址保存在<code>/etc/resolv.conf</code>文件。</p>
+<p>上例的DNS服务器是<code>192.168.1.253</code>，这是一个内网地址。有一些公网的DNS服务器，也可以使用，其中最有名的就是Google的<a href="https://developers.google.com/speed/public-dns/"><code>8.8.8.8</code></a>和Level 3的<a href="https://www.tummy.com/articles/famous-dns-server/"><code>4.2.2.2</code></a>。</p>
+<p>本机只向自己的DNS服务器查询，<code>dig</code>命令有一个<code>@</code>参数，显示向其他DNS服务器查询的结果。</p>
+<blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; $ dig @4.2.2.2 math.stackexchange.com</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>上面命令指定向DNS服务器<code>4.2.2.2</code>查询。</p>
+<h2 id="四、域名的层级"><a href="#四、域名的层级" class="headerlink" title="四、域名的层级"></a>四、域名的层级</h2><p>DNS服务器怎么会知道每个域名的IP地址呢？答案是分级查询。</p>
+<p>请仔细看前面的例子，每个域名的尾部都多了一个点。</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061503.png" alt="img"></p>
+<p>比如，域名<code>math.stackexchange.com</code>显示为<code>math.stackexchange.com.</code>。这不是疏忽，而是所有域名的尾部，实际上都有一个根域名。</p>
+<p>举例来说，<code>www.example.com</code>真正的域名是<code>www.example.com.root</code>，简写为<code>www.example.com.</code>。因为，根域名<code>.root</code>对于所有域名都是一样的，所以平时是省略的。</p>
+<p>根域名的下一级，叫做”顶级域名”（top-level domain，缩写为TLD），比如<code>.com</code>、<code>.net</code>；再下一级叫做”次级域名”（second-level domain，缩写为SLD），比如<code>www.example.com</code>里面的<code>.example</code>，这一级域名是用户可以注册的；再下一级是主机名（host），比如<code>www.example.com</code>里面的<code>www</code>，又称为”三级域名”，这是用户在自己的域里面为服务器分配的名称，是用户可以任意分配的。</p>
+<p>总结一下，域名的层级结构如下。</p>
+<blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; 主机名.次级域名.顶级域名.根域名</span><br><span class="line">&gt; </span><br><span class="line">&gt; <span class="comment"># 即</span></span><br><span class="line">&gt; </span><br><span class="line">&gt; host.sld.tld.root</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="五、根域名服务器"><a href="#五、根域名服务器" class="headerlink" title="五、根域名服务器"></a>五、根域名服务器</h2><p>DNS服务器根据域名的层级，进行分级查询。</p>
+<p>需要明确的是，每一级域名都有自己的NS记录，NS记录指向该级域名的域名服务器。这些服务器知道下一级域名的各种记录。</p>
+<p>所谓”分级查询”，就是从根域名开始，依次查询每一级域名的NS记录，直到查到最终的IP地址，过程大致如下。</p>
+<blockquote>
+<ol>
+<li>从”根域名服务器”查到”顶级域名服务器”的NS记录和A记录（IP地址）</li>
+<li>从”顶级域名服务器”查到”次级域名服务器”的NS记录和A记录（IP地址）</li>
+<li>从”次级域名服务器”查出”主机名”的IP地址</li>
 </ol>
-<h3 id="EmEditor"><a href="#EmEditor" class="headerlink" title="EmEditor"></a>EmEditor</h3><p>采集于<a href="https://www.52pojie.cn/thread-658917-1-1.html">52pojie</a>的一款文本编辑神器，废话不多说</p>
-<p>官网：<a href="https://www.emeditor.com/download/">https://www.emeditor.com/download/</a></p>
-<p>安装版 installer</p>
-<p>便携版 portable</p>
-<p>永久序列号：DMAZM-WHY52-AX222-ZQJXN-79JXH</p>
-<p>插件包：<a href="https://www.emeditor.com/library/">https://www.emeditor.com/library/</a></p>
-<h3 id="Wireshark-In-Kali"><a href="#Wireshark-In-Kali" class="headerlink" title="Wireshark In Kali"></a>Wireshark In Kali</h3><p>解决方案：修改init.lua</p>
-<p>直接运行wireshark的话会报错：</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Lu<span class="variable">a:</span> Error during loadin<span class="variable">g:</span></span><br><span class="line">[<span class="built_in">string</span> <span class="string">"/usr/share/wireshark/init.lua"</span>]:<span class="number">44</span>: dofile <span class="built_in">has</span> been disabled due <span class="keyword">to</span> running Wireshark <span class="keyword">as</span> superuser. See http<span class="variable">s:</span>//wiki.wireshark.org/CaptureSetup/CapturePrivileges <span class="keyword">for</span> <span class="keyword">help</span> in running Wireshark <span class="keyword">as</span> <span class="keyword">an</span> unprivileged user().</span><br></pre></td></tr></table></figure>
-<p>十分尴尬，居然因root运行而被禁用</p>
-<p>要对其进行修改，终端运行</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gedit <span class="regexp">/usr/</span>share<span class="regexp">/wireshark/i</span>nit.lua</span><br></pre></td></tr></table></figure>
-<p>倒数第二行原来为：dofile(DATA_DIR..”console.lua”)</p>
-<p>改为–dofile(DATA_DIR..”console.lua”)</p>
-<h3 id="操作系统的默认编码"><a href="#操作系统的默认编码" class="headerlink" title="操作系统的默认编码"></a>操作系统的默认编码</h3><p>之前写一个目录控制脚本，在使用Java的IO流时，遇到一个奇怪的问题，测试代码如下：</p>
-<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 我事先创建好一个目录s_test4</span></span><br><span class="line"><span class="built_in">File</span> f = <span class="keyword">new</span> <span class="built_in">File</span>(<span class="string">"E:\\code\\Java\\DirectoryControl\\s_test4"</span>);</span><br><span class="line"><span class="built_in">File</span> f2 = <span class="keyword">new</span> <span class="built_in">File</span>(<span class="string">"E:\\code\\Java\\DirectoryControl\\s_test5"</span>);</span><br><span class="line">f2.<span class="built_in">mkdir</span>();</span><br><span class="line"><span class="comment">// false | true</span></span><br><span class="line">System.out.<span class="built_in">println</span>(f.<span class="built_in">isDirectory</span>() + <span class="string">" | "</span> + f2.<span class="built_in">isDirectory</span>());</span><br></pre></td></tr></table></figure>
-<p>后查询资料得知：</p>
-<p>因为系统编码与Java IO编码不同导致文档管理器出现异常</p>
-<p>1.查询操作系统的默认编码</p>
-<p>windows下   /^-?[0-9]+$/m</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"> <span class="selector-tag">-</span> <span class="selector-tag">C</span>:\<span class="selector-tag">Users</span>\****&gt;<span class="selector-tag">chcp</span></span><br><span class="line"> <span class="selector-tag">-</span> 活动代码页: <span class="selector-tag">936</span></span><br><span class="line">通过查询下表：</span><br><span class="line">代码页       国家(地区)或语言 </span><br><span class="line"><span class="selector-tag">437</span>          美国 </span><br><span class="line"><span class="selector-tag">708</span>          阿拉伯文(ASMO <span class="number">708</span>)</span><br><span class="line"><span class="selector-tag">720</span>          阿拉伯文(DOS)</span><br><span class="line"><span class="selector-tag">850</span>          多语言(拉丁文 I) </span><br><span class="line"><span class="selector-tag">852</span>          中欧(DOS) <span class="selector-tag">-</span> 斯拉夫语(拉丁文 II) </span><br><span class="line"><span class="selector-tag">855</span>          西里尔文(俄语) </span><br><span class="line"><span class="selector-tag">857</span>          土耳其语 </span><br><span class="line"><span class="selector-tag">860</span>          葡萄牙语 </span><br><span class="line"><span class="selector-tag">861</span>          冰岛语 </span><br><span class="line"><span class="selector-tag">862</span>          希伯来文(DOS)</span><br><span class="line"><span class="selector-tag">863</span>          加拿大 <span class="selector-tag">-</span> 法语 </span><br><span class="line"><span class="selector-tag">865</span>          日耳曼语 </span><br><span class="line"><span class="selector-tag">866</span>          俄语 <span class="selector-tag">-</span> 西里尔文(DOS) </span><br><span class="line"><span class="selector-tag">869</span>          现代希腊语</span><br><span class="line"><span class="selector-tag">874</span>          泰文(Windows)</span><br><span class="line"><span class="selector-tag">932</span>          日文(Shift-JIS)</span><br><span class="line"><span class="selector-tag">936</span>          中国 <span class="selector-tag">-</span> 简体中文(GB2312)</span><br><span class="line"><span class="selector-tag">949</span>          韩文</span><br><span class="line"><span class="selector-tag">950</span>          繁体中文(Big5)</span><br><span class="line"><span class="selector-tag">1200</span>         <span class="selector-tag">Unicode</span>        </span><br><span class="line"><span class="selector-tag">1201</span>         <span class="selector-tag">Unicode</span> (Big-Endian)</span><br><span class="line"><span class="selector-tag">1250</span>         中欧(Windows)</span><br><span class="line"><span class="selector-tag">1251</span>         西里尔文(Windows)</span><br><span class="line"><span class="selector-tag">1252</span>         西欧(Windows)</span><br><span class="line"><span class="selector-tag">1253</span>         希腊文(Windows)</span><br><span class="line"><span class="selector-tag">1254</span>         土耳其文(Windows)</span><br><span class="line"><span class="selector-tag">1255</span>         希伯来文(Windows)</span><br><span class="line"><span class="selector-tag">1256</span>         阿拉伯文(Windows)</span><br><span class="line"><span class="selector-tag">1257</span>         波罗的海文(Windows)</span><br><span class="line"><span class="selector-tag">1258</span>         越南文(Windows)</span><br><span class="line"><span class="selector-tag">20866</span>        西里尔文(KOI8-R)</span><br><span class="line"><span class="selector-tag">21866</span>        西里尔文(KOI8-U)</span><br><span class="line"><span class="selector-tag">28592</span>        中欧(ISO)</span><br><span class="line"><span class="selector-tag">28593</span>        拉丁文 <span class="selector-tag">3</span> (ISO)</span><br><span class="line"><span class="selector-tag">28594</span>        波罗的海文(ISO)</span><br><span class="line"><span class="selector-tag">28595</span>        西里尔文(ISO)</span><br><span class="line"><span class="selector-tag">28596</span>        阿拉伯文(ISO)</span><br><span class="line"><span class="selector-tag">28597</span>        希腊文(ISO)</span><br><span class="line"><span class="selector-tag">28598</span>        希伯来文(ISO-Visual)</span><br><span class="line"><span class="selector-tag">38598</span>        希伯来文(ISO-Logical)</span><br><span class="line"><span class="selector-tag">50000</span>        用户定义的</span><br><span class="line"><span class="selector-tag">50001</span>        自动选择</span><br><span class="line"><span class="selector-tag">50220</span>        日文(JIS)</span><br><span class="line"><span class="selector-tag">50221</span>        日文(JIS-允许一个字节的片假名)</span><br><span class="line"><span class="selector-tag">50222</span>        日文(JIS-允许一个字节的片假名 - SO/SI)</span><br><span class="line"><span class="selector-tag">50225</span>        韩文(ISO)</span><br><span class="line"><span class="selector-tag">50932</span>        日文(自动选择)</span><br><span class="line"><span class="selector-tag">50949</span>        韩文(自动选择)</span><br><span class="line"><span class="selector-tag">51932</span>        日文(EUC)</span><br><span class="line"><span class="selector-tag">51949</span>        韩文(EUC)</span><br><span class="line"><span class="selector-tag">52936</span>        简体中文(HZ)</span><br><span class="line"><span class="selector-tag">65000</span>        <span class="selector-tag">Unicode</span> (UTF-<span class="number">7</span>)</span><br><span class="line"><span class="selector-tag">65001</span>        <span class="selector-tag">Unicode</span> (UTF-<span class="number">8</span>)</span><br></pre></td></tr></table></figure>
-<p>Linux下</p>
-<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">@ubuntu:~$ locale</span></span><br><span class="line">LANG=en_US.UTF-8</span><br><span class="line">LANGUAGE=en_US</span><br><span class="line">LC_CTYPE=<span class="string">"en_US.UTF-8"</span></span><br><span class="line">LC_NUMERIC=<span class="string">"en_US.UTF-8"</span></span><br><span class="line">LC_TIME=<span class="string">"en_US.UTF-8"</span></span><br><span class="line">LC_COLLATE=<span class="string">"en_US.UTF-8"</span></span><br><span class="line">LC_MONETARY=<span class="string">"en_US.UTF-8"</span></span><br><span class="line">LC_MESSAGES=<span class="string">"en_US.UTF-8"</span></span><br><span class="line">LC_PAPER=<span class="string">"en_US.UTF-8"</span></span><br><span class="line">LC_NAME=<span class="string">"en_US.UTF-8"</span></span><br><span class="line">LC_ADDRESS=<span class="string">"en_US.UTF-8"</span></span><br><span class="line">LC_TELEPHONE=<span class="string">"en_US.UTF-8"</span></span><br><span class="line">LC_MEASUREMENT=<span class="string">"en_US.UTF-8"</span></span><br><span class="line">LC_IDENTIFICATION=<span class="string">"en_US.UTF-8"</span></span><br><span class="line">LC_ALL=</span><br></pre></td></tr></table></figure>
-<p>2.修改系统编码</p>
-<p>网上只提到Linux下，Windows下没有。</p>
-<p>笔者没有测试，但是若又需要这儿有个<a href="https://www.cnblogs.com/R-zqiang/archive/2012/11/23/2785125.html">链接</a></p>
-<h3 id="apt之Could-not-get-lock-var-lib-dpkg-lock解决方案"><a href="#apt之Could-not-get-lock-var-lib-dpkg-lock解决方案" class="headerlink" title="apt之Could not get lock /var/lib/dpkg/lock解决方案"></a>apt之Could not get lock /var/lib/dpkg/lock解决方案</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- E: Could not get lock /var/lib/dpkg/lock - open (11: Resource temporarily unavailable)</span><br><span class="line">- E：无法获得锁/var/lib/dpkg/锁定开放（11：资源暂时不可用）</span><br><span class="line"></span><br><span class="line">- E: Unable to lock the administration directory (/var/lib/dpkg/), is another process using it?</span><br><span class="line">- E：无法锁定管理目录（/var/lib/dpkg/），另一种方法是使用它？</span><br></pre></td></tr></table></figure>
-<p>所以,只要我们把锁删掉,就能运行apt了.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm /var/lib/dpkg/lock</span><br></pre></td></tr></table></figure></p>
-<p>总结: 当我们遇到 apt 出这类问题的时候, 源于安装软件异常退出, 所以将lock删除, 即可继续使用.</p>
-<p>小脚本解决问题</p>
-<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mzl<span class="variable">@ubuntu</span><span class="symbol">:~/shell</span><span class="variable">$ </span>cat clearAptLock.sh </span><br><span class="line">rm /var/lib/dpkg/lock</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>仔细看上面的过程，你可能发现了，没有提到DNS服务器怎么知道”根域名服务器”的IP地址。回答是”根域名服务器”的NS记录和IP地址一般是不会变化的，所以内置在DNS服务器里面。</p>
+<p>下面是内置的根域名服务器IP地址的一个<a href="http://www.cyberciti.biz/faq/unix-linux-update-root-hints-data-file/">例子</a>。</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061508.png" alt="img"></p>
+<p>上面列表中，列出了根域名（<code>.root</code>）的三条NS记录<code>A.ROOT-SERVERS.NET</code>、<code>B.ROOT-SERVERS.NET</code>和<code>C.ROOT-SERVERS.NET</code>，以及它们的IP地址（即<code>A</code>记录）<code>198.41.0.4</code>、<code>192.228.79.201</code>、<code>192.33.4.12</code>。</p>
+<p>另外，可以看到所有记录的TTL值是3600000秒，相当于1000小时。也就是说，每1000小时才查询一次根域名服务器的列表。</p>
+<p>目前，世界上一共有十三组根域名服务器，从<code>A.ROOT-SERVERS.NET</code>一直到<code>M.ROOT-SERVERS.NET</code>。</p>
+<h2 id="六、分级查询的实例"><a href="#六、分级查询的实例" class="headerlink" title="六、分级查询的实例"></a>六、分级查询的实例</h2><p><code>dig</code>命令的<code>+trace</code>参数可以显示DNS的整个分级查询过程。</p>
+<blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; $ dig +trace math.stackexchange.com</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>上面命令的第一段列出根域名<code>.</code>的所有NS记录，即所有根域名服务器。</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061509.png" alt="img"></p>
+<p>根据内置的根域名服务器IP地址，DNS服务器向所有这些IP地址发出查询请求，询问<code>math.stackexchange.com</code>的顶级域名服务器<code>com.</code>的NS记录。最先回复的根域名服务器将被缓存，以后只向这台服务器发请求。</p>
+<p>接着是第二段。</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061510.png" alt="img"></p>
+<p>上面结果显示<code>.com</code>域名的13条NS记录，同时返回的还有每一条记录对应的IP地址。</p>
+<p>然后，DNS服务器向这些顶级域名服务器发出查询请求，询问<code>math.stackexchange.com</code>的次级域名<code>stackexchange.com</code>的NS记录。</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061511.png" alt="img"></p>
+<p>上面结果显示<code>stackexchange.com</code>有四条NS记录，同时返回的还有每一条NS记录对应的IP地址。</p>
+<p>然后，DNS服务器向上面这四台NS服务器查询<code>math.stackexchange.com</code>的主机名。</p>
+<p><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061512.png" alt="img"></p>
+<p>上面结果显示，<code>math.stackexchange.com</code>有4条<code>A</code>记录，即这四个IP地址都可以访问到网站。并且还显示，最先返回结果的NS服务器是<code>ns-463.awsdns-57.com</code>，IP地址为<code>205.251.193.207</code>。</p>
+<h2 id="七、NS-记录的查询"><a href="#七、NS-记录的查询" class="headerlink" title="七、NS 记录的查询"></a>七、NS 记录的查询</h2><p><code>dig</code>命令可以单独查看每一级域名的NS记录。</p>
+<blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; $ dig ns com</span><br><span class="line">&gt; $ dig ns stackexchange.com</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><code>+short</code>参数可以显示简化的结果。</p>
+<blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; $ dig +short ns com</span><br><span class="line">&gt; $ dig +short ns stackexchange.com</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="八、DNS的记录类型"><a href="#八、DNS的记录类型" class="headerlink" title="八、DNS的记录类型"></a>八、DNS的记录类型</h2><p>域名与IP之间的对应关系，称为”记录”（record）。根据使用场景，”记录”可以分成不同的类型（type），前面已经看到了有<code>A</code>记录和<code>NS</code>记录。</p>
+<p>常见的DNS记录类型如下。</p>
+<blockquote>
+<p>（1） <code>A</code>：地址记录（Address），返回域名指向的IP地址。</p>
+<p>（2） <code>NS</code>：域名服务器记录（Name Server），返回保存下一级域名信息的服务器地址。该记录只能设置为域名，不能设置为IP地址。</p>
+<p>（3）<code>MX</code>：邮件记录（Mail eXchange），返回接收电子邮件的服务器地址。</p>
+<p>（4）<code>CNAME</code>：规范名称记录（Canonical Name），返回另一个域名，即当前查询的域名是另一个域名的跳转，详见下文。</p>
+<p>（5）<code>PTR</code>：逆向查询记录（Pointer Record），只用于从IP地址查询域名，详见下文。</p>
+</blockquote>
+<p>一般来说，为了服务的安全可靠，至少应该有两条<code>NS</code>记录，而<code>A</code>记录和<code>MX</code>记录也可以有多条，这样就提供了服务的冗余性，防止出现单点失败。</p>
+<p><code>CNAME</code>记录主要用于域名的内部跳转，为服务器配置提供灵活性，用户感知不到。举例来说，<code>facebook.github.io</code>这个域名就是一个<code>CNAME</code>记录。</p>
+<blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; $ dig facebook.github.io</span><br><span class="line">&gt; </span><br><span class="line">&gt; ...</span><br><span class="line">&gt; </span><br><span class="line">&gt; ;; ANSWER SECTION:</span><br><span class="line">&gt; facebook.github.io. 3370    IN  CNAME   github.map.fastly.net.</span><br><span class="line">&gt; github.map.fastly.net.  600 IN  A   103.245.222.133</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>上面结果显示，<code>facebook.github.io</code>的CNAME记录指向<code>github.map.fastly.net</code>。也就是说，用户查询<code>facebook.github.io</code>的时候，实际上返回的是<code>github.map.fastly.net</code>的IP地址。这样的好处是，变更服务器IP地址的时候，只要修改<code>github.map.fastly.net</code>这个域名就可以了，用户的<code>facebook.github.io</code>域名不用修改。</p>
+<p>由于<code>CNAME</code>记录就是一个替换，所以域名一旦设置<code>CNAME</code>记录以后，就不能再设置其他记录了（比如<code>A</code>记录和<code>MX</code>记录），这是为了防止产生冲突。举例来说，<code>foo.com</code>指向<code>bar.com</code>，而两个域名各有自己的<code>MX</code>记录，如果两者不一致，就会产生问题。由于顶级域名通常要设置<code>MX</code>记录，所以一般不允许用户对顶级域名设置<code>CNAME</code>记录。</p>
+<p><code>PTR</code>记录用于从IP地址反查域名。<code>dig</code>命令的<code>-x</code>参数用于查询<code>PTR</code>记录。</p>
+<blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; $ dig -x 192.30.252.153</span><br><span class="line">&gt; </span><br><span class="line">&gt; ...</span><br><span class="line">&gt; </span><br><span class="line">&gt; ;; ANSWER SECTION:</span><br><span class="line">&gt; 153.252.30.192.in-addr.arpa. 3600 IN    PTR pages.github.com.</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>上面结果显示，<code>192.30.252.153</code>这台服务器的域名是<code>pages.github.com</code>。</p>
+<p>逆向查询的一个应用，是可以防止垃圾邮件，即验证发送邮件的IP地址，是否真的有它所声称的域名。</p>
+<p><code>dig</code>命令可以查看指定的记录类型。</p>
+<blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; $ dig a github.com</span><br><span class="line">&gt; $ dig ns github.com</span><br><span class="line">&gt; $ dig mx github.com</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="九、其他DNS工具"><a href="#九、其他DNS工具" class="headerlink" title="九、其他DNS工具"></a>九、其他DNS工具</h2><p>除了<code>dig</code>，还有一些其他小工具也可以使用。</p>
+<p><strong>（1）host 命令</strong></p>
+<p><code>host</code>命令可以看作<code>dig</code>命令的简化版本，返回当前请求域名的各种记录。</p>
+<blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt; $ host github.com</span><br><span class="line">&gt; </span><br><span class="line">&gt; github.com has address 192.30.252.121</span><br><span class="line">&gt; github.com mail is handled by 5 ALT2.ASPMX.L.GOOGLE.COM.</span><br><span class="line">&gt; github.com mail is handled by 10 ALT4.ASPMX.L.GOOGLE.COM.</span><br><span class="line">&gt; github.com mail is handled by 10 ALT3.ASPMX.L.GOOGLE.COM.</span><br><span class="line">&gt; github.com mail is handled by 5 ALT1.ASPMX.L.GOOGLE.COM.</span><br><span class="line">&gt; github.com mail is handled by 1 ASPMX.L.GOOGLE.COM.</span><br><span class="line">&gt; </span><br><span class="line">&gt; $ host facebook.github.com</span><br><span class="line">&gt; </span><br><span class="line">&gt; facebook.github.com is an <span class="built_in">alias</span> <span class="keyword">for</span> github.map.fastly.net.</span><br><span class="line">&gt; github.map.fastly.net has address 103.245.222.133</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><code>host</code>命令也可以用于逆向查询，即从IP地址查询域名，等同于<code>dig -x &lt;ip&gt;</code>。</p>
+<blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; $ host 192.30.252.153</span><br><span class="line">&gt; </span><br><span class="line">&gt; 153.252.30.192.in-addr.arpa domain name pointer pages.github.com.</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><strong>（2）nslookup 命令</strong></p>
+<p><code>nslookup</code>命令用于互动式地查询域名记录。</p>
+<blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&gt; $ nslookup</span><br><span class="line">&gt; </span><br><span class="line">&gt; &gt; facebook.github.io</span><br><span class="line">&gt; Server:     192.168.1.253</span><br><span class="line">&gt; Address:    192.168.1.253<span class="comment">#53</span></span><br><span class="line">&gt; </span><br><span class="line">&gt; Non-authoritative answer:</span><br><span class="line">&gt; facebook.github.io  canonical name = github.map.fastly.net.</span><br><span class="line">&gt; Name:   github.map.fastly.net</span><br><span class="line">&gt; Address: 103.245.222.133</span><br><span class="line">&gt; </span><br><span class="line">&gt; &gt; </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><strong>（3）whois 命令</strong></p>
+<p><code>whois</code>命令用来查看域名的注册情况。</p>
+<blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; $ whois github.com</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h1 id="十、参考链接"><a href="#十、参考链接" class="headerlink" title="十、参考链接"></a>十、参考链接</h1><ul>
+<li><a href="https://www.petekeen.net/dns-the-good-parts">DNS: The Good Parts</a>, by Pete Keen</li>
+<li><a href="http://www.integralist.co.uk/posts/dnsbasics.html">DNS 101</a>, by Mark McDonnell</li>
+</ul>
+<p>（完）</p>
 
       
 
@@ -309,17 +376,6 @@
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">question</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
       
 
       
@@ -370,7 +426,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http:white3.github.io/2017/01/03/迷途中遇到的小知识集/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http:white3.github.io/2018/10/25/DNS原理学习/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -384,18 +440,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/02/27/信息收集/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          信息收集
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/06/27/小白的PWN学习之路/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">小白的PWN学习之路</div>
+    <a href="/2018/10/10/WebVirtMgr配置教程/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">WebVirtMgr安装教程</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -414,19 +461,6 @@
             </div>
         </div>
         
-        
-        <div class="toc-container tooltip-left">
-            <i class="icon-font icon-category"></i>
-            <div class="tooltip tooltip-east">
-                <span class="tooltip-item">
-                </span>
-                <span class="tooltip-content">
-                    <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux强杀进程"><span class="toc-number">1.</span> <span class="toc-text">Linux强杀进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#双系统WIN10关闭快速启动选项"><span class="toc-number">2.</span> <span class="toc-text">双系统WIN10关闭快速启动选项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Kali-Nat模式共享主机所在局域网"><span class="toc-number">3.</span> <span class="toc-text">Kali Nat模式共享主机所在局域网</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EmEditor"><span class="toc-number">4.</span> <span class="toc-text">EmEditor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Wireshark-In-Kali"><span class="toc-number">5.</span> <span class="toc-text">Wireshark In Kali</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#操作系统的默认编码"><span class="toc-number">6.</span> <span class="toc-text">操作系统的默认编码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#apt之Could-not-get-lock-var-lib-dpkg-lock解决方案"><span class="toc-number">7.</span> <span class="toc-text">apt之Could not get lock /var/lib/dpkg/lock解决方案</span></a></li></ol>
-                    </div>
-                </span>
-            </div>
-        </div>
         
     </div>
 </aside>
@@ -467,7 +501,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 Menzel3
+    		&copy; 2019 Menzel3
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">主题</a> by Litten
@@ -550,11 +584,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CVE</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">漏洞复现</a>
+                <a href="javascript:void(0)" class="js-tag color3">模板</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -566,11 +596,27 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CVE</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">漏洞复现</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+                <a href="javascript:void(0)" class="js-tag color2">MIPS汇编</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -594,11 +640,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">MIPS汇编</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -606,7 +652,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+                <a href="javascript:void(0)" class="js-tag color5">移动安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">struts2</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -614,7 +664,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">struts2</a>
+                <a href="javascript:void(0)" class="js-tag color4">虚拟化</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -623,6 +673,26 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">web安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">内网渗透</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">小文</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">内存条</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">渗透</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -642,27 +712,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">小文</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">渗透</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">question</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">内存条</a>
+                <a href="javascript:void(0)" class="js-tag color3">编码</a>
               </li>
             
             <div class="clearfix"></div>
