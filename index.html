@@ -169,160 +169,33 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-DNS原理学习" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+    <article id="post-2019/2019.考研路漫漫" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/05/2019/2019.考研路漫漫/">考研路漫漫</a>
+    </h1>
+  
+
+        
+        <a href="/2019/10/05/2019/2019.考研路漫漫/" class="archive-article-date">
+  	<time datetime="2019-10-05T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-05</time>
+</a>
+        
+      </header>
     
     <!-- 目录内容 -->
       
     <!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
-        <p>DNS 是互联网核心协议之一。不管是上网浏览，还是编程开发，都需要了解一点它的知识。</p>
-<p>本文详细介绍DNS的原理，以及如何运用工具软件观察它的运作。我的目标是，读完此文后，你就能完全理解DNS。</p>
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061513.png" alt="img"></p>
-<h2 id="一、DNS-是什么？"><a href="#一、DNS-是什么？" class="headerlink" title="一、DNS 是什么？"></a>一、DNS 是什么？</h2><p>DNS （Domain Name System 的缩写）的作用非常简单，就是根据域名查出IP地址。你可以把它想象成一本巨大的电话本。</p>
-<p>举例来说，如果你要访问域名<code>math.stackexchange.com</code>，首先要通过DNS查出它的IP地址是<code>151.101.129.69</code>。</p>
-<p>如果你不清楚为什么一定要查出IP地址，才能进行网络通信，建议先阅读我写的<a href="http://www.ruanyifeng.com/blog/2012/05/internet_protocol_suite_part_i.html">《互联网协议入门》</a>。</p>
-<h2 id="二、查询过程"><a href="#二、查询过程" class="headerlink" title="二、查询过程"></a>二、查询过程</h2><p>虽然只需要返回一个IP地址，但是DNS的查询过程非常复杂，分成多个步骤。</p>
-<p>工具软件<code>dig</code>可以显示整个查询过程。</p>
-<blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; $ dig math.stackexchange.com</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>上面的命令会输出六段信息。</p>
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061501.png" alt="img"></p>
-<p>第一段是查询参数和统计。</p>
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061502.png" alt="img"></p>
-<p>第二段是查询内容。</p>
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061503.png" alt="img"></p>
-<p>上面结果表示，查询域名<code>math.stackexchange.com</code>的<code>A</code>记录，<code>A</code>是address的缩写。</p>
-<p>第三段是DNS服务器的答复。</p>
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061504.png" alt="img"></p>
-<p>上面结果显示，<code>math.stackexchange.com</code>有四个<code>A</code>记录，即四个IP地址。<code>600</code>是TTL值（Time to live 的缩写），表示缓存时间，即600秒之内不用重新查询。</p>
-<p>第四段显示<code>stackexchange.com</code>的NS记录（Name Server的缩写），即哪些服务器负责管理<code>stackexchange.com</code>的DNS记录。</p>
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061505.png" alt="img"></p>
-<p>上面结果显示<code>stackexchange.com</code>共有四条NS记录，即四个域名服务器，向其中任一台查询就能知道<code>math.stackexchange.com</code>的IP地址是什么。</p>
-<p>第五段是上面四个域名服务器的IP地址，这是随着前一段一起返回的。</p>
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061506.png" alt="img"></p>
-<p>第六段是DNS服务器的一些传输信息。</p>
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061514.png" alt="img"></p>
-<p>上面结果显示，本机的DNS服务器是<code>192.168.1.253</code>，查询端口是53（DNS服务器的默认端口），以及回应长度是305字节。</p>
-<p>如果不想看到这么多内容，可以使用<code>+short</code>参数。</p>
-<blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; $ dig +short math.stackexchange.com</span><br><span class="line">&gt; </span><br><span class="line">&gt; 151.101.129.69</span><br><span class="line">&gt; 151.101.65.69</span><br><span class="line">&gt; 151.101.193.69</span><br><span class="line">&gt; 151.101.1.69</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>上面命令只返回<code>math.stackexchange.com</code>对应的4个IP地址（即<code>A</code>记录）。</p>
-<h2 id="三、DNS服务器"><a href="#三、DNS服务器" class="headerlink" title="三、DNS服务器"></a>三、DNS服务器</h2><p>下面我们根据前面这个例子，一步步还原，本机到底怎么得到域名<code>math.stackexchange.com</code>的IP地址。</p>
-<p>首先，本机一定要知道DNS服务器的IP地址，否则上不了网。通过DNS服务器，才能知道某个域名的IP地址到底是什么。</p>
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061507.jpg" alt="img"></p>
-<p>DNS服务器的IP地址，有可能是动态的，每次上网时由网关分配，这叫做DHCP机制；也有可能是事先指定的固定地址。Linux系统里面，DNS服务器的IP地址保存在<code>/etc/resolv.conf</code>文件。</p>
-<p>上例的DNS服务器是<code>192.168.1.253</code>，这是一个内网地址。有一些公网的DNS服务器，也可以使用，其中最有名的就是Google的<a href="https://developers.google.com/speed/public-dns/"><code>8.8.8.8</code></a>和Level 3的<a href="https://www.tummy.com/articles/famous-dns-server/"><code>4.2.2.2</code></a>。</p>
-<p>本机只向自己的DNS服务器查询，<code>dig</code>命令有一个<code>@</code>参数，显示向其他DNS服务器查询的结果。</p>
-<blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; $ dig @4.2.2.2 math.stackexchange.com</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>上面命令指定向DNS服务器<code>4.2.2.2</code>查询。</p>
-<h2 id="四、域名的层级"><a href="#四、域名的层级" class="headerlink" title="四、域名的层级"></a>四、域名的层级</h2><p>DNS服务器怎么会知道每个域名的IP地址呢？答案是分级查询。</p>
-<p>请仔细看前面的例子，每个域名的尾部都多了一个点。</p>
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061503.png" alt="img"></p>
-<p>比如，域名<code>math.stackexchange.com</code>显示为<code>math.stackexchange.com.</code>。这不是疏忽，而是所有域名的尾部，实际上都有一个根域名。</p>
-<p>举例来说，<code>www.example.com</code>真正的域名是<code>www.example.com.root</code>，简写为<code>www.example.com.</code>。因为，根域名<code>.root</code>对于所有域名都是一样的，所以平时是省略的。</p>
-<p>根域名的下一级，叫做”顶级域名”（top-level domain，缩写为TLD），比如<code>.com</code>、<code>.net</code>；再下一级叫做”次级域名”（second-level domain，缩写为SLD），比如<code>www.example.com</code>里面的<code>.example</code>，这一级域名是用户可以注册的；再下一级是主机名（host），比如<code>www.example.com</code>里面的<code>www</code>，又称为”三级域名”，这是用户在自己的域里面为服务器分配的名称，是用户可以任意分配的。</p>
-<p>总结一下，域名的层级结构如下。</p>
-<blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; 主机名.次级域名.顶级域名.根域名</span><br><span class="line">&gt; </span><br><span class="line">&gt; <span class="comment"># 即</span></span><br><span class="line">&gt; </span><br><span class="line">&gt; host.sld.tld.root</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h2 id="五、根域名服务器"><a href="#五、根域名服务器" class="headerlink" title="五、根域名服务器"></a>五、根域名服务器</h2><p>DNS服务器根据域名的层级，进行分级查询。</p>
-<p>需要明确的是，每一级域名都有自己的NS记录，NS记录指向该级域名的域名服务器。这些服务器知道下一级域名的各种记录。</p>
-<p>所谓”分级查询”，就是从根域名开始，依次查询每一级域名的NS记录，直到查到最终的IP地址，过程大致如下。</p>
-<blockquote>
-<ol>
-<li>从”根域名服务器”查到”顶级域名服务器”的NS记录和A记录（IP地址）</li>
-<li>从”顶级域名服务器”查到”次级域名服务器”的NS记录和A记录（IP地址）</li>
-<li>从”次级域名服务器”查出”主机名”的IP地址</li>
-</ol>
-</blockquote>
-<p>仔细看上面的过程，你可能发现了，没有提到DNS服务器怎么知道”根域名服务器”的IP地址。回答是”根域名服务器”的NS记录和IP地址一般是不会变化的，所以内置在DNS服务器里面。</p>
-<p>下面是内置的根域名服务器IP地址的一个<a href="http://www.cyberciti.biz/faq/unix-linux-update-root-hints-data-file/">例子</a>。</p>
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061508.png" alt="img"></p>
-<p>上面列表中，列出了根域名（<code>.root</code>）的三条NS记录<code>A.ROOT-SERVERS.NET</code>、<code>B.ROOT-SERVERS.NET</code>和<code>C.ROOT-SERVERS.NET</code>，以及它们的IP地址（即<code>A</code>记录）<code>198.41.0.4</code>、<code>192.228.79.201</code>、<code>192.33.4.12</code>。</p>
-<p>另外，可以看到所有记录的TTL值是3600000秒，相当于1000小时。也就是说，每1000小时才查询一次根域名服务器的列表。</p>
-<p>目前，世界上一共有十三组根域名服务器，从<code>A.ROOT-SERVERS.NET</code>一直到<code>M.ROOT-SERVERS.NET</code>。</p>
-<h2 id="六、分级查询的实例"><a href="#六、分级查询的实例" class="headerlink" title="六、分级查询的实例"></a>六、分级查询的实例</h2><p><code>dig</code>命令的<code>+trace</code>参数可以显示DNS的整个分级查询过程。</p>
-<blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; $ dig +trace math.stackexchange.com</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>上面命令的第一段列出根域名<code>.</code>的所有NS记录，即所有根域名服务器。</p>
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061509.png" alt="img"></p>
-<p>根据内置的根域名服务器IP地址，DNS服务器向所有这些IP地址发出查询请求，询问<code>math.stackexchange.com</code>的顶级域名服务器<code>com.</code>的NS记录。最先回复的根域名服务器将被缓存，以后只向这台服务器发请求。</p>
-<p>接着是第二段。</p>
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061510.png" alt="img"></p>
-<p>上面结果显示<code>.com</code>域名的13条NS记录，同时返回的还有每一条记录对应的IP地址。</p>
-<p>然后，DNS服务器向这些顶级域名服务器发出查询请求，询问<code>math.stackexchange.com</code>的次级域名<code>stackexchange.com</code>的NS记录。</p>
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061511.png" alt="img"></p>
-<p>上面结果显示<code>stackexchange.com</code>有四条NS记录，同时返回的还有每一条NS记录对应的IP地址。</p>
-<p>然后，DNS服务器向上面这四台NS服务器查询<code>math.stackexchange.com</code>的主机名。</p>
-<p><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061512.png" alt="img"></p>
-<p>上面结果显示，<code>math.stackexchange.com</code>有4条<code>A</code>记录，即这四个IP地址都可以访问到网站。并且还显示，最先返回结果的NS服务器是<code>ns-463.awsdns-57.com</code>，IP地址为<code>205.251.193.207</code>。</p>
-<h2 id="七、NS-记录的查询"><a href="#七、NS-记录的查询" class="headerlink" title="七、NS 记录的查询"></a>七、NS 记录的查询</h2><p><code>dig</code>命令可以单独查看每一级域名的NS记录。</p>
-<blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; $ dig ns com</span><br><span class="line">&gt; $ dig ns stackexchange.com</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p><code>+short</code>参数可以显示简化的结果。</p>
-<blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; $ dig +short ns com</span><br><span class="line">&gt; $ dig +short ns stackexchange.com</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h2 id="八、DNS的记录类型"><a href="#八、DNS的记录类型" class="headerlink" title="八、DNS的记录类型"></a>八、DNS的记录类型</h2><p>域名与IP之间的对应关系，称为”记录”（record）。根据使用场景，”记录”可以分成不同的类型（type），前面已经看到了有<code>A</code>记录和<code>NS</code>记录。</p>
-<p>常见的DNS记录类型如下。</p>
-<blockquote>
-<p>（1） <code>A</code>：地址记录（Address），返回域名指向的IP地址。</p>
-<p>（2） <code>NS</code>：域名服务器记录（Name Server），返回保存下一级域名信息的服务器地址。该记录只能设置为域名，不能设置为IP地址。</p>
-<p>（3）<code>MX</code>：邮件记录（Mail eXchange），返回接收电子邮件的服务器地址。</p>
-<p>（4）<code>CNAME</code>：规范名称记录（Canonical Name），返回另一个域名，即当前查询的域名是另一个域名的跳转，详见下文。</p>
-<p>（5）<code>PTR</code>：逆向查询记录（Pointer Record），只用于从IP地址查询域名，详见下文。</p>
-</blockquote>
-<p>一般来说，为了服务的安全可靠，至少应该有两条<code>NS</code>记录，而<code>A</code>记录和<code>MX</code>记录也可以有多条，这样就提供了服务的冗余性，防止出现单点失败。</p>
-<p><code>CNAME</code>记录主要用于域名的内部跳转，为服务器配置提供灵活性，用户感知不到。举例来说，<code>facebook.github.io</code>这个域名就是一个<code>CNAME</code>记录。</p>
-<blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt; $ dig facebook.github.io</span><br><span class="line">&gt; </span><br><span class="line">&gt; ...</span><br><span class="line">&gt; </span><br><span class="line">&gt; ;; ANSWER SECTION:</span><br><span class="line">&gt; facebook.github.io. 3370    IN  CNAME   github.map.fastly.net.</span><br><span class="line">&gt; github.map.fastly.net.  600 IN  A   103.245.222.133</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>上面结果显示，<code>facebook.github.io</code>的CNAME记录指向<code>github.map.fastly.net</code>。也就是说，用户查询<code>facebook.github.io</code>的时候，实际上返回的是<code>github.map.fastly.net</code>的IP地址。这样的好处是，变更服务器IP地址的时候，只要修改<code>github.map.fastly.net</code>这个域名就可以了，用户的<code>facebook.github.io</code>域名不用修改。</p>
-<p>由于<code>CNAME</code>记录就是一个替换，所以域名一旦设置<code>CNAME</code>记录以后，就不能再设置其他记录了（比如<code>A</code>记录和<code>MX</code>记录），这是为了防止产生冲突。举例来说，<code>foo.com</code>指向<code>bar.com</code>，而两个域名各有自己的<code>MX</code>记录，如果两者不一致，就会产生问题。由于顶级域名通常要设置<code>MX</code>记录，所以一般不允许用户对顶级域名设置<code>CNAME</code>记录。</p>
-<p><code>PTR</code>记录用于从IP地址反查域名。<code>dig</code>命令的<code>-x</code>参数用于查询<code>PTR</code>记录。</p>
-<blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; $ dig -x 192.30.252.153</span><br><span class="line">&gt; </span><br><span class="line">&gt; ...</span><br><span class="line">&gt; </span><br><span class="line">&gt; ;; ANSWER SECTION:</span><br><span class="line">&gt; 153.252.30.192.in-addr.arpa. 3600 IN    PTR pages.github.com.</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>上面结果显示，<code>192.30.252.153</code>这台服务器的域名是<code>pages.github.com</code>。</p>
-<p>逆向查询的一个应用，是可以防止垃圾邮件，即验证发送邮件的IP地址，是否真的有它所声称的域名。</p>
-<p><code>dig</code>命令可以查看指定的记录类型。</p>
-<blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; $ dig a github.com</span><br><span class="line">&gt; $ dig ns github.com</span><br><span class="line">&gt; $ dig mx github.com</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h2 id="九、其他DNS工具"><a href="#九、其他DNS工具" class="headerlink" title="九、其他DNS工具"></a>九、其他DNS工具</h2><p>除了<code>dig</code>，还有一些其他小工具也可以使用。</p>
-<p><strong>（1）host 命令</strong></p>
-<p><code>host</code>命令可以看作<code>dig</code>命令的简化版本，返回当前请求域名的各种记录。</p>
-<blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&gt; $ host github.com</span><br><span class="line">&gt; </span><br><span class="line">&gt; github.com has address 192.30.252.121</span><br><span class="line">&gt; github.com mail is handled by 5 ALT2.ASPMX.L.GOOGLE.COM.</span><br><span class="line">&gt; github.com mail is handled by 10 ALT4.ASPMX.L.GOOGLE.COM.</span><br><span class="line">&gt; github.com mail is handled by 10 ALT3.ASPMX.L.GOOGLE.COM.</span><br><span class="line">&gt; github.com mail is handled by 5 ALT1.ASPMX.L.GOOGLE.COM.</span><br><span class="line">&gt; github.com mail is handled by 1 ASPMX.L.GOOGLE.COM.</span><br><span class="line">&gt; </span><br><span class="line">&gt; $ host facebook.github.com</span><br><span class="line">&gt; </span><br><span class="line">&gt; facebook.github.com is an <span class="built_in">alias</span> <span class="keyword">for</span> github.map.fastly.net.</span><br><span class="line">&gt; github.map.fastly.net has address 103.245.222.133</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p><code>host</code>命令也可以用于逆向查询，即从IP地址查询域名，等同于<code>dig -x &lt;ip&gt;</code>。</p>
-<blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; $ host 192.30.252.153</span><br><span class="line">&gt; </span><br><span class="line">&gt; 153.252.30.192.in-addr.arpa domain name pointer pages.github.com.</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p><strong>（2）nslookup 命令</strong></p>
-<p><code>nslookup</code>命令用于互动式地查询域名记录。</p>
-<blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&gt; $ nslookup</span><br><span class="line">&gt; </span><br><span class="line">&gt; &gt; facebook.github.io</span><br><span class="line">&gt; Server:     192.168.1.253</span><br><span class="line">&gt; Address:    192.168.1.253<span class="comment">#53</span></span><br><span class="line">&gt; </span><br><span class="line">&gt; Non-authoritative answer:</span><br><span class="line">&gt; facebook.github.io  canonical name = github.map.fastly.net.</span><br><span class="line">&gt; Name:   github.map.fastly.net</span><br><span class="line">&gt; Address: 103.245.222.133</span><br><span class="line">&gt; </span><br><span class="line">&gt; &gt; </span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p><strong>（3）whois 命令</strong></p>
-<p><code>whois</code>命令用来查看域名的注册情况。</p>
-<blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; $ whois github.com</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h1 id="十、参考链接"><a href="#十、参考链接" class="headerlink" title="十、参考链接"></a>十、参考链接</h1><ul>
-<li><a href="https://www.petekeen.net/dns-the-good-parts">DNS: The Good Parts</a>, by Pete Keen</li>
-<li><a href="http://www.integralist.co.uk/posts/dnsbasics.html">DNS 101</a>, by Mark McDonnell</li>
-</ul>
-<p>（完）</p>
-
+        <p>《有朝一日》</p>
+        
+          <a class="article-more-a" href="/2019/10/05/2019/2019.考研路漫漫/#more">more >></a>
+        
       
 
       
@@ -330,11 +203,101 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">公告</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/10/25/DNS原理学习/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/10/05/2019/2019.考研路漫漫/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-2019.考研路漫漫" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/05/2019.考研路漫漫/">考研路漫漫</a>
+    </h1>
+  
+
+        
+        <a href="/2019/10/05/2019.考研路漫漫/" class="archive-article-date">
+  	<time datetime="2019-10-05T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-05</time>
+</a>
+        
+      </header>
+    
+    <!-- 目录内容 -->
+      
+    <!-- 目录内容结束 -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>《有朝一日》</p>
+        
+          <a class="article-more-a" href="/2019/10/05/2019.考研路漫漫/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">公告</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/10/05/2019.考研路漫漫/">展开全文 >></a>
         </p>
       
 
@@ -387,7 +350,8 @@
     <!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="WebVirtMgr安装教程"><a href="#WebVirtMgr安装教程" class="headerlink" title="WebVirtMgr安装教程"></a>WebVirtMgr安装教程</h1><h3 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h3><ul>
+        <a id="more"></a>
+<h1 id="WebVirtMgr安装教程"><a href="#WebVirtMgr安装教程" class="headerlink" title="WebVirtMgr安装教程"></a>WebVirtMgr安装教程</h1><h3 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h3><ul>
 <li>系统：Ubuntu Server 14.04</li>
 </ul>
 <h3 id="确定-CPU-支持-KVM"><a href="#确定-CPU-支持-KVM" class="headerlink" title="确定 CPU 支持 KVM"></a>确定 CPU 支持 KVM</h3><p>KVM 依赖于 x86 虚拟化扩展。为了检查兼容性，请运行命令</p>
@@ -517,7 +481,8 @@
     <!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="MobSF安装教程"><a href="#MobSF安装教程" class="headerlink" title="MobSF安装教程"></a>MobSF安装教程</h1><ul>
+        <a id="more"></a>
+<h1 id="MobSF安装教程"><a href="#MobSF安装教程" class="headerlink" title="MobSF安装教程"></a>MobSF安装教程</h1><ul>
 <li>更新软件源</li>
 </ul>
 <p>通过官方文档我们可以看到需要Python3、Jdk8、Sqlite3版本，所以我们先将软件源添加到apt仓库中，在此之前我们需要安装软件源添加工具包。</p>
@@ -578,6 +543,85 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/10/10/MobSF/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-DNS原理学习" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/09/20/DNS原理学习/">DNS应用</a>
+    </h1>
+  
+
+        
+        <a href="/2018/09/20/DNS原理学习/" class="archive-article-date">
+  	<time datetime="2018-09-20T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
+</a>
+        
+      </header>
+    
+    <!-- 目录内容 -->
+      
+    <!-- 目录内容结束 -->
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>DNS 是互联网核心协议之一。不管是上网浏览，还是编程开发，都需要了解一点它的知识。</p>
+        
+          <a class="article-more-a" href="/2018/09/20/DNS原理学习/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Network</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/09/20/DNS原理学习/">展开全文 >></a>
         </p>
       
 
@@ -1014,164 +1058,6 @@
 
 
   
-    <article id="post-Docker镜像复用" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/21/Docker镜像复用/">Docker镜像复用</a>
-    </h1>
-  
-
-        
-        <a href="/2018/08/21/Docker镜像复用/" class="archive-article-date">
-  	<time datetime="2018-08-21T12:04:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-21</time>
-</a>
-        
-      </header>
-    
-    <!-- 目录内容 -->
-      
-    <!-- 目录内容结束 -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>如何从官方源、阿里源来使用、打包、上传、下载容器与镜像</p>
-        
-          <a class="article-more-a" href="/2018/08/21/Docker镜像复用/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/21/Docker镜像复用/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Python3装饰器" class="article article-type-post  article-index" itemscope="" itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/20/Python3装饰器/">Python3装饰器</a>
-    </h1>
-  
-
-        
-        <a href="/2018/08/20/Python3装饰器/" class="archive-article-date">
-  	<time datetime="2018-08-20T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-20</time>
-</a>
-        
-      </header>
-    
-    <!-- 目录内容 -->
-      
-    <!-- 目录内容结束 -->
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>简单装饰器、通用装饰器、类装饰器</p>
-        
-          <a class="article-more-a" href="/2018/08/20/Python3装饰器/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/20/Python3装饰器/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1402,6 +1288,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">编码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">公告</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Network</a>
               </li>
             
             <div class="clearfix"></div>

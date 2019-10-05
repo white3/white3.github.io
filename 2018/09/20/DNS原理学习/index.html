@@ -6,14 +6,15 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="white3.github.io">
-  <title>麦芽屋</title>
+  <title>DNS应用 | 麦芽屋</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="DNS 是互联网核心协议之一。不管是上网浏览，还是编程开发，都需要了解一点它的知识。 本文详细介绍DNS的原理，以及如何运用工具软件观察它的运作。我的目标是，读完此文后，你就能完全理解DNS。  一、DNS 是什么？DNS （Domain Name System 的缩写）的作用非常简单，就是根据域名查出IP地址。你可以把它想象成一本巨大的电话本。 举例来说，如果你要访问域名math.stackex">
+  <meta name="description" content="DNS 是互联网核心协议之一。不管是上网浏览，还是编程开发，都需要了解一点它的知识。">
+<meta name="keywords" content="Network">
 <meta property="og:type" content="article">
-<meta property="og:title" content="麦芽屋">
-<meta property="og:url" content="white3.github.io/2018/10/25/DNS原理学习/index.html">
+<meta property="og:title" content="DNS应用">
+<meta property="og:url" content="white3.github.io/2018/09/20/DNS原理学习/index.html">
 <meta property="og:site_name" content="麦芽屋">
-<meta property="og:description" content="DNS 是互联网核心协议之一。不管是上网浏览，还是编程开发，都需要了解一点它的知识。 本文详细介绍DNS的原理，以及如何运用工具软件观察它的运作。我的目标是，读完此文后，你就能完全理解DNS。  一、DNS 是什么？DNS （Domain Name System 的缩写）的作用非常简单，就是根据域名查出IP地址。你可以把它想象成一本巨大的电话本。 举例来说，如果你要访问域名math.stackex">
+<meta property="og:description" content="DNS 是互联网核心协议之一。不管是上网浏览，还是编程开发，都需要了解一点它的知识。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061513.png">
 <meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061501.png">
@@ -30,10 +31,10 @@
 <meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061510.png">
 <meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061511.png">
 <meta property="og:image" content="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061512.png">
-<meta property="og:updated_time" content="2018-10-25T03:32:28.906Z">
+<meta property="og:updated_time" content="2019-10-05T06:20:09.791Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="麦芽屋">
-<meta name="twitter:description" content="DNS 是互联网核心协议之一。不管是上网浏览，还是编程开发，都需要了解一点它的知识。 本文详细介绍DNS的原理，以及如何运用工具软件观察它的运作。我的目标是，读完此文后，你就能完全理解DNS。  一、DNS 是什么？DNS （Domain Name System 的缩写）的作用非常简单，就是根据域名查出IP地址。你可以把它想象成一本巨大的电话本。 举例来说，如果你要访问域名math.stackex">
+<meta name="twitter:title" content="DNS应用">
+<meta name="twitter:description" content="DNS 是互联网核心协议之一。不管是上网浏览，还是编程开发，都需要了解一点它的知识。">
 <meta name="twitter:image" content="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061513.png">
   
     <link rel="alternative" href="/atom.xml" title="麦芽屋" type="application/atom+xml">
@@ -187,12 +188,52 @@
             <article id="post-DNS原理学习" class="article article-type-post " itemscope="" itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      DNS应用
+    </h1>
+  
+
+        
+        <a href="/2018/09/20/DNS原理学习/" class="archive-article-date">
+  	<time datetime="2018-09-20T00:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
+</a>
+        
+      </header>
+    
     <!-- 目录内容 -->
+    
+      <p class="show-toc-btn" id="show-toc-btn" onclick="showToc();" style="display:none">
+        <span class="btn-bg"></span>
+        <span class="btn-text">文章导航</span>
+      </p>
+      <div id="toc-article" class="toc-article">
+        <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
+        <strong class="toc-title">文章目录</strong>
+           <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、DNS-是什么？"><span class="toc-number">1.</span> <span class="toc-text">一、DNS 是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、查询过程"><span class="toc-number">2.</span> <span class="toc-text">二、查询过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、DNS服务器"><span class="toc-number">3.</span> <span class="toc-text">三、DNS服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、域名的层级"><span class="toc-number">4.</span> <span class="toc-text">四、域名的层级</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、根域名服务器"><span class="toc-number">5.</span> <span class="toc-text">五、根域名服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、分级查询的实例"><span class="toc-number">6.</span> <span class="toc-text">六、分级查询的实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、NS-记录的查询"><span class="toc-number">7.</span> <span class="toc-text">七、NS 记录的查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八、DNS的记录类型"><span class="toc-number">8.</span> <span class="toc-text">八、DNS的记录类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#九、其他DNS工具"><span class="toc-number">9.</span> <span class="toc-text">九、其他DNS工具</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#十、参考链接"><span class="toc-number"></span> <span class="toc-text">十、参考链接</span></a>
+      </li></div>
+      <script type="text/javascript">
+        function showToc(){
+          var toc_article = document.getElementById("toc-article");
+          var show_toc_btn = document.getElementById("show-toc-btn");
+          toc_article.setAttribute("style","display:block");
+          show_toc_btn.setAttribute("style","display:none");
+          };
+        function showBtn(){
+          var toc_article = document.getElementById("toc-article");
+          var show_toc_btn = document.getElementById("show-toc-btn");
+          toc_article.setAttribute("style","display:none");
+          show_toc_btn.setAttribute("style","display:block");
+          };
+      </script>
       
     <!-- 目录内容结束 -->
     <div class="article-entry" itemprop="articleBody">
       
         <p>DNS 是互联网核心协议之一。不管是上网浏览，还是编程开发，都需要了解一点它的知识。</p>
+<a id="more"></a>
 <p>本文详细介绍DNS的原理，以及如何运用工具软件观察它的运作。我的目标是，读完此文后，你就能完全理解DNS。</p>
 <p><img src="http://www.ruanyifeng.com/blogimg/asset/2016/bg2016061513.png" alt="img"></p>
 <h2 id="一、DNS-是什么？"><a href="#一、DNS-是什么？" class="headerlink" title="一、DNS 是什么？"></a>一、DNS 是什么？</h2><p>DNS （Domain Name System 的缩写）的作用非常简单，就是根据域名查出IP地址。你可以把它想象成一本巨大的电话本。</p>
@@ -376,6 +417,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Network</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -426,7 +478,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http:white3.github.io/2018/10/25/DNS原理学习/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http:white3.github.io/2018/09/20/DNS原理学习/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -440,9 +492,18 @@
   
 <nav id="article-nav">
   
+    <a href="/2018/10/10/MobSF/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          MobSF安装教程
+        
+      </div>
+    </a>
   
-    <a href="/2018/10/10/WebVirtMgr配置教程/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">WebVirtMgr安装教程</div>
+  
+    <a href="/2018/09/10/Python3私有化/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Python私有化</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -461,6 +522,19 @@
             </div>
         </div>
         
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一、DNS-是什么？"><span class="toc-number">1.</span> <span class="toc-text">一、DNS 是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二、查询过程"><span class="toc-number">2.</span> <span class="toc-text">二、查询过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三、DNS服务器"><span class="toc-number">3.</span> <span class="toc-text">三、DNS服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四、域名的层级"><span class="toc-number">4.</span> <span class="toc-text">四、域名的层级</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五、根域名服务器"><span class="toc-number">5.</span> <span class="toc-text">五、根域名服务器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#六、分级查询的实例"><span class="toc-number">6.</span> <span class="toc-text">六、分级查询的实例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#七、NS-记录的查询"><span class="toc-number">7.</span> <span class="toc-text">七、NS 记录的查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#八、DNS的记录类型"><span class="toc-number">8.</span> <span class="toc-text">八、DNS的记录类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#九、其他DNS工具"><span class="toc-number">9.</span> <span class="toc-text">九、其他DNS工具</span></a></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#十、参考链接"><span class="toc-number"></span> <span class="toc-text">十、参考链接</span></a>
+                    </li></div>
+                </span>
+            </div>
+        </div>
         
     </div>
 </aside>
@@ -717,6 +791,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">编码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">公告</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Network</a>
               </li>
             
             <div class="clearfix"></div>
