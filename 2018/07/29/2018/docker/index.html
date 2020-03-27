@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="麦芽屋">
 <meta property="og:description" content="docker的基本使用及命令解释">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-11-21T16:40:40.608Z">
+<meta property="og:updated_time" content="2020-03-21T12:58:56.075Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker基础学习">
 <meta name="twitter:description" content="docker的基本使用及命令解释">
@@ -223,7 +223,7 @@
 <h3 id="Centos"><a href="#Centos" class="headerlink" title="Centos"></a>Centos</h3><p>手动及自动安装过程</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#################### 手动安装 </span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 卸载旧版本或系统自带</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo yum remove docker \</span></span><br><span class="line">                  docker-client \</span><br><span class="line">                  docker-client-latest \</span><br><span class="line">                  docker-common \</span><br><span class="line">                  docker-latest \</span><br><span class="line">                  docker-latest-logrotate \</span><br><span class="line">                  docker-logrotate \</span><br><span class="line">                  docker-selinux \</span><br><span class="line">                  docker-engine-selinux \</span><br><span class="line">                  docker-engine</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装新版本</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo yum install -y yum-utils \</span></span><br><span class="line">           device-mapper-persistent-data \</span><br><span class="line">           lvm2</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 中国源</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo yum-config-manager \</span></span><br><span class="line">    --add-repo \</span><br><span class="line">    https://mirrors.ustc.edu.cn/docker-ce/linux/centos/docker-ce.repo</span><br><span class="line"><span class="meta">#</span><span class="bash"> 官方源</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> $ sudo yum-config-manager \</span></span><br><span class="line"><span class="meta">#</span><span class="bash">     --add-repo \</span></span><br><span class="line"><span class="meta">#</span><span class="bash">     https://download.docker.com/linux/centos/docker-ce.repo</span></span><br><span class="line"></span><br><span class="line">sudo yum install docker-ce # sudo yum install docker-ce-&lt;VERSION STRING&gt; 指定版本安装</span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo systemctl start docker</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo docker run hello-world</span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> yum list docker-ce --showduplicates | sort -r</span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo yum makecache fast</span></span><br><span class="line">sudo yum install docker-ce --skip-broken</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#################### 自动安装 </span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> curl -fsSL get.docker.com -o get-docker.sh</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo sh get-docker.sh --mirror Aliyun</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#################### 启动服务 #####################</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo systemctl <span class="built_in">enable</span> docker</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo systemctl start docker</span></span><br></pre></td></tr></table></figure>
 <h3 id="docker-compose"><a href="#docker-compose" class="headerlink" title="docker-compose"></a>docker-compose</h3><p>DOCKER三剑客之docker-compose</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 二进制安装</span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-`uname -s`-`uname -m` -o /usr/<span class="built_in">local</span>/bin/docker-compose</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> chmod +x /usr/<span class="built_in">local</span>/bin/docker-compose</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo docker-compose --version</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 二进制安装</span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-`uname -s`-`uname -m` -o /usr/<span class="built_in">local</span>/bin/docker-compose</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> chmod +x /usr/<span class="built_in">local</span>/bin/docker-compose</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker-compose --version</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> pip安装</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> sudo pip install -U docker-compose</span></span><br></pre></td></tr></table></figure>
 <h1 id="docker使用"><a href="#docker使用" class="headerlink" title="docker使用"></a>docker使用</h1><h3 id="容器基本使用"><a href="#容器基本使用" class="headerlink" title="容器基本使用"></a>容器基本使用</h3><h4 id="容器的创建删除查看"><a href="#容器的创建删除查看" class="headerlink" title="容器的创建删除查看"></a>容器的创建删除查看</h4><h5 id="下载容器"><a href="#下载容器" class="headerlink" title="下载容器"></a>下载容器</h5><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">私人镜像: docker pull 用户名/镜像名称:镜像版本号 </span></span><br><span class="line"><span class="section">官方镜像: docker pull 镜像名称:镜像版本号</span></span><br></pre></td></tr></table></figure>
 <h5 id="上传容器"><a href="#上传容器" class="headerlink" title="上传容器"></a>上传容器</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 上传官方</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker login</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker push menzel3/fierce_phish:v0.1</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 上传阿里云</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker tag 40f16ba66b80 registry.cn-hangzhou.aliyuncs.com/menzel3/fierce_phish</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker login --username=menzel3 registry.cn-hangzhou.aliyuncs.com</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker push registry.cn-hangzhou.aliyuncs.com/menzel3/fierce_phish:v0.1</span></span><br></pre></td></tr></table></figure>
@@ -524,27 +524,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Network</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">MIPS汇编</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MYSQL</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PWN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -552,11 +532,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Network</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">渗透</a>
+                <a href="javascript:void(0)" class="js-tag color5">algorithm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">diary</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">relaxing</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -568,15 +560,43 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PWN</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">MYSQL</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">笔记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">公告</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">CURL</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
+                <a href="javascript:void(0)" class="js-tag color4">question</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -588,7 +608,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color5">移动安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">渗透</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -604,19 +628,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">移动安全</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">struts2</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">strusts2</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -624,31 +640,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">内存条</a>
+                <a href="javascript:void(0)" class="js-tag color4">strusts2</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编码</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">公告</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">algorithm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">relaxing</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color3">struts2</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -660,11 +656,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">内网渗透</a>
+                <a href="javascript:void(0)" class="js-tag color3">编码</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">question</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">内存条</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">内网渗透</a>
               </li>
             
             <div class="clearfix"></div>
