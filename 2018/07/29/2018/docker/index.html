@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="麦芽屋">
 <meta property="og:description" content="docker的基本使用及命令解释">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-21T12:58:56.075Z">
+<meta property="og:updated_time" content="2020-03-28T13:39:19.677Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker基础学习">
 <meta name="twitter:description" content="docker的基本使用及命令解释">
@@ -196,7 +196,7 @@
       <div id="toc-article" class="toc-article">
         <span id="toc-close" class="toc-close" title="隐藏导航" onclick="showBtn();">×</span>
         <strong class="toc-title">文章目录</strong>
-           <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#docker及组件安装"><span class="toc-number">1.</span> <span class="toc-text">docker及组件安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Ubuntu16"><span class="toc-number">1.0.1.</span> <span class="toc-text">Ubuntu16</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Centos"><span class="toc-number">1.0.2.</span> <span class="toc-text">Centos</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docker-compose"><span class="toc-number">1.0.3.</span> <span class="toc-text">docker-compose</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#docker使用"><span class="toc-number">2.</span> <span class="toc-text">docker使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#容器基本使用"><span class="toc-number">2.0.1.</span> <span class="toc-text">容器基本使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#容器的创建删除查看"><span class="toc-number">2.0.1.1.</span> <span class="toc-text">容器的创建删除查看</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#下载容器"><span class="toc-number">2.0.1.1.1.</span> <span class="toc-text">下载容器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#上传容器"><span class="toc-number">2.0.1.1.2.</span> <span class="toc-text">上传容器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#创建容器"><span class="toc-number">2.0.1.1.3.</span> <span class="toc-text">创建容器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#启动容器"><span class="toc-number">2.0.1.1.4.</span> <span class="toc-text">启动容器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#删除容器"><span class="toc-number">2.0.1.1.5.</span> <span class="toc-text">删除容器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#查看容器"><span class="toc-number">2.0.1.1.6.</span> <span class="toc-text">查看容器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#退出容器"><span class="toc-number">2.0.1.1.7.</span> <span class="toc-text">退出容器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#设置容器相关属性"><span class="toc-number">2.0.1.1.8.</span> <span class="toc-text">设置容器相关属性</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#守护式容器-后台运行的容器"><span class="toc-number">2.0.1.2.</span> <span class="toc-text">守护式容器|后台运行的容器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#再次进入守护式容器"><span class="toc-number">2.0.1.2.1.</span> <span class="toc-text">再次进入守护式容器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#查看容器运行日志"><span class="toc-number">2.0.1.2.2.</span> <span class="toc-text">查看容器运行日志</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#查看容器内进程"><span class="toc-number">2.0.1.2.3.</span> <span class="toc-text">查看容器内进程</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#奇怪指令"><span class="toc-number">3.</span> <span class="toc-text">奇怪指令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#docker-run的–rm选项详解"><span class="toc-number">3.0.0.1.</span> <span class="toc-text">docker run的–rm选项详解</span></a></li></ol></li>
+           <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#docker及组件安装"><span class="toc-number">1.</span> <span class="toc-text">docker及组件安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Ubuntu16"><span class="toc-number">1.0.1.</span> <span class="toc-text">Ubuntu16</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Centos"><span class="toc-number">1.0.2.</span> <span class="toc-text">Centos</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docker-compose"><span class="toc-number">1.0.3.</span> <span class="toc-text">docker-compose</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#docker使用"><span class="toc-number">2.</span> <span class="toc-text">docker使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#容器基本使用"><span class="toc-number">2.0.1.</span> <span class="toc-text">容器基本使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#容器的创建删除查看"><span class="toc-number">2.0.1.1.</span> <span class="toc-text">容器的创建删除查看</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#下载容器"><span class="toc-number">2.0.1.1.1.</span> <span class="toc-text">下载容器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#上传容器"><span class="toc-number">2.0.1.1.2.</span> <span class="toc-text">上传容器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#创建容器"><span class="toc-number">2.0.1.1.3.</span> <span class="toc-text">创建容器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#启动容器"><span class="toc-number">2.0.1.1.4.</span> <span class="toc-text">启动容器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#删除容器镜像"><span class="toc-number">2.0.1.1.5.</span> <span class="toc-text">删除容器镜像</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#查看容器状态"><span class="toc-number">2.0.1.1.6.</span> <span class="toc-text">查看容器状态</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#查看容器配置"><span class="toc-number">2.0.1.1.7.</span> <span class="toc-text">查看容器配置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#挂载的卷的相关命令"><span class="toc-number">2.0.1.1.8.</span> <span class="toc-text">挂载的卷的相关命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#退出容器"><span class="toc-number">2.0.1.1.9.</span> <span class="toc-text">退出容器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#设置容器相关属性"><span class="toc-number">2.0.1.1.10.</span> <span class="toc-text">设置容器相关属性</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#守护式容器-后台运行的容器"><span class="toc-number">2.0.1.2.</span> <span class="toc-text">守护式容器|后台运行的容器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#再次进入守护式容器"><span class="toc-number">2.0.1.2.1.</span> <span class="toc-text">再次进入守护式容器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#查看容器运行日志"><span class="toc-number">2.0.1.2.2.</span> <span class="toc-text">查看容器运行日志</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#查看容器内进程"><span class="toc-number">2.0.1.2.3.</span> <span class="toc-text">查看容器内进程</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#奇怪指令"><span class="toc-number">3.</span> <span class="toc-text">奇怪指令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#docker-run的–rm选项详解"><span class="toc-number">3.0.0.1.</span> <span class="toc-text">docker run的–rm选项详解</span></a></li></ol></li>
       </div>
       <script type="text/javascript">
         function showToc(){
@@ -228,10 +228,41 @@
 <h1 id="docker使用"><a href="#docker使用" class="headerlink" title="docker使用"></a>docker使用</h1><h3 id="容器基本使用"><a href="#容器基本使用" class="headerlink" title="容器基本使用"></a>容器基本使用</h3><h4 id="容器的创建删除查看"><a href="#容器的创建删除查看" class="headerlink" title="容器的创建删除查看"></a>容器的创建删除查看</h4><h5 id="下载容器"><a href="#下载容器" class="headerlink" title="下载容器"></a>下载容器</h5><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">私人镜像: docker pull 用户名/镜像名称:镜像版本号 </span></span><br><span class="line"><span class="section">官方镜像: docker pull 镜像名称:镜像版本号</span></span><br></pre></td></tr></table></figure>
 <h5 id="上传容器"><a href="#上传容器" class="headerlink" title="上传容器"></a>上传容器</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 上传官方</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker login</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker push menzel3/fierce_phish:v0.1</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 上传阿里云</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker tag 40f16ba66b80 registry.cn-hangzhou.aliyuncs.com/menzel3/fierce_phish</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker login --username=menzel3 registry.cn-hangzhou.aliyuncs.com</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker push registry.cn-hangzhou.aliyuncs.com/menzel3/fierce_phish:v0.1</span></span><br></pre></td></tr></table></figure>
 <p>帮助文档：<a href="https://www.jianshu.com/p/5b46736a57e0">上传到阿里云Docker</a></p>
-<h5 id="创建容器"><a href="#创建容器" class="headerlink" title="创建容器"></a>创建容器</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker run IMAGE [COMMAND] [ARG] </span></span><br><span class="line">-i  --interactive=true 标准输入 默认为false</span><br><span class="line">-t  --tty=true TTY终端 默认为false</span><br><span class="line">-d  后台启动进程</span><br><span class="line">-p 如... -p 8080:80 ... 表示容器80端口映射到宿主机8080端口</span><br><span class="line">--name 如 --name menzel3 就表示名字为menzel3，也可以将' '换作'='</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker run --name <span class="variable">$name</span> -i -t ubuntu /bin/bash</span></span><br></pre></td></tr></table></figure>
-<h5 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a>启动容器</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker start -i [names|id] <span class="comment"># 通过id或名称启动容器</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker run --name mzl0 -d ubuntu /bin/sh -c <span class="string">"while:true; do echo lalalala; sleep 1; done"</span></span></span><br></pre></td></tr></table></figure>
-<h5 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker rm [names|id] <span class="comment"># 通过id或名称删除容器</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker rmi [names|id]</span></span><br></pre></td></tr></table></figure>
-<h5 id="查看容器"><a href="#查看容器" class="headerlink" title="查看容器"></a>查看容器</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker ps -[a|l|]</span></span><br><span class="line">-a 所有容器</span><br><span class="line">-l 最新创建容器</span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker inspect [id|names] <span class="comment"># 返回详细的容器配置信息</span></span></span><br></pre></td></tr></table></figure>
+<h5 id="创建容器"><a href="#创建容器" class="headerlink" title="创建容器"></a>创建容器</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker run IMAGE [COMMAND] [ARG] </span></span><br><span class="line">-i  --interactive=true 标准输入 默认为false</span><br><span class="line">-t  --tty=true TTY终端 默认为false</span><br><span class="line">-d  后台启动进程</span><br><span class="line">-p 如... -p 8080:80 ... 表示容器80端口映射到宿主机8080端口</span><br><span class="line">--name 如 --name menzel3 就表示名字为menzel3，也可以将' '换作'='</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> docker run --name <span class="variable">$name</span> -i -t ubuntu /bin/bash</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker run --name mzl0 -d ubuntu /bin/sh -c <span class="string">"while:true; do echo lalalala; sleep 1; done"</span></span></span><br></pre></td></tr></table></figure>
+<h5 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a>启动容器</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> docker start -i [names|id] <span class="comment"># 通过id或名称启动容器</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker start mzl0</span></span><br></pre></td></tr></table></figure>
+<h5 id="删除容器镜像"><a href="#删除容器镜像" class="headerlink" title="删除容器镜像"></a>删除容器镜像</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker rm [names|id] <span class="comment"># 通过id或名称删除容器</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">$</span><span class="bash"> docker rmi [names|id] <span class="comment"># 通过id或名称删除镜像</span></span></span><br></pre></td></tr></table></figure>
+<h5 id="查看容器状态"><a href="#查看容器状态" class="headerlink" title="查看容器状态"></a>查看容器状态</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker ps -[a|l|]</span></span><br><span class="line">-a 所有容器</span><br><span class="line">-l 最新创建容器</span><br></pre></td></tr></table></figure>
+<h5 id="查看容器配置"><a href="#查看容器配置" class="headerlink" title="查看容器配置"></a>查看容器配置</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker inspect [names|id] <span class="comment"># 通过id或name查看容器或镜像配置信息</span></span></span><br></pre></td></tr></table></figure>
+<h5 id="挂载的卷的相关命令"><a href="#挂载的卷的相关命令" class="headerlink" title="挂载的卷的相关命令"></a>挂载的卷的相关命令</h5><table>
+<thead>
+<tr>
+<th>Command</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://docs.docker.com/engine/reference/commandline/volume_create/">docker volume create</a></td>
+<td>Create a volume</td>
+</tr>
+<tr>
+<td><a href="https://docs.docker.com/engine/reference/commandline/volume_inspect/">docker volume inspect</a></td>
+<td>Display detailed information on one or more volumes</td>
+</tr>
+<tr>
+<td><a href="https://docs.docker.com/engine/reference/commandline/volume_ls/">docker volume ls</a></td>
+<td>List volumes</td>
+</tr>
+<tr>
+<td><a href="https://docs.docker.com/engine/reference/commandline/volume_prune/">docker volume prune</a></td>
+<td>Remove all unused local volumes</td>
+</tr>
+<tr>
+<td><a href="https://docs.docker.com/engine/reference/commandline/volume_rm/">docker volume rm</a></td>
+<td>Remove one or more volumes</td>
+</tr>
+</tbody>
+</table>
 <h5 id="退出容器"><a href="#退出容器" class="headerlink" title="退出容器"></a>退出容器</h5><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>.在shell中输入 <span class="keyword">exit</span> 回车退出</span><br><span class="line">退出后容器关闭</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>.摁ctrl qp键退出</span><br><span class="line">退出后容器后台运行,此时容器为守护容器</span><br></pre></td></tr></table></figure>
 <h5 id="设置容器相关属性"><a href="#设置容器相关属性" class="headerlink" title="设置容器相关属性"></a>设置容器相关属性</h5><h4 id="守护式容器-后台运行的容器"><a href="#守护式容器-后台运行的容器" class="headerlink" title="守护式容器|后台运行的容器"></a>守护式容器|后台运行的容器</h4><h5 id="再次进入守护式容器"><a href="#再次进入守护式容器" class="headerlink" title="再次进入守护式容器"></a>再次进入守护式容器</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker attach [names|id]</span></span><br></pre></td></tr></table></figure>
 <h5 id="查看容器运行日志"><a href="#查看容器运行日志" class="headerlink" title="查看容器运行日志"></a>查看容器运行日志</h5><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> docker logs [-f] [-t] [--tail] 容器名</span></span><br><span class="line">-f  --follows=true|false  动态显示  默认为false</span><br><span class="line">-t  --timestamps=true|false  加上时间戳  默认为false</span><br><span class="line">--tail $n 指定显示最新的 n 条</span><br></pre></td></tr></table></figure>
@@ -396,7 +427,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#docker及组件安装"><span class="toc-number">1.</span> <span class="toc-text">docker及组件安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Ubuntu16"><span class="toc-number">1.0.1.</span> <span class="toc-text">Ubuntu16</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Centos"><span class="toc-number">1.0.2.</span> <span class="toc-text">Centos</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docker-compose"><span class="toc-number">1.0.3.</span> <span class="toc-text">docker-compose</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#docker使用"><span class="toc-number">2.</span> <span class="toc-text">docker使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#容器基本使用"><span class="toc-number">2.0.1.</span> <span class="toc-text">容器基本使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#容器的创建删除查看"><span class="toc-number">2.0.1.1.</span> <span class="toc-text">容器的创建删除查看</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#下载容器"><span class="toc-number">2.0.1.1.1.</span> <span class="toc-text">下载容器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#上传容器"><span class="toc-number">2.0.1.1.2.</span> <span class="toc-text">上传容器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#创建容器"><span class="toc-number">2.0.1.1.3.</span> <span class="toc-text">创建容器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#启动容器"><span class="toc-number">2.0.1.1.4.</span> <span class="toc-text">启动容器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#删除容器"><span class="toc-number">2.0.1.1.5.</span> <span class="toc-text">删除容器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#查看容器"><span class="toc-number">2.0.1.1.6.</span> <span class="toc-text">查看容器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#退出容器"><span class="toc-number">2.0.1.1.7.</span> <span class="toc-text">退出容器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#设置容器相关属性"><span class="toc-number">2.0.1.1.8.</span> <span class="toc-text">设置容器相关属性</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#守护式容器-后台运行的容器"><span class="toc-number">2.0.1.2.</span> <span class="toc-text">守护式容器|后台运行的容器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#再次进入守护式容器"><span class="toc-number">2.0.1.2.1.</span> <span class="toc-text">再次进入守护式容器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#查看容器运行日志"><span class="toc-number">2.0.1.2.2.</span> <span class="toc-text">查看容器运行日志</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#查看容器内进程"><span class="toc-number">2.0.1.2.3.</span> <span class="toc-text">查看容器内进程</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#奇怪指令"><span class="toc-number">3.</span> <span class="toc-text">奇怪指令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#docker-run的–rm选项详解"><span class="toc-number">3.0.0.1.</span> <span class="toc-text">docker run的–rm选项详解</span></a></li></ol></li>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#docker及组件安装"><span class="toc-number">1.</span> <span class="toc-text">docker及组件安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Ubuntu16"><span class="toc-number">1.0.1.</span> <span class="toc-text">Ubuntu16</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Centos"><span class="toc-number">1.0.2.</span> <span class="toc-text">Centos</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#docker-compose"><span class="toc-number">1.0.3.</span> <span class="toc-text">docker-compose</span></a></li></ol></li></ol><li class="toc-item toc-level-1"><a class="toc-link" href="#docker使用"><span class="toc-number">2.</span> <span class="toc-text">docker使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#容器基本使用"><span class="toc-number">2.0.1.</span> <span class="toc-text">容器基本使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#容器的创建删除查看"><span class="toc-number">2.0.1.1.</span> <span class="toc-text">容器的创建删除查看</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#下载容器"><span class="toc-number">2.0.1.1.1.</span> <span class="toc-text">下载容器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#上传容器"><span class="toc-number">2.0.1.1.2.</span> <span class="toc-text">上传容器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#创建容器"><span class="toc-number">2.0.1.1.3.</span> <span class="toc-text">创建容器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#启动容器"><span class="toc-number">2.0.1.1.4.</span> <span class="toc-text">启动容器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#删除容器镜像"><span class="toc-number">2.0.1.1.5.</span> <span class="toc-text">删除容器镜像</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#查看容器状态"><span class="toc-number">2.0.1.1.6.</span> <span class="toc-text">查看容器状态</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#查看容器配置"><span class="toc-number">2.0.1.1.7.</span> <span class="toc-text">查看容器配置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#挂载的卷的相关命令"><span class="toc-number">2.0.1.1.8.</span> <span class="toc-text">挂载的卷的相关命令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#退出容器"><span class="toc-number">2.0.1.1.9.</span> <span class="toc-text">退出容器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#设置容器相关属性"><span class="toc-number">2.0.1.1.10.</span> <span class="toc-text">设置容器相关属性</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#守护式容器-后台运行的容器"><span class="toc-number">2.0.1.2.</span> <span class="toc-text">守护式容器|后台运行的容器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#再次进入守护式容器"><span class="toc-number">2.0.1.2.1.</span> <span class="toc-text">再次进入守护式容器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#查看容器运行日志"><span class="toc-number">2.0.1.2.2.</span> <span class="toc-text">查看容器运行日志</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#查看容器内进程"><span class="toc-number">2.0.1.2.3.</span> <span class="toc-text">查看容器内进程</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#奇怪指令"><span class="toc-number">3.</span> <span class="toc-text">奇怪指令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#docker-run的–rm选项详解"><span class="toc-number">3.0.0.1.</span> <span class="toc-text">docker run的–rm选项详解</span></a></li></ol></li>
                     </div>
                 </span>
             </div>
@@ -524,47 +555,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">MIPS汇编</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Network</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">工具</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">algorithm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">diary</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">relaxing</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Java Web</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">SQL注入</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PWN</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -576,19 +567,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">公告</a>
+                <a href="javascript:void(0)" class="js-tag color3">Network</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color4">PWN</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">CURL</a>
+                <a href="javascript:void(0)" class="js-tag color4">二进制</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">question</a>
+                <a href="javascript:void(0)" class="js-tag color2">MIPS汇编</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -596,7 +587,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
+                <a href="javascript:void(0)" class="js-tag color5">CURL</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -608,23 +599,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">移动安全</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">渗透</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">HTTP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -636,7 +611,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">虚拟化</a>
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">移动安全</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -648,6 +631,30 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">虚拟化</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">内网渗透</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">web安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">内存条</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">扫描</a>
               </li>
              
@@ -656,19 +663,51 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">编码</a>
+                <a href="javascript:void(0)" class="js-tag color4">Java Web</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
+                <a href="javascript:void(0)" class="js-tag color1">SQL注入</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">内存条</a>
+                <a href="javascript:void(0)" class="js-tag color3">渗透</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">内网渗透</a>
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">algorithm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">UNC injection</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">公告</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">relaxing</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Tools</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">diary</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">question</a>
               </li>
             
             <div class="clearfix"></div>
